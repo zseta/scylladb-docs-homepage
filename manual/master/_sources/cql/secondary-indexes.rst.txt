@@ -143,13 +143,15 @@ ScyllaDB supports creating vector indexes on tables, allowing queries on the tab
 similarity search on vector data. Vector indexes can be a global index for indexing vectors per table or a local
 index for indexing vectors per partition.
 
-The vector index is the only custom type index supported in ScyllaDB. It is created using
-the ``CUSTOM`` keyword and specifying the index type as ``vector_index``. It is also possible to
-add additional columns to the index for filtering the search results. The partition column
-specified in the global vector index definition must be the vector column, and any subsequent
-columns are treated as filtering columns. The local vector index requires that the partition key
-of the index is a subset of the table's partition key columns and the vector column is the first
-one from the following columns.
+The vector index is one of the custom indexes supported in ScyllaDB. It is
+created using the ``CUSTOM`` keyword and specifying the index type as
+``vector_index``. It is also possible to add additional columns to the index
+for filtering the search results. The first column specified in the global
+vector index definition must be the vector column, and any subsequent columns
+are treated as filtering columns. The local vector index requires that the
+partition key of the index is of a type allowed for filtering columns and the
+vector column is the first one after the partition key definition, and any
+subsequent columns are filtering columns.
 
 ScyllaDB allows creating multiple **named** vector indexes on the same vector column.
 This can be used to create a replacement index before dropping an older one.
@@ -192,13 +194,13 @@ Example of a local vector index:
 The vector column (``embedding``) is indexed for similarity search (a local
 index) and additional columns are added for filtering the search results. The
 filtering is possible on ``category``, ``info`` and all primary key columns of
-the base table. The partition key of the base table must contains both columns
-``id`` and ``created_at``. It is allowed to create a local vector index using
-only a part of the partition key columns of the base table.
+the base table. It is allowed to create a local vector index using
+primary key columns of the base table or non-primary-key columns.
 
-Vector indexes support additional filtering columns of native data types
-(excluding counter and duration). The indexed column itself must be a vector
-column, while the extra columns can be used to filter search results.
+Vector indexes support a local index partition key or additional filtering
+columns of native data types (excluding counter and duration). The first column
+after the partition key definition must be a vector column, while the extra
+columns can be used to filter search results.
 
 The supported types are:
 
@@ -281,7 +283,7 @@ Cassandra SAI Compatibility for Vector Search
 
 ScyllaDB accepts the Cassandra ``StorageAttachedIndex`` (SAI) class name in ``CREATE CUSTOM INDEX``
 statements **for vector columns**. Cassandra libraries such as
-`CassIO <https://cassio.org/>`_ and `LangChain <https://www.langchain.com/>`_ use SAI to create
+`CassIO <https://github.com/CassioML>`_ and `LangChain <https://www.langchain.com/>`_ use SAI to create
 vector indexes; ScyllaDB recognizes these statements for compatibility.
 
 When ScyllaDB encounters an SAI class name on a **vector column**, the index is automatically
@@ -307,10 +309,73 @@ The ``similarity_function`` option is supported by both Cassandra SAI and Scylla
 
 .. note::
 
-   SAI class names are only supported on **vector columns**. Using an SAI class name on a
-   non-vector column (e.g., ``text`` or ``int``) will result in an error. General SAI
-   indexing of non-vector columns is not supported by ScyllaDB; use a
+   SAI class names are supported on **vector columns** and on **ENTRIES of non-frozen map
+   columns** (the CassIO metadata-map pattern).
+
+   * For vector columns, the index is rewritten to a native ``vector_index``.
+   * For ``ENTRIES(map_column)``, the SAI class is stripped and a standard secondary index
+     is created instead. A CQL warning is emitted noting possible behavioral differences
+     with Cassandra SAI metadata filtering. This rewrite requires the
+     ``enable_cassio_compatibility`` configuration option to be set to ``true``.
+
+   Using an SAI class name on any other non-vector column (e.g., ``text`` or ``int``) will
+   result in an error. General SAI indexing is not supported by ScyllaDB; use a
    :doc:`secondary index </cql/secondary-indexes>` instead.
+
+   Example of the metadata-map rewrite::
+
+      -- CassIO issues this during schema setup:
+      CREATE CUSTOM INDEX ON my_table (ENTRIES(metadata_s))
+      USING 'org.apache.cassandra.index.sai.StorageAttachedIndex';
+
+      -- ScyllaDB creates the equivalent of:
+      CREATE INDEX ON my_table (ENTRIES(metadata_s));
+
+.. _create-fulltext-index-statement:
+
+Full-text Index :label-note:`ScyllaDB Cloud`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+
+   Full-text indexes are supported in ScyllaDB Cloud only in clusters that have the Vector and Text Search feature enabled.
+   For the full list of unsupported ScyllaDB features, see the
+   :doc:`Full-Text Search documentation </features/fulltext-search>`.
+
+ScyllaDB supports creating full-text indexes on text columns, enabling full-text search queries that rank results
+by relevance using the BM25 scoring algorithm. A full-text index is a custom index created using the ``CUSTOM``
+keyword and specifying the index type as ``fulltext_index``.
+
+CDC is enabled automatically on the base table when a full-text index is created.
+
+**Column restrictions:**
+
+* The indexed column must be of type ``text``, ``varchar``, or ``ascii``. Other types are rejected.
+* The indexed column must be a regular or clustering-key column. Partition-key columns cannot be indexed.
+* The table must use tablets (not vnodes).
+
+Example::
+
+   CREATE CUSTOM INDEX ON articles (body) USING 'fulltext_index';
+
+You can specify an analyzer to control how text is tokenized::
+
+   CREATE CUSTOM INDEX ON articles (body) USING 'fulltext_index'
+       WITH OPTIONS = {'analyzer': 'english'};
+
+The following options are supported for full-text indexes:
+
++----------------+-------------------------------------------------------------------------------------------+-------------------+
+| Option         | Description                                                                               | Default Value     |
++================+===========================================================================================+===================+
+| ``analyzer``   | Text analyzer for tokenization. Determines how text is split into terms.                  | ``standard``      |
+|                | Supported values (case-insensitive): ``standard``, ``english``, ``german``,               |                   |
+|                | ``french``, ``spanish``, ``italian``, ``portuguese``, ``russian``, ``simple``,            |                   |
+|                | ``whitespace``. CJK analyzers (``chinese``, ``japanese``, ``korean``) are not supported.  |                   |
++----------------+-------------------------------------------------------------------------------------------+-------------------+
+| ``positions``  | Whether token positions are stored. Required for phrase queries.                          | ``true``          |
+|                | Supported values: ``true``, ``false`` (case-insensitive).                                 |                   |
++----------------+-------------------------------------------------------------------------------------------+-------------------+
 
 .. _drop-index-statement:
 

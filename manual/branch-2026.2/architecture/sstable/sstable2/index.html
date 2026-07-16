@@ -337,16 +337,6 @@
                      >
                     
                         
-    <div class="admonition caution">
-        <p class="admonition-title">Caution</p>
-        <p>
-            
-                You're viewing documentation for an unstable version of ScyllaDB Manual.
-            
-            <a href="../../../../stable/architecture/sstable/sstable2/index.html">Switch to the latest stable version.</a>
-        </p>
-    </div>
-
                     
 
                     <section id="scylladb-sstable-2-x">
@@ -357,6 +347,11 @@
 Immutable means SSTables are never modified; they are created by a MemTable flush and are deleted by a compaction.
 The location of ScyllaDB SSTables is specified in scylla.yaml <code class="docutils literal notranslate"><span class="pre">data_file_directories</span></code> parameter (default location: <code class="docutils literal notranslate"><span class="pre">/var/lib/scylla/data</span></code>).</p>
 <p>SSTable 3.x is more efficient and requires less disk space than the SSTable 2.x.</p>
+<p>For more information on each of the SSTable formats, see below:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#"><span class="doc">SSTable 2.x</span></a></p></li>
+<li><p><a class="reference internal" href="../sstable3/index.html"><span class="doc">SSTable 3.x</span></a></p></li>
+</ul>
 <section id="sstable-version-support">
 <h2>SSTable Version Support<a class="headerlink" href="#sstable-version-support" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
@@ -370,26 +365,37 @@ The location of ScyllaDB SSTables is specified in scylla.yaml <code class="docut
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>3.x (‘ms’)</p></td>
+<tr class="row-even"><td><p>3.x (<code class="docutils literal notranslate"><span class="pre">mt</span></code>)</p></td>
+<td><p>2026.2 and above</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.x (<code class="docutils literal notranslate"><span class="pre">ms</span></code>)</p></td>
 <td><p>2025.4 and above</p></td>
 </tr>
-<tr class="row-odd"><td><p>3.x (‘me’)</p></td>
+<tr class="row-even"><td><p>3.x (<code class="docutils literal notranslate"><span class="pre">me</span></code>)</p></td>
 <td><p>2022.2 and above</p></td>
 </tr>
-<tr class="row-even"><td><p>3.x (‘md’)</p></td>
+<tr class="row-odd"><td><p>3.x (<code class="docutils literal notranslate"><span class="pre">md</span></code>)</p></td>
 <td><p>2021.1</p></td>
 </tr>
 </tbody>
 </table>
 <ul class="simple">
-<li><p>The supported formats are <code class="docutils literal notranslate"><span class="pre">me</span></code> and <code class="docutils literal notranslate"><span class="pre">ms</span></code>.</p></li>
+<li><p>The supported formats are <code class="docutils literal notranslate"><span class="pre">me</span></code> and <code class="docutils literal notranslate"><span class="pre">mt</span></code>.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">md</span></code> format is used only when upgrading from an existing cluster using
 <code class="docutils literal notranslate"><span class="pre">md</span></code>. The <code class="docutils literal notranslate"><span class="pre">sstable_format</span></code> parameter is ignored if it is set to <code class="docutils literal notranslate"><span class="pre">md</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ms</span></code> format has been superseded by <code class="docutils literal notranslate"><span class="pre">mt</span></code>, and is used only when upgrading
+from an existing cluster using <code class="docutils literal notranslate"><span class="pre">ms</span></code>. If the <code class="docutils literal notranslate"><span class="pre">sstable_format</span></code> parameter is
+set to <code class="docutils literal notranslate"><span class="pre">ms</span></code>, <code class="docutils literal notranslate"><span class="pre">mt</span></code> files will be written.</p></li>
 <li><p>Note: The <code class="docutils literal notranslate"><span class="pre">sstable_format</span></code> parameter specifies the SSTable format used for
 <strong>writes</strong>. The legacy SSTable formats (<code class="docutils literal notranslate"><span class="pre">ka</span></code>, <code class="docutils literal notranslate"><span class="pre">la</span></code>, <code class="docutils literal notranslate"><span class="pre">mc</span></code>) remain
 supported for reads, which is essential for restoring clusters from existing
 backups.</p></li>
 </ul>
+</section>
+<section id="the-ms-format-trie-based-sstable-index">
+<h2>The ms Format: Trie-Based SSTable Index<a class="headerlink" href="#the-ms-format-trie-based-sstable-index" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">ms</span></code> format introduces a <em>trie-based</em> SSTable index.</p>
+<p>For a detailed description of the trie index format, see <a class="reference internal" href="../sstable3/sstable-ms-index.html"><span class="doc">SSTable ms Index</span></a>.</p>
 <p>For more information about ScyllaDB 2.x SSTable formats, see below:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="sstable-compression.html"><span class="doc">SSTable Compression</span></a> - Deep dive into ScyllaDB/Apache Cassandra SSTable Compression</p></li>
@@ -526,6 +532,7 @@ backups.</p></li>
             <ul>
 <li><a class="reference internal" href="#">ScyllaDB SSTable - 2.x</a><ul>
 <li><a class="reference internal" href="#sstable-version-support">SSTable Version Support</a></li>
+<li><a class="reference internal" href="#the-ms-format-trie-based-sstable-index">The ms Format: Trie-Based SSTable Index</a></li>
 </ul>
 </li>
 </ul>
@@ -594,7 +601,7 @@ backups.</p></li>
             
                 
                     <li>
-                        <a href="../../../../stable/architecture/sstable/sstable2/index.html">2026.1</a>
+                        <a href="../../../../branch-2026.1/architecture/sstable/sstable2/index.html">2026.1</a>
                     </li>
                 
             
@@ -1025,7 +1032,7 @@ backups.</p></li>
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 13 May 2026.
+                        Last updated on 16 Jul 2026.
                     
                 </div>
             

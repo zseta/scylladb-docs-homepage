@@ -332,6 +332,16 @@
                      >
                     
                         
+    <div class="admonition caution">
+        <p class="admonition-title">Caution</p>
+        <p>
+            
+                You're viewing documentation for a previous version of ScyllaDB Manual.
+            
+            <a href="../../stable/cql/types.html">Switch to the latest stable version.</a>
+        </p>
+    </div>
+
                     
 
                     <section id="data-types">
@@ -846,7 +856,7 @@ Similar to collections, a UDT can be frozen or non-frozen. A frozen UDT is immut
 
 <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">superheroes</span> <span class="p">(</span>
      <span class="n">name</span> <span class="k">frozen</span><span class="o">&lt;</span><span class="n">full_name</span><span class="o">&gt;</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
-     <span class="n">home</span> <span class="n">address</span>
+     <span class="n">home</span> <span class="k">frozen</span><span class="o">&lt;</span><span class="n">address</span><span class="o">&gt;</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -1205,7 +1215,7 @@ about Vector Search is available in the
             
                 
                     <li>
-                        <a href="../../branch-2026.2/cql/types.html">2026.2</a>
+                        <a href="../../stable/cql/types.html">2026.2</a>
                     </li>
                 
             
@@ -1643,7 +1653,7 @@ about Vector Search is available in the
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 13 May 2026.
+                        Last updated on 16 Jul 2026.
                     
                 </div>
             

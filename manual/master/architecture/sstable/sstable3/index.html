@@ -357,6 +357,11 @@
 Immutable means SSTables are never modified; they are created by a MemTable flush and are deleted by a compaction.
 The location of ScyllaDB SSTables is specified in scylla.yaml <code class="docutils literal notranslate"><span class="pre">data_file_directories</span></code> parameter (default location: <code class="docutils literal notranslate"><span class="pre">/var/lib/scylla/data</span></code>).</p>
 <p>SSTable 3.x is more efficient and requires less disk space than the SSTable 2.x.</p>
+<p>For more information on each of the SSTable formats, see below:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../sstable2/index.html"><span class="doc">SSTable 2.x</span></a></p></li>
+<li><p><a class="reference internal" href="#"><span class="doc">SSTable 3.x</span></a></p></li>
+</ul>
 <section id="sstable-version-support">
 <h2>SSTable Version Support<a class="headerlink" href="#sstable-version-support" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
@@ -370,26 +375,37 @@ The location of ScyllaDB SSTables is specified in scylla.yaml <code class="docut
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>3.x (‘ms’)</p></td>
+<tr class="row-even"><td><p>3.x (‘mt’)</p></td>
+<td><p>2026.2 and above</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.x (‘ms’)</p></td>
 <td><p>2025.4 and above</p></td>
 </tr>
-<tr class="row-odd"><td><p>3.x (‘me’)</p></td>
+<tr class="row-even"><td><p>3.x (<code class="docutils literal notranslate"><span class="pre">me</span></code>)</p></td>
 <td><p>2022.2 and above</p></td>
 </tr>
-<tr class="row-even"><td><p>3.x (‘md’)</p></td>
+<tr class="row-odd"><td><p>3.x (<code class="docutils literal notranslate"><span class="pre">md</span></code>)</p></td>
 <td><p>2021.1</p></td>
 </tr>
 </tbody>
 </table>
 <ul class="simple">
-<li><p>The supported formats are <code class="docutils literal notranslate"><span class="pre">me</span></code> and <code class="docutils literal notranslate"><span class="pre">ms</span></code>.</p></li>
+<li><p>The supported formats are <code class="docutils literal notranslate"><span class="pre">me</span></code> and <code class="docutils literal notranslate"><span class="pre">mt</span></code>.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">md</span></code> format is used only when upgrading from an existing cluster using
 <code class="docutils literal notranslate"><span class="pre">md</span></code>. The <code class="docutils literal notranslate"><span class="pre">sstable_format</span></code> parameter is ignored if it is set to <code class="docutils literal notranslate"><span class="pre">md</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ms</span></code> format has been superseded by <code class="docutils literal notranslate"><span class="pre">mt</span></code>, and is used only when upgrading
+from an existing cluster using <code class="docutils literal notranslate"><span class="pre">ms</span></code>. If the <code class="docutils literal notranslate"><span class="pre">sstable_format</span></code> parameter is
+set to <code class="docutils literal notranslate"><span class="pre">ms</span></code>, <code class="docutils literal notranslate"><span class="pre">mt</span></code> files will be written.</p></li>
 <li><p>Note: The <code class="docutils literal notranslate"><span class="pre">sstable_format</span></code> parameter specifies the SSTable format used for
 <strong>writes</strong>. The legacy SSTable formats (<code class="docutils literal notranslate"><span class="pre">ka</span></code>, <code class="docutils literal notranslate"><span class="pre">la</span></code>, <code class="docutils literal notranslate"><span class="pre">mc</span></code>) remain
 supported for reads, which is essential for restoring clusters from existing
 backups.</p></li>
 </ul>
+</section>
+<section id="the-ms-format-trie-based-sstable-index">
+<h2>The ms Format: Trie-Based SSTable Index<a class="headerlink" href="#the-ms-format-trie-based-sstable-index" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">ms</span></code> format introduces a <em>trie-based</em> SSTable index.</p>
+<p>For a detailed description of the trie index format, see <a class="reference internal" href="sstable-ms-index.html"><span class="doc">SSTable ms Index</span></a>.</p>
 </section>
 <section id="additional-information">
 <h2>Additional Information<a class="headerlink" href="#additional-information" title="Link to this heading">¶</a></h2>
@@ -398,7 +414,8 @@ backups.</p></li>
 <li><p><a class="reference internal" href="sstables-3-data-file-format.html"><span class="doc">SSTable 3.0 Data File Format</span></a></p></li>
 <li><p><a class="reference internal" href="sstables-3-statistics.html"><span class="doc">SSTable 3.0 Statistics</span></a></p></li>
 <li><p><a class="reference internal" href="sstables-3-summary.html"><span class="doc">SSTable 3.0 Summary</span></a></p></li>
-<li><p><a class="reference internal" href="sstables-3-index.html"><span class="doc">SSTable 3.0 Index</span></a></p></li>
+<li><p><a class="reference internal" href="sstables-3-index.html"><span class="doc">SSTable 3.0 Index (me/md format)</span></a></p></li>
+<li><p><a class="reference internal" href="sstable-ms-index.html"><span class="doc">SSTable ms Index (Trie-Based)</span></a></p></li>
 <li><p><a class="reference internal" href="sstable-format.html"><span class="doc">SSTable 3.0 Format in ScyllaDB</span></a></p></li>
 </ul>
 </section>
@@ -526,6 +543,7 @@ backups.</p></li>
             <ul>
 <li><a class="reference internal" href="#">ScyllaDB SSTable - 3.x</a><ul>
 <li><a class="reference internal" href="#sstable-version-support">SSTable Version Support</a></li>
+<li><a class="reference internal" href="#the-ms-format-trie-based-sstable-index">The ms Format: Trie-Based SSTable Index</a></li>
 <li><a class="reference internal" href="#additional-information">Additional Information</a></li>
 </ul>
 </li>
@@ -589,13 +607,13 @@ backups.</p></li>
             
                 
                     <li>
-                        <a href="../../../../branch-2026.2/architecture/sstable/sstable3/index.html">2026.2</a>
+                        <a href="../../../../stable/architecture/sstable/sstable3/index.html">2026.2</a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="../../../../stable/architecture/sstable/sstable3/index.html">2026.1</a>
+                        <a href="../../../../branch-2026.1/architecture/sstable/sstable3/index.html">2026.1</a>
                     </li>
                 
             
@@ -630,12 +648,12 @@ backups.</p></li>
         <div class="side-nav__content">
             <ul class="current">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../getting-started/index.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../getting-started/install-scylla/index.html">Install ScyllaDB 2026.1</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../getting-started/install-scylla/launch-on-aws.html">Launch ScyllaDB 2026.1 on AWS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../getting-started/install-scylla/launch-on-gcp.html">Launch ScyllaDB 2026.1 on GCP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../getting-started/install-scylla/launch-on-azure.html">Launch ScyllaDB 2026.1 on Azure</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../getting-started/install-scylla/index.html">Install ScyllaDB 2026.2</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting-started/install-scylla/launch-on-aws.html">Launch ScyllaDB 2026.2 on AWS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting-started/install-scylla/launch-on-gcp.html">Launch ScyllaDB 2026.2 on GCP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting-started/install-scylla/launch-on-azure.html">Launch ScyllaDB 2026.2 on Azure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../getting-started/installation-common/scylla-web-installer.html">ScyllaDB Web Installer for Linux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../getting-started/install-scylla/install-on-linux.html">Install ScyllaDB 2026.1 Linux Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting-started/install-scylla/install-on-linux.html">Install ScyllaDB 2026.2 Linux Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../getting-started/install-scylla/run-in-docker.html">Run ScyllaDB in Docker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../getting-started/installation-common/unified-installer.html">Install ScyllaDB Without root Privileges</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../getting-started/installation-common/air-gapped-install.html">Air-gapped Server Installation</a></li>
@@ -743,6 +761,7 @@ backups.</p></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../getting-started/system-configuration.html">System Configuration Guide</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../operating-scylla/admin.html">scylla.yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../operating-scylla/system-configuration/snitch.html">ScyllaDB Snitches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/configuration-parameters.html">Configuration Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../operating-scylla/benchmarking-scylla.html">Benchmarking ScyllaDB</a></li>
@@ -818,6 +837,7 @@ backups.</p></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../features/incremental-repair.html">Incremental Repair</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../features/automatic-repair.html">Automatic Repair</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../features/vector-search.html">Vector Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../features/fulltext-search.html">Full-Text Search</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../../index.html">ScyllaDB Architecture</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label for="toctree-checkbox-18"><i class="icon-chevron-right"></i></label><div class="break"></div><ul class="current">
@@ -1026,7 +1046,7 @@ backups.</p></li>
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 13 May 2026.
+                        Last updated on 16 Jul 2026.
                     
                 </div>
             

@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width initial-scale=1" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>
-             A change in EPEL broke ScyllaDB Python Script | ScyllaDB Docs 
+             Full-Text Search in ScyllaDB | ScyllaDB Docs 
         </title>
         <meta name="description" content="ScyllaDB is an Apache Cassandra-compatible NoSQL data store that can handle 1 million transactions per second on a single server." />
         <link rel="icon" href="../_static/img/favicon.ico" type="image/x-icon" />
@@ -26,7 +26,7 @@
 
         
             
-            <link rel="canonical" href="https://docs.scylladb.com/manual/stable/troubleshooting/python-error-no-module-named-yaml.html"/>
+            <link rel="canonical" href="https://docs.scylladb.com/manual/stable/features/fulltext-search.html"/>
         
 
         <link rel="author" href="mailto:info@scylladb.com" />
@@ -313,17 +313,11 @@
     
         <span class="bread__item">
             <a href="index.html" class="bread__highlight">
-                Troubleshooting ScyllaDB
+                Features
             </a>
         </span>
     
-        <span class="bread__item">
-            <a href="startup/index.html" class="bread__highlight">
-                ScyllaDB Startup
-            </a>
-        </span>
-    
-    <span class="bread__item bread__item--last">A change in EPEL broke ScyllaDB Python Script</span>
+    <span class="bread__item bread__item--last">Full-Text Search in ScyllaDB</span>
 </div>
                     </div>
                 
@@ -334,40 +328,185 @@
 
                 <div class="content-body"
                      
-                         data-view-source-url="https://github.com/scylladb/scylladb/blob/master/docs/troubleshooting/python-error-no-module-named-yaml.rst"
+                         data-view-source-url="https://github.com/scylladb/scylladb/blob/master/docs/features/fulltext-search.rst"
                      >
                     
                         
+    <div class="admonition caution">
+        <p class="admonition-title">Caution</p>
+        <p>
+            
+                You're viewing documentation for an unstable version of ScyllaDB Manual.
+            
+            <a href="../../stable/index.html">Switch to the latest stable version.</a>
+        </p>
+    </div>
+
                     
 
-                    <section id="a-change-in-epel-broke-scylladb-python-script">
-<h1>A change in EPEL broke ScyllaDB Python Script<a class="headerlink" href="#a-change-in-epel-broke-scylladb-python-script" title="Link to this heading">¶</a></h1>
-<section id="phenomena">
-<h2>Phenomena<a class="headerlink" href="#phenomena" title="Link to this heading">¶</a></h2>
-<p>When upgrading CentOS on a ScyllaDB node, ScyllaDB setup script, like scylla_prepare or scylla_setup fails with the following error:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">&quot;/sbin/scylla_setup&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">29</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">scylla_util</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-  <span class="n">File</span> <span class="s2">&quot;/usr/lib/scylla/scylla_util.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">31</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
- <span class="ne">ModuleNotFoundError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="s1">&#39;yaml&#39;</span>
+                    <section id="full-text-search-in-scylladb">
+<h1>Full-Text Search in ScyllaDB<a class="headerlink" href="#full-text-search-in-scylladb" title="Link to this heading">¶</a></h1>
+<section id="what-is-full-text-search">
+<h2>What Is Full-Text Search<a class="headerlink" href="#what-is-full-text-search" title="Link to this heading">¶</a></h2>
+<p>Full-Text Search (FTS) lets you find rows that contain specific words or
+phrases inside text columns. Unlike exact-match queries or <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> filters,
+FTS uses an inverted index to tokenize text and rank results by relevance
+using the <a class="reference external" href="https://en.wikipedia.org/wiki/Okapi_BM25">BM25</a> scoring
+algorithm.</p>
+<p>Typical use cases include:</p>
+<ul class="simple">
+<li><p>Searching for keywords in product descriptions, articles, or log messages</p></li>
+<li><p>Ranking results by how well they match a search query</p></li>
+<li><p>Filtering rows that contain at least one matching term</p></li>
+</ul>
+</section>
+<section id="creating-a-full-text-index">
+<h2>Creating a Full-Text Index<a class="headerlink" href="#creating-a-full-text-index" title="Link to this heading">¶</a></h2>
+<p>Before you can run FTS queries, you must create a <code class="docutils literal notranslate"><span class="pre">fulltext_index</span></code> on the
+target column:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">CUSTOM</span> <span class="n">INDEX</span> <span class="n">ON</span> <span class="n">ks</span><span class="o">.</span><span class="n">t</span> <span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="n">USING</span> <span class="s1">&#39;fulltext_index&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can specify an analyzer to control how text is tokenized:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">CUSTOM</span> <span class="n">INDEX</span> <span class="n">ON</span> <span class="n">ks</span><span class="o">.</span><span class="n">t</span> <span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="n">USING</span> <span class="s1">&#39;fulltext_index&#39;</span>
+    <span class="n">WITH</span> <span class="n">OPTIONS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;analyzer&#39;</span><span class="p">:</span> <span class="s1">&#39;english&#39;</span><span class="p">};</span>
+</pre></div>
+</div>
+<p><strong>Requirements:</strong></p>
+<ul class="simple">
+<li><p>The indexed column must be of type <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">varchar</span></code>, or <code class="docutils literal notranslate"><span class="pre">ascii</span></code>.
+Other types are rejected.</p></li>
+<li><p>The indexed column must be a regular or clustering-key column. Partition-key
+columns cannot be indexed.</p></li>
+<li><p>The table must use tablets (not vnodes).</p></li>
+<li><p>CDC must be enabled on the table with a TTL of at least 86400 seconds
+(24 hours) and either <code class="docutils literal notranslate"><span class="pre">delta</span> <span class="pre">=</span> <span class="pre">'full'</span></code> or postimage enabled.
+CDC is enabled automatically when creating a fulltext index, so you do not
+need to configure it manually.</p></li>
+</ul>
+</section>
+<section id="querying-with-bm25">
+<h2>Querying with BM25<a class="headerlink" href="#querying-with-bm25" title="Link to this heading">¶</a></h2>
+<p>FTS queries use the <code class="docutils literal notranslate"><span class="pre">BM25()</span></code> function to score rows against a search term.
+<code class="docutils literal notranslate"><span class="pre">BM25()</span></code> takes two arguments: a column name and a query string.</p>
+<p>A full-text search query must use <code class="docutils literal notranslate"><span class="pre">BM25()</span></code> in <strong>both</strong> of these clauses, on
+the <strong>same</strong> column:</p>
+<ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause of the exact form <code class="docutils literal notranslate"><span class="pre">BM25(column,</span> <span class="pre">'term')</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> to <strong>filter</strong>
+the rows that match the search term.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">BM25(column,</span> <span class="pre">'term')</span></code> clause to <strong>rank</strong> the matching rows by
+their BM25 relevance score (highest first).</p></li>
+</ul>
+<p>Neither clause works on its own - a query with only <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">BM25()</span></code> or only
+<code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">BM25()</span></code> is rejected, and both must reference the <strong>same column</strong> and
+the <strong>same search term</strong>. Every FTS query also requires a <code class="docutils literal notranslate"><span class="pre">LIMIT</span></code>.</p>
+<p>For the full syntax reference, see <a class="reference internal" href="../cql/dml/select.html#fulltext-queries"><span class="std std-ref">Full-Text Search queries (BM25)</span></a>.</p>
+<section id="basic-query">
+<h3>Basic query<a class="headerlink" href="#basic-query" title="Link to this heading">¶</a></h3>
+<p>Filter the rows that contain the search term and rank them by relevance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">ks</span><span class="o">.</span><span class="n">t</span>
+    <span class="n">WHERE</span> <span class="n">BM25</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;search term&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">BM25</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;search term&#39;</span><span class="p">)</span>
+    <span class="n">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> is the only supported operator and the right-hand
+side must be the literal <code class="docutils literal notranslate"><span class="pre">0</span></code>. Operators such as <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">!=</span></code> are rejected, as is any non-zero threshold.</p>
+</section>
+<section id="filtering-support">
+<h3>Filtering support<a class="headerlink" href="#filtering-support" title="Link to this heading">¶</a></h3>
+<p>Additional <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> restrictions (such as partition key equality) are not
+currently supported alongside <code class="docutils literal notranslate"><span class="pre">BM25()</span></code> and will be rejected. Support for
+combined filtering is planned for a future release.</p>
+</section>
+<section id="using-bind-markers">
+<h3>Using bind markers<a class="headerlink" href="#using-bind-markers" title="Link to this heading">¶</a></h3>
+<p>The query term can be supplied with a bind marker in prepared statements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM ks.t
+    WHERE BM25(v, ?) &gt; 0
+    ORDER BY BM25(v, ?)
+    LIMIT 10;
 </pre></div>
 </div>
 </section>
-<section id="problem">
-<h2>Problem<a class="headerlink" href="#problem" title="Link to this heading">¶</a></h2>
-<p>The source cause is a change in EPEL repository upgrade, breaking backward compatibility by moving from Python34 to Python36, and dropping PyYAML library in the process. ScyllaDB uses PyYAML in a few of its Python scripts.</p>
+<section id="disambiguating-from-a-user-defined-function">
+<h3>Disambiguating from a user-defined function<a class="headerlink" href="#disambiguating-from-a-user-defined-function" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">BM25</span></code> is not a reserved word. If a keyspace defines a user-defined function
+named <code class="docutils literal notranslate"><span class="pre">bm25</span></code>, an unqualified <code class="docutils literal notranslate"><span class="pre">BM25()</span></code> call becomes ambiguous; qualify the
+built-in operator as <code class="docutils literal notranslate"><span class="pre">system.bm25(...)</span></code> to select it explicitly.</p>
 </section>
-<section id="bypass">
-<h2>Bypass<a class="headerlink" href="#bypass" title="Link to this heading">¶</a></h2>
-<p>Install the python36 version of PyYAML</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>python36-PyYAML<span class="w"> </span>-y
-</pre></div>
-</div>
 </section>
-<section id="solution">
-<h2>Solution<a class="headerlink" href="#solution" title="Link to this heading">¶</a></h2>
-<p>In future releases, we will provide a more robust solution by encapsulating Python as part of ScyllaDB Installation. More on this in the blog post <a class="reference external" href="https://www.scylladb.com/2019/02/14/the-complex-path-for-a-simple-portable-python-interpreter-or-snakes-on-a-data-plane/">The Complex Path for a Simple Portable Python Interpreter, or Snakes on a Data Plane</a>.</p>
+<section id="unsupported-scylladb-features">
+<h2>Unsupported ScyllaDB Features<a class="headerlink" href="#unsupported-scylladb-features" title="Link to this heading">¶</a></h2>
+<p>Full-text indexes do not support all ScyllaDB features. The following features
+are not supported when using Full-Text Search:</p>
+<ul class="simple">
+<li><p>Tracing</p></li>
+<li><p>TTL (Time To Live)</p></li>
+<li><p>Paging</p></li>
+<li><p>Grouping (<code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>)</p></li>
+</ul>
+</section>
+<section id="query-constraints">
+<h2>Query Constraints<a class="headerlink" href="#query-constraints" title="Link to this heading">¶</a></h2>
+<p>FTS queries enforce the following rules:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constraint</p></th>
+<th class="head"><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Both clauses required</p></td>
+<td><p>A query must include both a <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">BM25()</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> filter and an
+<code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">BM25()</span></code> ranking. Both must reference the same column and
+the same search term. Neither clause is accepted on its own.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> and literal <code class="docutils literal notranslate"><span class="pre">0</span></code> only</p></td>
+<td><p>In <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>, the only accepted form is <code class="docutils literal notranslate"><span class="pre">BM25(column,</span> <span class="pre">'term')</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.
+Other operators (<code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>) and non-zero
+thresholds are rejected.</p></td>
+</tr>
+<tr class="row-even"><td><p>Filtering support</p></td>
+<td><p>Only <code class="docutils literal notranslate"><span class="pre">BM25(column,</span> <span class="pre">'term')</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> is accepted in <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>. Any additional
+restriction (e.g., a partition key equality) is rejected. Combined filtering
+is planned for a future release.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LIMIT</span></code> is required</p></td>
+<td><p>Every FTS query must include a <code class="docutils literal notranslate"><span class="pre">LIMIT</span></code> clause. Queries without
+<code class="docutils literal notranslate"><span class="pre">LIMIT</span></code> are rejected.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PER</span> <span class="pre">PARTITION</span> <span class="pre">LIMIT</span></code> not supported</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PER</span> <span class="pre">PARTITION</span> <span class="pre">LIMIT</span></code> cannot be used with FTS queries.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aggregation not supported</p></td>
+<td><p>FTS queries cannot include aggregate functions (e.g., <code class="docutils literal notranslate"><span class="pre">COUNT(*)</span></code>,
+<code class="docutils literal notranslate"><span class="pre">SUM()</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p>Fulltext index required</p></td>
+<td><p>The queried column must have a <code class="docutils literal notranslate"><span class="pre">fulltext_index</span></code>. A regular secondary
+index does not satisfy this requirement.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">BM25()</span></code> cannot appear in <code class="docutils literal notranslate"><span class="pre">SELECT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BM25()</span></code> is only valid in <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> and <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> clauses, not
+as a selector.</p></td>
+</tr>
+<tr class="row-even"><td><p>Partition key columns excluded</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">fulltext_index</span></code> cannot be created on a partition key column, so
+<code class="docutils literal notranslate"><span class="pre">BM25()</span></code> cannot target one. Regular and clustering-key text columns
+are supported.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Single ordering only</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">BM25()</span></code> cannot be combined with other <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> columns,
+a second <code class="docutils literal notranslate"><span class="pre">BM25()</span></code> ordering, or with <code class="docutils literal notranslate"><span class="pre">ANN</span></code> ordering.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
@@ -403,7 +542,7 @@
             const themeGithubRepository = true;
             let message = 'Great! Thanks for your feedback.';
             if (themeGithubRepository && !liked) {
-                message = "Thanks for your feedback! Please don't hesitate to <a href='https://github.com/scylladb/scylladb/issues/new?title=docs:%20Issue on page A change in EPEL broke ScyllaDB Python Script&&body=I%20would%20like%20to%20report%20an%20issue%20on%20page%20https://docs.scylladb.com/manual/branch-2026.1/troubleshooting/python-error-no-module-named-yaml%0A%0A%23%23%23%20Problem%0A%0A%23%23%23%20%20Suggest%20a%20fix&labels=documentation'>create an issue</a> if you have any suggestions on how we can improve.";
+                message = "Thanks for your feedback! Please don't hesitate to <a href='https://github.com/scylladb/scylladb/issues/new?title=docs:%20Issue on page Full-Text Search in ScyllaDB&&body=I%20would%20like%20to%20report%20an%20issue%20on%20page%20https://docs.scylladb.com/manual/master/features/fulltext-search%0A%0A%23%23%23%20Problem%0A%0A%23%23%23%20%20Suggest%20a%20fix&labels=documentation'>create an issue</a> if you have any suggestions on how we can improve.";
             }
             feedbackMessage.innerHTML = message;
         }
@@ -438,21 +577,21 @@
                         <div class="content-navigation">
     <div class="navigation navigation--prev">
         
-            <a class="navigation__link" href="scylla-wont-start.html">
+            <a class="navigation__link" href="vector-search.html">
                 <button class="navigation__button">
                     <i class="icon-chevron-left"></i>
                 </button>
                 <div class="navigation__title">
-                    <span class="colored">PREVIOUS</span> <br />ScyllaDB will not Start
+                    <span class="colored">PREVIOUS</span> <br />Vector Search in ScyllaDB
                 </div>
             </a>
         
     </div>
     <div class="navigation navigation--next">
         
-            <a class="navigation__link" href="cluster/index.html">
+            <a class="navigation__link" href="../architecture/index.html">
                 <div class="navigation__title">
-                    <span class="colored">NEXT</span> <br />Cluster and Node
+                    <span class="colored">NEXT</span> <br />ScyllaDB Architecture
                 </div>
                 <button class="navigation__button">
                     <i class="icon-chevron-right"></i>
@@ -472,14 +611,14 @@
     
     <ul class="contribute">
         <li class="contribute__item">
-            <a class="button button-sm" href="https://github.com/scylladb/scylladb/issues/new?title=docs:%20Issue on page A change in EPEL broke ScyllaDB Python Script&&body=I%20would%20like%20to%20report%20an%20issue%20on%20page%20https://docs.scylladb.com/manual/branch-2026.1/troubleshooting/python-error-no-module-named-yaml%0A%0A%23%23%23%20Problem%0A%0A%23%23%23%20%20Suggest%20a%20fix&labels=documentation"
+            <a class="button button-sm" href="https://github.com/scylladb/scylladb/issues/new?title=docs:%20Issue on page Full-Text Search in ScyllaDB&&body=I%20would%20like%20to%20report%20an%20issue%20on%20page%20https://docs.scylladb.com/manual/master/features/fulltext-search%0A%0A%23%23%23%20Problem%0A%0A%23%23%23%20%20Suggest%20a%20fix&labels=documentation"
                target="_blank">
                 <i class="icon-github" aria-hidden="true"></i>Create an issue
             </a>
         </li>
         
             <li class="contribute__item">
-                <a class="button button-sm" href="https://github.com/scylladb/scylladb/edit/master/docs/troubleshooting/python-error-no-module-named-yaml.rst"
+                <a class="button button-sm" href="https://github.com/scylladb/scylladb/edit/master/docs/features/fulltext-search.rst"
                    target="_blank">
                     <i class="icon-edit" aria-hidden="true"></i>Edit this page
                 </a>
@@ -491,11 +630,18 @@
         <div class="secondary-side-nav__content">
             <p class="topic-title">On this page</p>
             <ul>
-<li><a class="reference internal" href="#">A change in EPEL broke ScyllaDB Python Script</a><ul>
-<li><a class="reference internal" href="#phenomena">Phenomena</a></li>
-<li><a class="reference internal" href="#problem">Problem</a></li>
-<li><a class="reference internal" href="#bypass">Bypass</a></li>
-<li><a class="reference internal" href="#solution">Solution</a></li>
+<li><a class="reference internal" href="#">Full-Text Search in ScyllaDB</a><ul>
+<li><a class="reference internal" href="#what-is-full-text-search">What Is Full-Text Search</a></li>
+<li><a class="reference internal" href="#creating-a-full-text-index">Creating a Full-Text Index</a></li>
+<li><a class="reference internal" href="#querying-with-bm25">Querying with BM25</a><ul>
+<li><a class="reference internal" href="#basic-query">Basic query</a></li>
+<li><a class="reference internal" href="#filtering-support">Filtering support</a></li>
+<li><a class="reference internal" href="#using-bind-markers">Using bind markers</a></li>
+<li><a class="reference internal" href="#disambiguating-from-a-user-defined-function">Disambiguating from a user-defined function</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unsupported-scylladb-features">Unsupported ScyllaDB Features</a></li>
+<li><a class="reference internal" href="#query-constraints">Query Constraints</a></li>
 </ul>
 </li>
 </ul>
@@ -544,7 +690,7 @@
     <li class="scylla-dropdown__item">
         <a class="scylla-dropdown__title" href="#">
             
-                2026.1
+                master
             
             <i class="chevron icon-docs-chevron-right"></i>
         </a>
@@ -552,43 +698,43 @@
             
                 
                     <li>
-                        <a href="../../master/index.html">master</a>
+                        <a href="fulltext-search.html">master</a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="../../branch-2026.2/index.html">2026.2</a>
+                        <a href="../../stable/index.html">2026.2</a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="python-error-no-module-named-yaml.html">2026.1</a>
+                        <a href="../../branch-2026.1/index.html">2026.1</a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="../../branch-2025.4/troubleshooting/python-error-no-module-named-yaml.html">2025.4</a>
+                        <a href="../../branch-2025.4/index.html">2025.4</a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="../../branch-2025.3/troubleshooting/python-error-no-module-named-yaml.html">2025.3</a>
+                        <a href="../../branch-2025.3/index.html">2025.3</a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="../../branch-2025.2/troubleshooting/python-error-no-module-named-yaml.html">2025.2</a>
+                        <a href="../../branch-2025.2/index.html">2025.2</a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="../../branch-2025.1/troubleshooting/python-error-no-module-named-yaml.html">2025.1</a>
+                        <a href="../../branch-2025.1/index.html">2025.1</a>
                     </li>
                 
             
@@ -599,12 +745,12 @@
         <div class="side-nav__content">
             <ul class="current">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting-started/index.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../getting-started/install-scylla/index.html">Install ScyllaDB 2026.1</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="../getting-started/install-scylla/launch-on-aws.html">Launch ScyllaDB 2026.1 on AWS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting-started/install-scylla/launch-on-gcp.html">Launch ScyllaDB 2026.1 on GCP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting-started/install-scylla/launch-on-azure.html">Launch ScyllaDB 2026.1 on Azure</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../getting-started/install-scylla/index.html">Install ScyllaDB 2026.2</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting-started/install-scylla/launch-on-aws.html">Launch ScyllaDB 2026.2 on AWS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting-started/install-scylla/launch-on-gcp.html">Launch ScyllaDB 2026.2 on GCP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting-started/install-scylla/launch-on-azure.html">Launch ScyllaDB 2026.2 on Azure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../getting-started/installation-common/scylla-web-installer.html">ScyllaDB Web Installer for Linux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting-started/install-scylla/install-on-linux.html">Install ScyllaDB 2026.1 Linux Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting-started/install-scylla/install-on-linux.html">Install ScyllaDB 2026.2 Linux Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../getting-started/install-scylla/run-in-docker.html">Run ScyllaDB in Docker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../getting-started/installation-common/unified-installer.html">Install ScyllaDB Without root Privileges</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../getting-started/installation-common/air-gapped-install.html">Air-gapped Server Installation</a></li>
@@ -616,7 +762,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../getting-started/config-commands.html">ScyllaDB Configuration Reference</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../getting-started/requirements.html">ScyllaDB Requirements</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
 <li class="toctree-l3"><a class="reference internal" href="../getting-started/system-requirements.html">System Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting-started/os-support.html">OS Support</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.scylladb.com/stable/versioning/os-support-per-version.html">OS Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../getting-started/cloud-instance-recommendations.html">Cloud Instance Recommendations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../getting-started/scylla-in-a-shared-environment.html">ScyllaDB in a Shared Environment</a></li>
 </ul>
@@ -664,9 +810,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../operating-scylla/security/security-checklist.html">ScyllaDB Security Checklist</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../operating-scylla/security/authentication.html">Enable Authentication</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../operating-scylla/security/runtime-authentication.html">Enable and Disable Authentication Without Downtime</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../operating-scylla/security/create-superuser.html">Creating a Custom Superuser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../operating-scylla/security/create-superuser.html">Creating a Superuser</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../operating-scylla/security/gen-cqlsh-file.html">Generate a cqlshrc File</a></li>
-<li class="toctree-l3"><a class="reference internal" href="password-reset.html">Reset Authenticator Password</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/password-reset.html">Reset Authenticator Password</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../operating-scylla/security/enable-authorization.html">Enable Authorization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../operating-scylla/security/authorization.html">Grant Authorization CQL Reference</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../operating-scylla/security/certificate-authentication.html">Certificate-based Authentication</a></li>
@@ -705,7 +851,6 @@
 <li class="toctree-l2"><a class="reference external" href="https://operator.docs.scylladb.com/">ScyllaDB Operator</a></li>
 <li class="toctree-l2"><a class="reference external" href="https://manager.docs.scylladb.com/">ScyllaDB Manager</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../upgrade/index.html">Upgrade Procedures</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label for="toctree-checkbox-10"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="../upgrade/about-upgrade.html">About Upgrade</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../upgrade/upgrade-guides/index.html">Upgrade Guides</a></li>
 </ul>
 </li>
@@ -713,6 +858,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../getting-started/system-configuration.html">System Configuration Guide</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../operating-scylla/admin.html">scylla.yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../operating-scylla/system-configuration/snitch.html">ScyllaDB Snitches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/configuration-parameters.html">Configuration Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../operating-scylla/benchmarking-scylla.html">Benchmarking ScyllaDB</a></li>
@@ -747,6 +893,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../cql/secondary-indexes.html">Global Secondary Indexes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cql/time-to-live.html">Expiring Data with Time to Live (TTL)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cql/functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cql/guardrails.html">CQL Guardrails</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cql/wasm.html">Wasm support for user-defined functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cql/json.html">JSON Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cql/mv.html">Materialized Views</a></li>
@@ -760,32 +907,34 @@
 <li class="toctree-l2"><a class="reference internal" href="../alternator/compatibility.html">ScyllaDB Alternator for DynamoDB users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../alternator/new-apis.html">Alternator-specific APIs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../alternator/network.html">Reducing network costs in Alternator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../alternator/vector-search.html">Alternator Vector Search</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../features/index.html">Features</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label for="toctree-checkbox-16"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l2"><a class="reference internal" href="../features/lwt.html">Lightweight Transactions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../features/secondary-indexes.html">Global Secondary Indexes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../features/local-secondary-indexes.html">Local Secondary Indexes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../features/materialized-views.html">Materialized Views</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../features/counters.html">Counters</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../features/cdc/index.html">Change Data Capture</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label for="toctree-checkbox-17"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="../features/cdc/cdc-intro.html">CDC Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../features/cdc/cdc-log-table.html">The CDC Log Table</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../features/cdc/cdc-basic-operations.html">Basic operations in CDC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../features/cdc/cdc-streams.html">CDC Streams</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../features/cdc/cdc-stream-changes.html">CDC Stream Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../features/cdc/cdc-querying-streams.html">Querying CDC Streams</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../features/cdc/cdc-advanced-types.html">Advanced column types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../features/cdc/cdc-preimages.html">Preimages and postimages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../features/cdc/cdc-consistency.html">Data Consistency in CDC</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Features</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label for="toctree-checkbox-16"><i class="icon-chevron-right"></i></label><div class="break"></div><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lwt.html">Lightweight Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secondary-indexes.html">Global Secondary Indexes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local-secondary-indexes.html">Local Secondary Indexes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="materialized-views.html">Materialized Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="counters.html">Counters</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="cdc/index.html">Change Data Capture</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label for="toctree-checkbox-17"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="cdc/cdc-intro.html">CDC Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cdc/cdc-log-table.html">The CDC Log Table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cdc/cdc-basic-operations.html">Basic operations in CDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cdc/cdc-streams.html">CDC Streams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cdc/cdc-stream-changes.html">CDC Stream Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cdc/cdc-querying-streams.html">Querying CDC Streams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cdc/cdc-advanced-types.html">Advanced column types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cdc/cdc-preimages.html">Preimages and postimages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cdc/cdc-consistency.html">Data Consistency in CDC</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../features/workload-attributes.html">Workload Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../features/workload-prioritization.html">Workload Prioritization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../features/backup-and-restore.html">Backup and Restore</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../features/incremental-repair.html">Incremental Repair</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../features/automatic-repair.html">Automatic Repair</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../features/vector-search.html">Vector Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workload-attributes.html">Workload Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workload-prioritization.html">Workload Prioritization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-and-restore.html">Backup and Restore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="incremental-repair.html">Incremental Repair</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic-repair.html">Automatic Repair</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector-search.html">Vector Search</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Full-Text Search</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../architecture/index.html">ScyllaDB Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label for="toctree-checkbox-18"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
@@ -809,57 +958,56 @@
 <li class="toctree-l2"><a class="reference internal" href="../architecture/zero-token-nodes.html">Zero-token Nodes</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Troubleshooting ScyllaDB</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label for="toctree-checkbox-21"><i class="icon-chevron-right"></i></label><div class="break"></div><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="support/index.html">Errors and Support</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label for="toctree-checkbox-22"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="report-scylla-problem.html">Report a ScyllaDB problem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="error-messages/index.html">Error Messages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="log-level.html">Change Log Level</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../troubleshooting/index.html">Troubleshooting ScyllaDB</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label for="toctree-checkbox-21"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../troubleshooting/support/index.html">Errors and Support</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label for="toctree-checkbox-22"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/report-scylla-problem.html">Report a ScyllaDB problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/error-messages/index.html">Error Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/log-level.html">Change Log Level</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current has-children"><a class="reference internal" href="startup/index.html">ScyllaDB Startup</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label for="toctree-checkbox-23"><i class="icon-chevron-right"></i></label><div class="break"></div><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="change-ownership.html">Ownership Problems</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scylla-wont-start.html">ScyllaDB will not Start</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">ScyllaDB Python Script broken</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../troubleshooting/startup/index.html">ScyllaDB Startup</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label for="toctree-checkbox-23"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/change-ownership.html">Ownership Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/scylla-wont-start.html">ScyllaDB will not Start</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="cluster/index.html">Cluster and Node</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="handling-node-failures.html">Handling Node Failures</a></li>
-<li class="toctree-l3"><a class="reference internal" href="failed-add-remove-replace.html">Failure to Add, Remove, or Replace a Node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="failed-decommission.html">Failed Decommission Problem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeouts.html">Cluster Timeouts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="node-joined-without-any-data.html">Node Joined With No Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nodetool-nullpointerexception.html">NullPointerException</a></li>
-<li class="toctree-l3"><a class="reference internal" href="failed-schema-sync.html">Failed Schema Sync</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../troubleshooting/cluster/index.html">Cluster and Node</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label for="toctree-checkbox-24"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/handling-node-failures.html">Handling Node Failures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/failed-add-remove-replace.html">Failure to Add, Remove, or Replace a Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/failed-decommission.html">Failed Decommission Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/timeouts.html">Cluster Timeouts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/node-joined-without-any-data.html">Node Joined With No Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/nodetool-nullpointerexception.html">NullPointerException</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/failed-schema-sync.html">Failed Schema Sync</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="modeling/index.html">Data Modeling</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="large-partition-table.html">ScyllaDB Large Partitions Table</a></li>
-<li class="toctree-l3"><a class="reference internal" href="large-rows-large-cells-tables.html">ScyllaDB Large Rows and Cells Table</a></li>
-<li class="toctree-l3"><a class="reference internal" href="debugging-large-partition.html">Large Partitions Hunting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="failed-update-schema.html">Failure to Update the Schema</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../troubleshooting/modeling/index.html">Data Modeling</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label for="toctree-checkbox-25"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/large-partition-table.html">ScyllaDB Large Partitions Table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/large-rows-large-cells-tables.html">ScyllaDB Large Rows and Cells Table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/debugging-large-partition.html">Large Partitions Hunting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/failed-update-schema.html">Failure to Update the Schema</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="storage/index.html">Data Storage and SSTables</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="space-up.html">Space Utilization Increasing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="drop-table-space-up.html">Disk Space is not Reclaimed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sstable-corruption.html">SSTable Corruption Problem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pointless-compactions.html">Pointless Compactions</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../troubleshooting/storage/index.html">Data Storage and SSTables</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label for="toctree-checkbox-26"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/space-up.html">Space Utilization Increasing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/drop-table-space-up.html">Disk Space is not Reclaimed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/sstable-corruption.html">SSTable Corruption Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/pointless-compactions.html">Pointless Compactions</a></li>
 <li class="toctree-l3"><a class="reference external" href="https://monitoring.docs.scylladb.com/stable/use-monitoring/advisor/heavyCompaction.html">Limiting Compaction</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="CQL/index.html">CQL</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="time-zone.html">Time Range Query Fails</a></li>
-<li class="toctree-l3"><a class="reference internal" href="copy-from-failed.html">COPY FROM Fails</a></li>
-<li class="toctree-l3"><a class="reference internal" href="clients-table.html">CQL Connection Table</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../troubleshooting/CQL/index.html">CQL</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label for="toctree-checkbox-27"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/time-zone.html">Time Range Query Fails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/copy-from-failed.html">COPY FROM Fails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/clients-table.html">CQL Connection Table</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="monitor/index.html">ScyllaDB Monitor and Manager</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="manager-monitoring-integration.html">Manager and Monitoring integration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reverse-dns-sshd.html">Manager lists healthy nodes as down</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../troubleshooting/monitor/index.html">ScyllaDB Monitor and Manager</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label for="toctree-checkbox-28"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/manager-monitoring-integration.html">Manager and Monitoring integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/reverse-dns-sshd.html">Manager lists healthy nodes as down</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="install-remove/index.html">Installation and Removal</a><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label for="toctree-checkbox-29"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="autoremove-ubuntu.html">Removing ScyllaDB on Ubuntu breaks system packages</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../troubleshooting/install-remove/index.html">Installation and Removal</a><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label for="toctree-checkbox-29"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/autoremove-ubuntu.html">Removing ScyllaDB on Ubuntu breaks system packages</a></li>
 </ul>
 </li>
 </ul>
@@ -880,7 +1028,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../kb/garbage-collection-ics.html">Efficient Tombstone Garbage Collection in ICS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kb/gc-grace-seconds.html">How to Change gc_grace_seconds for a Table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kb/gossip.html">Gossip in ScyllaDB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../kb/increase-permission-cache.html">Increase Permission Cache to Avoid Non-paged Queries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kb/lwt-differences.html">How does ScyllaDB LWT Differ from Apache Cassandra ?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kb/map-cpu.html">Map CPUs to ScyllaDB Shards</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kb/memory-usage.html">ScyllaDB Memory Usage</a></li>
@@ -996,7 +1143,7 @@
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 13 May 2026.
+                        Last updated on 16 Jul 2026.
                     
                 </div>
             

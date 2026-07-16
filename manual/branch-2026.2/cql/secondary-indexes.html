@@ -332,16 +332,6 @@
                      >
                     
                         
-    <div class="admonition caution">
-        <p class="admonition-title">Caution</p>
-        <p>
-            
-                You're viewing documentation for an unstable version of ScyllaDB Manual.
-            
-            <a href="../../stable/cql/secondary-indexes.html">Switch to the latest stable version.</a>
-        </p>
-    </div>
-
                     
 
                     <section id="global-secondary-indexes">
@@ -581,7 +571,7 @@ with those libraries, but does not act on it.</p></td>
 <span id="cassandra-sai-compatibility"></span><h3>Cassandra SAI Compatibility for Vector Search<a class="headerlink" href="#cassandra-sai-compatibility-for-vector-search" title="Link to this heading">¶</a></h3>
 <p>ScyllaDB accepts the Cassandra <code class="docutils literal notranslate"><span class="pre">StorageAttachedIndex</span></code> (SAI) class name in <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">CUSTOM</span> <span class="pre">INDEX</span></code>
 statements <strong>for vector columns</strong>. Cassandra libraries such as
-<a class="reference external" href="https://cassio.org/">CassIO</a> and <a class="reference external" href="https://www.langchain.com/">LangChain</a> use SAI to create
+<a class="reference external" href="https://github.com/CassioML">CassIO</a> and <a class="reference external" href="https://www.langchain.com/">LangChain</a> use SAI to create
 vector indexes; ScyllaDB recognizes these statements for compatibility.</p>
 <p>When ScyllaDB encounters an SAI class name on a <strong>vector column</strong>, the index is automatically
 created as a native <code class="docutils literal notranslate"><span class="pre">vector_index</span></code>. The following class names are recognized:</p>
@@ -605,10 +595,27 @@ created as a native <code class="docutils literal notranslate"><span class="pre"
 <p>The <code class="docutils literal notranslate"><span class="pre">similarity_function</span></code> option is supported by both Cassandra SAI and ScyllaDB.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>SAI class names are only supported on <strong>vector columns</strong>. Using an SAI class name on a
-non-vector column (e.g., <code class="docutils literal notranslate"><span class="pre">text</span></code> or <code class="docutils literal notranslate"><span class="pre">int</span></code>) will result in an error. General SAI
-indexing of non-vector columns is not supported by ScyllaDB; use a
+<p>SAI class names are supported on <strong>vector columns</strong> and on <strong>ENTRIES of non-frozen map
+columns</strong> (the CassIO metadata-map pattern).</p>
+<ul class="simple">
+<li><p>For vector columns, the index is rewritten to a native <code class="docutils literal notranslate"><span class="pre">vector_index</span></code>.</p></li>
+<li><p>For <code class="docutils literal notranslate"><span class="pre">ENTRIES(map_column)</span></code>, the SAI class is stripped and a standard secondary index
+is created instead. A CQL warning is emitted noting possible behavioral differences
+with Cassandra SAI metadata filtering. This rewrite requires the
+<code class="docutils literal notranslate"><span class="pre">enable_cassio_compatibility</span></code> configuration option to be set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+</ul>
+<p>Using an SAI class name on any other non-vector column (e.g., <code class="docutils literal notranslate"><span class="pre">text</span></code> or <code class="docutils literal notranslate"><span class="pre">int</span></code>) will
+result in an error. General SAI indexing is not supported by ScyllaDB; use a
 <a class="reference internal" href="#"><span class="doc">secondary index</span></a> instead.</p>
+<p>Example of the metadata-map rewrite:</p>
+<div class="highlight-cql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- CassIO issues this during schema setup:</span>
+<span class="k">CREATE</span> <span class="k">CUSTOM</span> <span class="k">INDEX</span> <span class="k">ON</span> <span class="n">my_table</span> <span class="p">(</span><span class="k">ENTRIES</span><span class="p">(</span><span class="n">metadata_s</span><span class="p">))</span>
+<span class="k">USING</span> <span class="s1">&#39;org.apache.cassandra.index.sai.StorageAttachedIndex&#39;</span><span class="p">;</span>
+
+<span class="c1">-- ScyllaDB creates the equivalent of:</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="k">ON</span> <span class="n">my_table</span> <span class="p">(</span><span class="k">ENTRIES</span><span class="p">(</span><span class="n">metadata_s</span><span class="p">));</span>
+</pre></div>
+</div>
 </div>
 </section>
 </section>
@@ -838,7 +845,7 @@ the system stops the build process and cleans up any partially built data associ
             
                 
                     <li>
-                        <a href="../../stable/cql/secondary-indexes.html">2026.1</a>
+                        <a href="../../branch-2026.1/cql/secondary-indexes.html">2026.1</a>
                     </li>
                 
             
@@ -1269,7 +1276,7 @@ the system stops the build process and cleans up any partially built data associ
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 13 May 2026.
+                        Last updated on 16 Jul 2026.
                     
                 </div>
             

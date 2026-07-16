@@ -515,9 +515,9 @@
 </pre></div>
 </div>
 <p>The preimage of <code class="docutils literal notranslate"><span class="pre">v</span></code> for the second update is <code class="docutils literal notranslate"><span class="pre">{a252bb60-3f95-11eb-9a61-000000000001:</span> <span class="pre">1,</span> <span class="pre">a252bb61-3f95-11eb-9a61-000000000001:</span> <span class="pre">2}</span></code>. Performing a standard read before the second update would return the list <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code>. Observe that this list can also be obtained from the preimage by listing the (key, value) pairs in the order shown in the preimage map and removing the keys.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Unfortunately, CDC is currently not suited for working with large collections. The reason is that freezing a collection may cause a large allocation - while non-frozen collections are stored as sequences of (small) cells, freezing a collection requires all cells to be fitted in a continuous memory buffer. This issue is currently being worked on; you can track it here: <a class="reference external" href="https://github.com/scylladb/scylla/issues/7506">https://github.com/scylladb/scylla/issues/7506</a>. But even after this issue is resolved, remember that generating a preimage requires reading (and storing) the entire value, which may be costly with large collections.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using CDC with large collections, note that generating a preimage requires reading (and storing) the entire value, which may be costly.</p>
 </div>
 </section>
 <section id="preimages-vs-concurrent-writes">
@@ -870,13 +870,13 @@
             
                 
                     <li>
-                        <a href="../../../branch-2026.2/features/cdc/cdc-preimages.html">2026.2</a>
+                        <a href="../../../stable/features/cdc/cdc-preimages.html">2026.2</a>
                     </li>
                 
             
                 
                     <li>
-                        <a href="../../../stable/features/cdc/cdc-preimages.html">2026.1</a>
+                        <a href="../../../branch-2026.1/features/cdc/cdc-preimages.html">2026.1</a>
                     </li>
                 
             
@@ -911,12 +911,12 @@
         <div class="side-nav__content">
             <ul class="current">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../getting-started/index.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../getting-started/install-scylla/index.html">Install ScyllaDB 2026.1</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../getting-started/install-scylla/launch-on-aws.html">Launch ScyllaDB 2026.1 on AWS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../getting-started/install-scylla/launch-on-gcp.html">Launch ScyllaDB 2026.1 on GCP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../getting-started/install-scylla/launch-on-azure.html">Launch ScyllaDB 2026.1 on Azure</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../getting-started/install-scylla/index.html">Install ScyllaDB 2026.2</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../getting-started/install-scylla/launch-on-aws.html">Launch ScyllaDB 2026.2 on AWS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../getting-started/install-scylla/launch-on-gcp.html">Launch ScyllaDB 2026.2 on GCP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../getting-started/install-scylla/launch-on-azure.html">Launch ScyllaDB 2026.2 on Azure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../getting-started/installation-common/scylla-web-installer.html">ScyllaDB Web Installer for Linux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../getting-started/install-scylla/install-on-linux.html">Install ScyllaDB 2026.1 Linux Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../getting-started/install-scylla/install-on-linux.html">Install ScyllaDB 2026.2 Linux Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../getting-started/install-scylla/run-in-docker.html">Run ScyllaDB in Docker</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../getting-started/installation-common/unified-installer.html">Install ScyllaDB Without root Privileges</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../getting-started/installation-common/air-gapped-install.html">Air-gapped Server Installation</a></li>
@@ -1024,6 +1024,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../getting-started/system-configuration.html">System Configuration Guide</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../operating-scylla/admin.html">scylla.yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../operating-scylla/system-configuration/snitch.html">ScyllaDB Snitches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/configuration-parameters.html">Configuration Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../operating-scylla/benchmarking-scylla.html">Benchmarking ScyllaDB</a></li>
@@ -1099,6 +1100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../incremental-repair.html">Incremental Repair</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../automatic-repair.html">Automatic Repair</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../vector-search.html">Vector Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fulltext-search.html">Full-Text Search</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../architecture/index.html">ScyllaDB Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label for="toctree-checkbox-18"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
@@ -1307,7 +1309,7 @@
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 13 May 2026.
+                        Last updated on 16 Jul 2026.
                     
                 </div>
             

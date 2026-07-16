@@ -338,16 +338,6 @@
                      >
                     
                         
-    <div class="admonition caution">
-        <p class="admonition-title">Caution</p>
-        <p>
-            
-                You're viewing documentation for an unstable version of ScyllaDB Manual.
-            
-            <a href="../../stable/using-scylla/cassandra-compatibility.html">Switch to the latest stable version.</a>
-        </p>
-    </div>
-
                     
 
                     <section id="scylladb-and-apache-cassandra-compatibility">
@@ -716,7 +706,9 @@ Apache Cassandra.  See <a class="reference internal" href="../features/index.htm
 </tr>
 </tbody>
 </table>
-<p><sup>*</sup> SAI class name on vector columns is rewritten to native <code class="docutils literal notranslate"><span class="pre">vector_index</span></code></p>
+<p><sup>*</sup> SAI class name on vector columns is rewritten to native <code class="docutils literal notranslate"><span class="pre">vector_index</span></code>;
+SAI on <code class="docutils literal notranslate"><span class="pre">ENTRIES(map)</span></code> is rewritten to a regular secondary index
+(requires <code class="docutils literal notranslate"><span class="pre">enable_cassio_compatibility:</span> <span class="pre">true</span></code>)</p>
 </section>
 <section id="additional-features">
 <h3>Additional Features<a class="headerlink" href="#additional-features" title="Link to this heading">¶</a></h3>
@@ -1354,7 +1346,7 @@ Apache Cassandra.  See <a class="reference internal" href="../features/index.htm
             
                 
                     <li>
-                        <a href="../../stable/using-scylla/cassandra-compatibility.html">2026.1</a>
+                        <a href="../../branch-2026.1/using-scylla/cassandra-compatibility.html">2026.1</a>
                     </li>
                 
             
@@ -1785,7 +1777,7 @@ Apache Cassandra.  See <a class="reference internal" href="../features/index.htm
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 13 May 2026.
+                        Last updated on 16 Jul 2026.
                     
                 </div>
             
