@@ -19,6 +19,17 @@
         <link rel="apple-touch-icon" href="../_static/img/favicon-228x228.png" />
         <meta name="msapplication-TileImage" href="../_static/img/favicon-228x228.png" />
 
+        <script>
+            (function () {
+                if (window.location.hostname === 'previews.docs.scylladb.com') {
+                    var meta = document.createElement('meta');
+                    meta.name = 'robots';
+                    meta.content = 'noindex, nofollow';
+                    document.head.appendChild(meta);
+                }
+            })();
+        </script>
+
         
             
             
@@ -33,7 +44,17 @@
 
         
             
+            
+            
+            
+                <link rel="alternate" type="text/markdown" href="https://docs.scylladb.com/manual/branch-2025.3/reference/gcp-images.md" />
+            
         
+
+        
+            
+        
+
 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link rel="preload" as="style"
@@ -113,6 +134,8 @@
                 <!-- Google Tag Manager docs -->
 <script>
     (function (w, d, s, l, i) {
+        var h = w.location.hostname;
+        if (h === 'localhost' || h === '127.0.0.1' || h === '0.0.0.0' || h === '') return;
         w[l] = w[l] || [];
         w[l].push({
             "gtm.start": new Date().getTime(),
@@ -131,6 +154,8 @@
 <!-- Google Tag Manager global -->
 <script>
     (function (w, d, s, l, i) {
+        var h = w.location.hostname;
+        if (h === 'localhost' || h === '127.0.0.1' || h === '0.0.0.0' || h === '') return;
         w[l] = w[l] || [];
         w[l].push({
             "gtm.start": new Date().getTime(),
@@ -145,10 +170,6 @@
     })(window, document, "script", "dataLayer", "GTM-T8P2JP");
 </script>
 <!-- End Google Tag Manager -->
-
-<!-- Expertrec -->
-
-<!-- End Expertrec -->
             
         
 
@@ -269,13 +290,13 @@
                 project="ddfdo8m94k"
                 button-style="rounded"
                 hide-filters="false"
-                header-title="ScyllaDB chatbot (beta)"
+                header-title="ScyllaDB chatbot"
                 modal-position="top-center">
                 Search
             </biel-search-button>
             
                 <biel-button class="header-ask-ai" project="ddfdo8m94k"
-                             header-title="ScyllaDB chatbot (beta)"
+                             header-title="ScyllaDB chatbot"
                              button-position="default"
                              modal-position="sidebar-right"
                              button-style="dark">
@@ -328,8 +349,16 @@
 
                 <div class="content-body"
                      
+                         data-llms-txt-url="https://docs.scylladb.com/manual/branch-2025.3/llms.txt"
+                     
+                     
                          data-view-source-url="https://github.com/scylladb/scylladb/blob/master/docs/reference/gcp-images.rst"
                      >
+                    
+                        <div style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+                            For AI agents: a documentation index is available at <a href="https://docs.scylladb.com/manual/branch-2025.3/llms.txt">https://docs.scylladb.com/manual/branch-2025.3/llms.txt</a>. A Markdown version of this page is at <a href="https://docs.scylladb.com/manual/branch-2025.3/reference/gcp-images.md">https://docs.scylladb.com/manual/branch-2025.3/reference/gcp-images.md</a>.
+                        </div>
+                    
                     
                         
     <div class="admonition caution">
@@ -349,7 +378,7 @@
 <section id="id1">
 <h2>2025.3.8<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <div class="sphinx_collapse docutils">
-<input checked="checked" class="sphinx_collapse__input" id="ecef500c-f599-4199-b0e1-4bb977ba4a1e" name="ecef500c-f599-4199-b0e1-4bb977ba4a1e" type="checkbox"><label class="sphinx_collapse__label" for="ecef500c-f599-4199-b0e1-4bb977ba4a1e"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
+<input checked="checked" class="sphinx_collapse__input" id="43c46e89-0bbb-4672-81c8-407ed4e98501" name="43c46e89-0bbb-4672-81c8-407ed4e98501" type="checkbox"><label class="sphinx_collapse__label" for="43c46e89-0bbb-4672-81c8-407ed4e98501"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Image Name</p></th>
@@ -368,7 +397,7 @@
 <section id="id2">
 <h2>2025.3.7<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <div class="sphinx_collapse docutils">
-<input class="sphinx_collapse__input" id="dcdf22f2-28cb-46e1-a2df-0e4f6e8d387f" name="dcdf22f2-28cb-46e1-a2df-0e4f6e8d387f" type="checkbox"><label class="sphinx_collapse__label" for="dcdf22f2-28cb-46e1-a2df-0e4f6e8d387f"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
+<input class="sphinx_collapse__input" id="70f4c0ee-8271-458b-b650-a0af0651cbef" name="70f4c0ee-8271-458b-b650-a0af0651cbef" type="checkbox"><label class="sphinx_collapse__label" for="70f4c0ee-8271-458b-b650-a0af0651cbef"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Image Name</p></th>
@@ -387,7 +416,7 @@
 <section id="id3">
 <h2>2025.3.6<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
 <div class="sphinx_collapse docutils">
-<input class="sphinx_collapse__input" id="cdb6afb5-a563-40b3-bb0f-912569633ff4" name="cdb6afb5-a563-40b3-bb0f-912569633ff4" type="checkbox"><label class="sphinx_collapse__label" for="cdb6afb5-a563-40b3-bb0f-912569633ff4"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
+<input class="sphinx_collapse__input" id="82bb3d31-9aa6-4d4b-a843-c431e634089c" name="82bb3d31-9aa6-4d4b-a843-c431e634089c" type="checkbox"><label class="sphinx_collapse__label" for="82bb3d31-9aa6-4d4b-a843-c431e634089c"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Image Name</p></th>
@@ -406,7 +435,7 @@
 <section id="id4">
 <h2>2025.3.5<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
 <div class="sphinx_collapse docutils">
-<input class="sphinx_collapse__input" id="c45d0e3b-f3e1-4940-b444-bc2c4a4361fc" name="c45d0e3b-f3e1-4940-b444-bc2c4a4361fc" type="checkbox"><label class="sphinx_collapse__label" for="c45d0e3b-f3e1-4940-b444-bc2c4a4361fc"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
+<input class="sphinx_collapse__input" id="3851541b-6295-4459-8904-8dc8932ed83c" name="3851541b-6295-4459-8904-8dc8932ed83c" type="checkbox"><label class="sphinx_collapse__label" for="3851541b-6295-4459-8904-8dc8932ed83c"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Image Name</p></th>
@@ -425,7 +454,7 @@
 <section id="id5">
 <h2>2025.3.4<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
 <div class="sphinx_collapse docutils">
-<input class="sphinx_collapse__input" id="99130cef-dc4b-40d2-a0d4-247a01afdef3" name="99130cef-dc4b-40d2-a0d4-247a01afdef3" type="checkbox"><label class="sphinx_collapse__label" for="99130cef-dc4b-40d2-a0d4-247a01afdef3"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
+<input class="sphinx_collapse__input" id="a3bbe483-ede8-4784-9ee5-0a8486423f9d" name="a3bbe483-ede8-4784-9ee5-0a8486423f9d" type="checkbox"><label class="sphinx_collapse__label" for="a3bbe483-ede8-4784-9ee5-0a8486423f9d"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Image Name</p></th>
@@ -444,7 +473,7 @@
 <section id="id6">
 <h2>2025.3.3<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
 <div class="sphinx_collapse docutils">
-<input class="sphinx_collapse__input" id="daf78b0a-92ff-4168-93c6-f7831950f4dd" name="daf78b0a-92ff-4168-93c6-f7831950f4dd" type="checkbox"><label class="sphinx_collapse__label" for="daf78b0a-92ff-4168-93c6-f7831950f4dd"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
+<input class="sphinx_collapse__input" id="8101c131-ba2c-4e0e-a7fd-bc94fbf33bd8" name="8101c131-ba2c-4e0e-a7fd-bc94fbf33bd8" type="checkbox"><label class="sphinx_collapse__label" for="8101c131-ba2c-4e0e-a7fd-bc94fbf33bd8"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Image Name</p></th>
@@ -463,7 +492,7 @@
 <section id="id7">
 <h2>2025.3.2<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
 <div class="sphinx_collapse docutils">
-<input class="sphinx_collapse__input" id="2769d5f4-3c0e-40ed-b6b4-00966e61e332" name="2769d5f4-3c0e-40ed-b6b4-00966e61e332" type="checkbox"><label class="sphinx_collapse__label" for="2769d5f4-3c0e-40ed-b6b4-00966e61e332"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
+<input class="sphinx_collapse__input" id="5edd5cc8-8ce0-426f-b7e0-d846ef504b25" name="5edd5cc8-8ce0-426f-b7e0-d846ef504b25" type="checkbox"><label class="sphinx_collapse__label" for="5edd5cc8-8ce0-426f-b7e0-d846ef504b25"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Image Name</p></th>
@@ -482,7 +511,7 @@
 <section id="id8">
 <h2>2025.3.1<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
 <div class="sphinx_collapse docutils">
-<input class="sphinx_collapse__input" id="93107f4a-d3de-445f-bcd7-6e4da39e72e5" name="93107f4a-d3de-445f-bcd7-6e4da39e72e5" type="checkbox"><label class="sphinx_collapse__label" for="93107f4a-d3de-445f-bcd7-6e4da39e72e5"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
+<input class="sphinx_collapse__input" id="1d71ef29-ce00-4639-8002-1f638b5b708a" name="1d71ef29-ce00-4639-8002-1f638b5b708a" type="checkbox"><label class="sphinx_collapse__label" for="1d71ef29-ce00-4639-8002-1f638b5b708a"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Image Name</p></th>
@@ -501,7 +530,7 @@
 <section id="id9">
 <h2>2025.3.0<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
 <div class="sphinx_collapse docutils">
-<input class="sphinx_collapse__input" id="32ad37e0-953d-448d-906a-a8b1cba0d5f0" name="32ad37e0-953d-448d-906a-a8b1cba0d5f0" type="checkbox"><label class="sphinx_collapse__label" for="32ad37e0-953d-448d-906a-a8b1cba0d5f0"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
+<input class="sphinx_collapse__input" id="63ad73eb-b24c-45c5-9b8e-d664b5607f68" name="63ad73eb-b24c-45c5-9b8e-d664b5607f68" type="checkbox"><label class="sphinx_collapse__label" for="63ad73eb-b24c-45c5-9b8e-d664b5607f68"><i class="sphinx_collapse__icon"></i>View image details</label><div class="sphinx_collapse__content docutils">
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Image Name</p></th>
@@ -678,13 +707,13 @@
                     button-style="rounded"
                     hide-filters="false"
                     hide-ctrl-k="true"
-                    header-title="ScyllaDB chatbot (beta)"
+                    header-title="ScyllaDB chatbot"
                     modal-position="top-center">
                     Search
                 </biel-search-button>
                 
                     <biel-button class="side-nav__ask-ai" project="ddfdo8m94k"
-                                 header-title="ScyllaDB chatbot (beta)"
+                                 header-title="ScyllaDB chatbot"
                                  button-position="default"
                                  modal-position="sidebar-right"
                                  button-style="dark">
@@ -1156,14 +1185,14 @@
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 25 Jul 2026.
+                        Last updated on 26 Jul 2026.
                     
                 </div>
             
             <div class="footer-bottom__version">
                 Powered by
                 <a class="footer-bottom__link" href="http://sphinx-doc.org/">Sphinx 9.1.0</a> &amp;
-                <a class="footer-bottom__link" href="https://sphinx-theme.scylladb.com/">ScyllaDB Theme 1.9.2</a>
+                <a class="footer-bottom__link" href="https://sphinx-theme.scylladb.com/">ScyllaDB Theme 1.9.3</a>
             </div>
         </div>
     </div>
