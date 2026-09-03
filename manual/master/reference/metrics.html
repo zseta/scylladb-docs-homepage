@@ -6386,362 +6386,347 @@
 </section>
 <section id="server">
 <h2>Server<a class="headerlink" href="#server" title="Link to this heading">¶</a></h2>
-<dl class="std metrics_option" id="metricsprop-scylla-transport-cql-requests-count">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_cql_requests_count">
-<span class="sig-name descname"><span class="pre">scylla_transport_cql_requests_count</span></span><a class="headerlink" href="#metrics_option-scylla_transport_cql_requests_count" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-add-entries">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_add_entries">
+<span class="sig-name descname"><span class="pre">scylla_raft_add_entries</span></span><a class="headerlink" href="#metrics_option-scylla_raft_add_entries" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Counts the total number of CQL messages of a specific kind.</p>
+<div><p>Number of entries added on this node, the log_entry_type label can be command, dummy or config</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cql_requests_count</span></code></p></li>
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">add_entries</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-transport-cql-request-bytes">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_cql_request_bytes">
-<span class="sig-name descname"><span class="pre">scylla_transport_cql_request_bytes</span></span><a class="headerlink" href="#metrics_option-scylla_transport_cql_request_bytes" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-messages-received">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_messages_received">
+<span class="sig-name descname"><span class="pre">scylla_raft_messages_received</span></span><a class="headerlink" href="#metrics_option-scylla_raft_messages_received" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Counts the total number of received bytes in CQL messages of a specific kind.</p>
+<div><p>Number of messages received, the message_type determines the type of message</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cql_request_bytes</span></code></p></li>
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">messages_received</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-transport-cql-response-bytes">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_cql_response_bytes">
-<span class="sig-name descname"><span class="pre">scylla_transport_cql_response_bytes</span></span><a class="headerlink" href="#metrics_option-scylla_transport_cql_response_bytes" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-messages-sent">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_messages_sent">
+<span class="sig-name descname"><span class="pre">scylla_raft_messages_sent</span></span><a class="headerlink" href="#metrics_option-scylla_raft_messages_sent" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Counts the total number of sent response bytes for CQL requests of a specific kind.</p>
+<div><p>Number of messages sent, the message_type determines the type of message</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cql_response_bytes</span></code></p></li>
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">messages_sent</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-transport-cql-request-histogram-bytes">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_cql_request_histogram_bytes">
-<span class="sig-name descname"><span class="pre">scylla_transport_cql_request_histogram_bytes</span></span><a class="headerlink" href="#metrics_option-scylla_transport_cql_request_histogram_bytes" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-waiter-awoken">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_waiter_awoken">
+<span class="sig-name descname"><span class="pre">scylla_raft_waiter_awoken</span></span><a class="headerlink" href="#metrics_option-scylla_raft_waiter_awoken" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>A histogram of received bytes in CQL messages of a specific kind and specific scheduling group.</p>
+<div><p>Number of waiters that got result back</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cql_request_histogram_bytes</span></code></p></li>
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">waiter_awoken</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-transport-cql-response-histogram-bytes">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_cql_response_histogram_bytes">
-<span class="sig-name descname"><span class="pre">scylla_transport_cql_response_histogram_bytes</span></span><a class="headerlink" href="#metrics_option-scylla_transport_cql_response_histogram_bytes" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-waiter-dropped">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_waiter_dropped">
+<span class="sig-name descname"><span class="pre">scylla_raft_waiter_dropped</span></span><a class="headerlink" href="#metrics_option-scylla_raft_waiter_dropped" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>A histogram of sent response bytes in CQL messages of a specific kind and specific scheduling group.</p>
+<div><p>Number of waiters that did not get result back</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cql_response_histogram_bytes</span></code></p></li>
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">waiter_dropped</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-transport-cql-pending-response-memory">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_cql_pending_response_memory">
-<span class="sig-name descname"><span class="pre">scylla_transport_cql_pending_response_memory</span></span><a class="headerlink" href="#metrics_option-scylla_transport_cql_pending_response_memory" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-polls">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_polls">
+<span class="sig-name descname"><span class="pre">scylla_raft_polls</span></span><a class="headerlink" href="#metrics_option-scylla_raft_polls" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Holds the total memory in bytes consumed by responses waiting to be sent.</p>
+<div><p>Number of times raft state machine polled</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">polls</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-raft-store-term-and-vote">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_store_term_and_vote">
+<span class="sig-name descname"><span class="pre">scylla_raft_store_term_and_vote</span></span><a class="headerlink" href="#metrics_option-scylla_raft_store_term_and_vote" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Number of times term and vote persisted</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">store_term_and_vote</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-raft-store-snapshot">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_store_snapshot">
+<span class="sig-name descname"><span class="pre">scylla_raft_store_snapshot</span></span><a class="headerlink" href="#metrics_option-scylla_raft_store_snapshot" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Number of snapshots persisted</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">store_snapshot</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-raft-sm-load-snapshot">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_sm_load_snapshot">
+<span class="sig-name descname"><span class="pre">scylla_raft_sm_load_snapshot</span></span><a class="headerlink" href="#metrics_option-scylla_raft_sm_load_snapshot" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Number of times user state machine reloaded with a snapshot</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">sm_load_snapshot</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-raft-truncate-persisted-log">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_truncate_persisted_log">
+<span class="sig-name descname"><span class="pre">scylla_raft_truncate_persisted_log</span></span><a class="headerlink" href="#metrics_option-scylla_raft_truncate_persisted_log" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Number of times log truncated on storage</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">truncate_persisted_log</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-raft-persisted-log-entries">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_persisted_log_entries">
+<span class="sig-name descname"><span class="pre">scylla_raft_persisted_log_entries</span></span><a class="headerlink" href="#metrics_option-scylla_raft_persisted_log_entries" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Number of log entries persisted</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">persisted_log_entries</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-raft-queue-entries-for-apply">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_queue_entries_for_apply">
+<span class="sig-name descname"><span class="pre">scylla_raft_queue_entries_for_apply</span></span><a class="headerlink" href="#metrics_option-scylla_raft_queue_entries_for_apply" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Number of log entries queued to be applied</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">queue_entries_for_apply</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-raft-applied-entries">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_applied_entries">
+<span class="sig-name descname"><span class="pre">scylla_raft_applied_entries</span></span><a class="headerlink" href="#metrics_option-scylla_raft_applied_entries" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Number of log entries applied</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">applied_entries</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-raft-snapshots-taken">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_snapshots_taken">
+<span class="sig-name descname"><span class="pre">scylla_raft_snapshots_taken</span></span><a class="headerlink" href="#metrics_option-scylla_raft_snapshots_taken" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Number of times user’s state machine snapshotted</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">snapshots_taken</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-raft-in-memory-log-size">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_in_memory_log_size">
+<span class="sig-name descname"><span class="pre">scylla_raft_in_memory_log_size</span></span><a class="headerlink" href="#metrics_option-scylla_raft_in_memory_log_size" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>size of in-memory part of the log</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cql_pending_response_memory</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">in_memory_log_size</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-transport-cql-requests-serving">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_cql_requests_serving">
-<span class="sig-name descname"><span class="pre">scylla_transport_cql_requests_serving</span></span><a class="headerlink" href="#metrics_option-scylla_transport_cql_requests_serving" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-log-memory-usage">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_log_memory_usage">
+<span class="sig-name descname"><span class="pre">scylla_raft_log_memory_usage</span></span><a class="headerlink" href="#metrics_option-scylla_raft_log_memory_usage" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Holds the number of requests that are being processed right now.</p>
+<div><p>memory usage of in-memory part of the log in bytes</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cql_requests_serving</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">log_memory_usage</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-transport-cql-request-latency-histogram">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_cql_request_latency_histogram">
-<span class="sig-name descname"><span class="pre">scylla_transport_cql_request_latency_histogram</span></span><a class="headerlink" href="#metrics_option-scylla_transport_cql_request_latency_histogram" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-log-last-index">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_log_last_index">
+<span class="sig-name descname"><span class="pre">scylla_raft_log_last_index</span></span><a class="headerlink" href="#metrics_option-scylla_raft_log_last_index" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>A histogram of transport-level CQL request latencies (in microseconds), measuring from the start of request processing until the response is written to the socket.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cql_request_latency_histogram</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-transport-cql-client-timestamp-drift-histogram">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_cql_client_timestamp_drift_histogram">
-<span class="sig-name descname"><span class="pre">scylla_transport_cql_client_timestamp_drift_histogram</span></span><a class="headerlink" href="#metrics_option-scylla_transport_cql_client_timestamp_drift_histogram" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>A histogram of the drift in microseconds between the client-provided CQL timestamp and the server time at request arrival. Useful for detecting transport delays before requests reach the CQL server.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cql_client_timestamp_drift_histogram</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-transport-cql-connections">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_cql-connections">
-<span class="sig-name descname"><span class="pre">scylla_transport_cql-connections</span></span><a class="headerlink" href="#metrics_option-scylla_transport_cql-connections" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Counts a number of client connections.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cql-connections</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-transport-current-connections">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_current_connections">
-<span class="sig-name descname"><span class="pre">scylla_transport_current_connections</span></span><a class="headerlink" href="#metrics_option-scylla_transport_current_connections" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Holds a current number of client connections.</p>
+<div><p>term of the last log entry</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">current_connections</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">log_last_index</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-transport-requests-served">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_requests_served">
-<span class="sig-name descname"><span class="pre">scylla_transport_requests_served</span></span><a class="headerlink" href="#metrics_option-scylla_transport_requests_served" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-log-last-term">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_log_last_term">
+<span class="sig-name descname"><span class="pre">scylla_raft_log_last_term</span></span><a class="headerlink" href="#metrics_option-scylla_raft_log_last_term" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Counts a number of served requests.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">requests_served</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-transport-requests-serving">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_requests_serving">
-<span class="sig-name descname"><span class="pre">scylla_transport_requests_serving</span></span><a class="headerlink" href="#metrics_option-scylla_transport_requests_serving" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Holds a number of requests that are being processed right now.</p>
+<div><p>index of the last log entry</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">requests_serving</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">log_last_term</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-transport-requests-blocked-memory-current">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_requests_blocked_memory_current">
-<span class="sig-name descname"><span class="pre">scylla_transport_requests_blocked_memory_current</span></span><a class="headerlink" href="#metrics_option-scylla_transport_requests_blocked_memory_current" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-snapshot-last-index">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_snapshot_last_index">
+<span class="sig-name descname"><span class="pre">scylla_raft_snapshot_last_index</span></span><a class="headerlink" href="#metrics_option-scylla_raft_snapshot_last_index" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Holds the number of requests that are currently blocked due to reaching the memory quota limit (mB). Non-zero value indicates that our bottleneck is memory and more specifically - the memory quota allocated for the CQL transportcomponent.</p>
+<div><p>term of the snapshot</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">requests_blocked_memory_current</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">snapshot_last_index</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-transport-requests-blocked-memory">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_requests_blocked_memory">
-<span class="sig-name descname"><span class="pre">scylla_transport_requests_blocked_memory</span></span><a class="headerlink" href="#metrics_option-scylla_transport_requests_blocked_memory" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-snapshot-last-term">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_snapshot_last_term">
+<span class="sig-name descname"><span class="pre">scylla_raft_snapshot_last_term</span></span><a class="headerlink" href="#metrics_option-scylla_raft_snapshot_last_term" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Holds an incrementing counter with the requests that ever blocked due to reaching the memory quota limit (mB). The first derivative of this value shows how often we block due to memory exhaustion in the CQL transportcomponent.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">requests_blocked_memory</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-transport-requests-shed">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_requests_shed">
-<span class="sig-name descname"><span class="pre">scylla_transport_requests_shed</span></span><a class="headerlink" href="#metrics_option-scylla_transport_requests_shed" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Holds an incrementing counter with the requests that were shed due to overload (threshold configured via max_concurrent_requests_per_shard). The first derivative of this value shows how often we shed requests due to overload in the CQL transport component.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">requests_shed</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-transport-connections-shed">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_connections_shed">
-<span class="sig-name descname"><span class="pre">scylla_transport_connections_shed</span></span><a class="headerlink" href="#metrics_option-scylla_transport_connections_shed" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Holds an incrementing counter with the CQL connections that were shed due to concurrency semaphore timeout (threshold configured via uninitialized_connections_semaphore_cpu_concurrency). This typically can happen during connection storm.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">connections_shed</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-transport-connections-blocked">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_connections_blocked">
-<span class="sig-name descname"><span class="pre">scylla_transport_connections_blocked</span></span><a class="headerlink" href="#metrics_option-scylla_transport_connections_blocked" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Holds an incrementing counter with the CQL connections that were blocked before being processed due to threshold configured via uninitialized_connections_semaphore_cpu_concurrency. Blocks are normal when we have multiple connections initialized at once. If connections are timing out and this value is high it indicates either connections storm or unusually slow processing.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">connections_blocked</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-transport-requests-memory-available">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_requests_memory_available">
-<span class="sig-name descname"><span class="pre">scylla_transport_requests_memory_available</span></span><a class="headerlink" href="#metrics_option-scylla_transport_requests_memory_available" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Holds the amount of available memory for admitting new requests (max is mB).Zero value indicates that our bottleneck is memory and more specifically - the memory quota allocated for the CQL transportcomponent.</p>
+<div><p>index of the snapshot</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">requests_memory_available</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">snapshot_last_term</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-transport-requests-forwarded-successfully">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_requests_forwarded_successfully">
-<span class="sig-name descname"><span class="pre">scylla_transport_requests_forwarded_successfully</span></span><a class="headerlink" href="#metrics_option-scylla_transport_requests_forwarded_successfully" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-state">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_state">
+<span class="sig-name descname"><span class="pre">scylla_raft_state</span></span><a class="headerlink" href="#metrics_option-scylla_raft_state" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Counts the number of requests that were forwarded to another replica and executed successfully there.</p>
+<div><p>current state: 0 - follower, 1 - candidate, 2 - leader</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">requests_forwarded_successfully</span></code></p></li>
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">state</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-transport-requests-forwarded-failed">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_requests_forwarded_failed">
-<span class="sig-name descname"><span class="pre">scylla_transport_requests_forwarded_failed</span></span><a class="headerlink" href="#metrics_option-scylla_transport_requests_forwarded_failed" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-commit-index">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_commit_index">
+<span class="sig-name descname"><span class="pre">scylla_raft_commit_index</span></span><a class="headerlink" href="#metrics_option-scylla_raft_commit_index" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Counts the number of requests that were forwarded to another replica but failed to execute there.</p>
+<div><p>commit index</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">requests_forwarded_failed</span></code></p></li>
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">commit_index</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-transport-requests-forwarded-redirected">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_requests_forwarded_redirected">
-<span class="sig-name descname"><span class="pre">scylla_transport_requests_forwarded_redirected</span></span><a class="headerlink" href="#metrics_option-scylla_transport_requests_forwarded_redirected" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-raft-apply-index">
+<dt class="sig sig-object std" id="metrics_option-scylla_raft_apply_index">
+<span class="sig-name descname"><span class="pre">scylla_raft_apply_index</span></span><a class="headerlink" href="#metrics_option-scylla_raft_apply_index" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Counts the number of requests that were forwarded to another replica but that replica responded with a redirect to another node.This can happen when replica has stale information about the cluster topology or when the request is handled by a node that is not a replica for the data being accessed by the request.</p>
+<div><p>applied index</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">requests_forwarded_redirected</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-transport-requests-forwarded-prepared-not-found">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_requests_forwarded_prepared_not_found">
-<span class="sig-name descname"><span class="pre">scylla_transport_requests_forwarded_prepared_not_found</span></span><a class="headerlink" href="#metrics_option-scylla_transport_requests_forwarded_prepared_not_found" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Counts the number of requests that were forwarded to another replica but failed there because the statement was not prepared on the target.When this happens, the coordinator performs an additional remote call to prepare the statement on the replica and retries the EXECUTE request afterwards.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">requests_forwarded_prepared_not_found</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-transport-cql-errors-total">
-<dt class="sig sig-object std" id="metrics_option-scylla_transport_cql_errors_total">
-<span class="sig-name descname"><span class="pre">scylla_transport_cql_errors_total</span></span><a class="headerlink" href="#metrics_option-scylla_transport_cql_errors_total" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Counts the total number of returned CQL errors.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">transport</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cql_errors_total</span></code></p></li>
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">raft</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">apply_index</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
@@ -9380,396 +9365,6 @@
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-exclusive-row-acquisitions">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_exclusive_row_acquisitions">
-<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_exclusive_row_acquisitions</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_exclusive_row_acquisitions" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Row lock acquisitions for exclusive_row lock</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_exclusive_row_acquisitions</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-shared-row-acquisitions">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_shared_row_acquisitions">
-<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_shared_row_acquisitions</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_shared_row_acquisitions" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Row lock acquisitions for shared_row lock</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_shared_row_acquisitions</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-exclusive-partition-acquisitions">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_exclusive_partition_acquisitions">
-<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_exclusive_partition_acquisitions</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_exclusive_partition_acquisitions" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Row lock acquisitions for exclusive_partition lock</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_exclusive_partition_acquisitions</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-shared-partition-acquisitions">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_shared_partition_acquisitions">
-<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_shared_partition_acquisitions</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_shared_partition_acquisitions" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Row lock acquisitions for shared_partition lock</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_shared_partition_acquisitions</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-exclusive-row-operations-currently-waiting-for-lock">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_exclusive_row_operations_currently_waiting_for_lock">
-<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_exclusive_row_operations_currently_waiting_for_lock</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_exclusive_row_operations_currently_waiting_for_lock" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Operations currently waiting for exclusive_row lock</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">queue_length</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_exclusive_row_operations_currently_waiting_for_lock</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-shared-row-operations-currently-waiting-for-lock">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_shared_row_operations_currently_waiting_for_lock">
-<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_shared_row_operations_currently_waiting_for_lock</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_shared_row_operations_currently_waiting_for_lock" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Operations currently waiting for shared_row lock</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">queue_length</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_shared_row_operations_currently_waiting_for_lock</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-exclusive-partition-operations-currently-waiting-for-lock">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_exclusive_partition_operations_currently_waiting_for_lock">
-<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_exclusive_partition_operations_currently_waiting_for_lock</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_exclusive_partition_operations_currently_waiting_for_lock" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Operations currently waiting for exclusive_partition lock</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">queue_length</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_exclusive_partition_operations_currently_waiting_for_lock</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-shared-partition-operations-currently-waiting-for-lock">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_shared_partition_operations_currently_waiting_for_lock">
-<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_shared_partition_operations_currently_waiting_for_lock</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_shared_partition_operations_currently_waiting_for_lock" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Operations currently waiting for shared_partition lock</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">queue_length</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_shared_partition_operations_currently_waiting_for_lock</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-exclusive-row-waiting-time">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_exclusive_row_waiting_time">
-<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_exclusive_row_waiting_time</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_exclusive_row_waiting_time" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Histogram representing time that operations spent on waiting for exclusive_row lock</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_exclusive_row_waiting_time</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-shared-row-waiting-time">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_shared_row_waiting_time">
-<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_shared_row_waiting_time</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_shared_row_waiting_time" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Histogram representing time that operations spent on waiting for shared_row lock</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_shared_row_waiting_time</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-exclusive-partition-waiting-time">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_exclusive_partition_waiting_time">
-<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_exclusive_partition_waiting_time</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_exclusive_partition_waiting_time" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Histogram representing time that operations spent on waiting for exclusive_partition lock</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_exclusive_partition_waiting_time</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-shared-partition-waiting-time">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_shared_partition_waiting_time">
-<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_shared_partition_waiting_time</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_shared_partition_waiting_time" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Histogram representing time that operations spent on waiting for shared_partition lock</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_shared_partition_waiting_time</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-tablet-count">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_tablet_count">
-<span class="sig-name descname"><span class="pre">scylla_column_family_tablet_count</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_tablet_count" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Tablet count</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">tablet_count</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-read-latency-summary">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_read_latency_summary">
-<span class="sig-name descname"><span class="pre">scylla_column_family_read_latency_summary</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_read_latency_summary" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Read latency summary</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">summary</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">read_latency_summary</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-write-latency-summary">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_write_latency_summary">
-<span class="sig-name descname"><span class="pre">scylla_column_family_write_latency_summary</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_write_latency_summary" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Write latency summary</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">summary</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">write_latency_summary</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-cas-prepare-latency-summary">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cas_prepare_latency_summary">
-<span class="sig-name descname"><span class="pre">scylla_column_family_cas_prepare_latency_summary</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cas_prepare_latency_summary" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>CAS prepare round latency summary</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">summary</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cas_prepare_latency_summary</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-cas-propose-latency-summary">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cas_propose_latency_summary">
-<span class="sig-name descname"><span class="pre">scylla_column_family_cas_propose_latency_summary</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cas_propose_latency_summary" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>CAS accept round latency summary</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">summary</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cas_propose_latency_summary</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-cas-commit-latency-summary">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cas_commit_latency_summary">
-<span class="sig-name descname"><span class="pre">scylla_column_family_cas_commit_latency_summary</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cas_commit_latency_summary" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>CAS learn round latency summary</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">summary</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cas_commit_latency_summary</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-read-latency">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_read_latency">
-<span class="sig-name descname"><span class="pre">scylla_column_family_read_latency</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_read_latency" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Read latency histogram</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">read_latency</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-sstables-per-read">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_sstables_per_read">
-<span class="sig-name descname"><span class="pre">scylla_column_family_sstables_per_read</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_sstables_per_read" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Number of sstables accessed to serve a single-partition read.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">sstables_per_read</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-write-latency">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_write_latency">
-<span class="sig-name descname"><span class="pre">scylla_column_family_write_latency</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_write_latency" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Write latency histogram</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">write_latency</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-cas-prepare-latency">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cas_prepare_latency">
-<span class="sig-name descname"><span class="pre">scylla_column_family_cas_prepare_latency</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cas_prepare_latency" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>CAS prepare round latency histogram</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cas_prepare_latency</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-cas-propose-latency">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cas_propose_latency">
-<span class="sig-name descname"><span class="pre">scylla_column_family_cas_propose_latency</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cas_propose_latency" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>CAS accept round latency histogram</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cas_propose_latency</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-cas-commit-latency">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cas_commit_latency">
-<span class="sig-name descname"><span class="pre">scylla_column_family_cas_commit_latency</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cas_commit_latency" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>CAS learn round latency histogram</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cas_commit_latency</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-column-family-cache-hit-rate">
-<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cache_hit_rate">
-<span class="sig-name descname"><span class="pre">scylla_column_family_cache_hit_rate</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cache_hit_rate" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Cache hit rate</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cache_hit_rate</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-tablets-count">
-<dt class="sig sig-object std" id="metrics_option-scylla_tablets_count">
-<span class="sig-name descname"><span class="pre">scylla_tablets_count</span></span><a class="headerlink" href="#metrics_option-scylla_tablets_count" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Tablet count</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">tablets</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">count</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
 </section>
 <section id="tablet-allocator">
 <h2>Tablet allocator<a class="headerlink" href="#tablet-allocator" title="Link to this heading">¶</a></h2>
@@ -11183,7 +10778,7 @@
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 02 Sep 2026.
+                        Last updated on 03 Sep 2026.
                     
                 </div>
             
