@@ -209,7 +209,7 @@ Temporal create it. Pre-create it once from a CQL client (for example
      node-0.your-cluster.datacenter.clusters.scylla.cloud 9042 \
      -u "<your-username>" -p "<your-password>"
 
-.. code-block:: sql
+.. code-block:: text
 
    CREATE KEYSPACE temporal
    WITH replication = {'class': 'NetworkTopologyStrategy', 'replication_factor': 3};
