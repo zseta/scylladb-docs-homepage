@@ -551,587 +551,47 @@
 </section>
 <section id="client">
 <h2>Client<a class="headerlink" href="#client" title="Link to this heading">¶</a></h2>
-<dl class="std metrics_option" id="metricsprop-scylla-s3-nr-connections">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_nr_connections">
-<span class="sig-name descname"><span class="pre">scylla_s3_nr_connections</span></span><a class="headerlink" href="#metrics_option-scylla_s3_nr_connections" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-s3-throttles">
+<dt class="sig sig-object std" id="metrics_option-scylla_s3_throttles">
+<span class="sig-name descname"><span class="pre">scylla_s3_throttles</span></span><a class="headerlink" href="#metrics_option-scylla_s3_throttles" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Total number of connections</p>
+<div><p>Total number of throttling responses (503 SlowDown etc.) from S3</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">throttles</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-s3-send-freezes">
+<dt class="sig sig-object std" id="metrics_option-scylla_s3_send_freezes">
+<span class="sig-name descname"><span class="pre">scylla_s3_send_freezes</span></span><a class="headerlink" href="#metrics_option-scylla_s3_send_freezes" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Times sending was held back after a throttling response</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">send_freezes</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-s3-refused-request-ratio">
+<dt class="sig sig-object std" id="metrics_option-scylla_s3_refused_request_ratio">
+<span class="sig-name descname"><span class="pre">scylla_s3_refused_request_ratio</span></span><a class="headerlink" href="#metrics_option-scylla_s3_refused_request_ratio" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Smoothed share of S3 requests the endpoint is refusing</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
 <li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">nr_connections</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-nr-active-connections">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_nr_active_connections">
-<span class="sig-name descname"><span class="pre">scylla_s3_nr_active_connections</span></span><a class="headerlink" href="#metrics_option-scylla_s3_nr_active_connections" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of connections with running requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">nr_active_connections</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-new-connections">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_new_connections">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_new_connections</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_new_connections" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of new connections created so far</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_new_connections</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-read-requests">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_read_requests">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_read_requests</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_read_requests" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of object read requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_read_requests</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-write-requests">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_write_requests">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_write_requests</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_write_requests" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of object write requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_write_requests</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-read-bytes">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_read_bytes">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_read_bytes</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_read_bytes" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of bytes read from objects</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_read_bytes</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-write-bytes">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_write_bytes">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_write_bytes</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_write_bytes" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of bytes written to objects</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_write_bytes</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-read-latency-sec">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_read_latency_sec">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_read_latency_sec</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_read_latency_sec" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total time spent reading data from objects</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_read_latency_sec</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-write-latency-sec">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_write_latency_sec">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_write_latency_sec</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_write_latency_sec" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total time spend writing data to objects</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_write_latency_sec</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-read-prefetch-bytes">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_read_prefetch_bytes">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_read_prefetch_bytes</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_read_prefetch_bytes" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of bytes requested from object</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_read_prefetch_bytes</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-downloads-starving-on-max-concurrency">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_downloads_starving_on_max_concurrency">
-<span class="sig-name descname"><span class="pre">scylla_s3_downloads_starving_on_max_concurrency</span></span><a class="headerlink" href="#metrics_option-scylla_s3_downloads_starving_on_max_concurrency" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Counts the number of times S3 client downloads were starving on max concurrency limit</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">downloads_starving_on_max_concurrency</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-integrated-request-queue-length">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_integrated_request_queue_length">
-<span class="sig-name descname"><span class="pre">scylla_s3_integrated_request_queue_length</span></span><a class="headerlink" href="#metrics_option-scylla_s3_integrated_request_queue_length" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>The number of queued HTTP requests integrated over time (measured in request-seconds)</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">integrated_request_queue_length</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-get-requests">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_get_requests">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_get_requests</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_get_requests" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP GET requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_get_requests</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-post-requests">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_post_requests">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_post_requests</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_post_requests" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP POST requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_post_requests</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-put-requests">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_put_requests">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_put_requests</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_put_requests" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP PUT requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_put_requests</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-delete-requests">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_delete_requests">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_delete_requests</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_delete_requests" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP DELETE requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_delete_requests</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-head-requests">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_head_requests">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_head_requests</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_head_requests" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP HEAD requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_head_requests</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-options-requests">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_options_requests">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_options_requests</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_options_requests" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP OPTIONS requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_options_requests</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-trace-requests">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_trace_requests">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_trace_requests</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_trace_requests" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP TRACE requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_trace_requests</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-connect-requests">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_connect_requests">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_connect_requests</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_connect_requests" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP CONNECT requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_connect_requests</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-patch-requests">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_patch_requests">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_patch_requests</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_patch_requests" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP PATCH requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_patch_requests</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-get-latency-sec">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_get_latency_sec">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_get_latency_sec</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_get_latency_sec" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total time in seconds spent in HTTP GET requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_get_latency_sec</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-post-latency-sec">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_post_latency_sec">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_post_latency_sec</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_post_latency_sec" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total time in seconds spent in HTTP POST requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_post_latency_sec</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-put-latency-sec">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_put_latency_sec">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_put_latency_sec</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_put_latency_sec" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total time in seconds spent in HTTP PUT requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_put_latency_sec</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-delete-latency-sec">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_delete_latency_sec">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_delete_latency_sec</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_delete_latency_sec" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total time in seconds spent in HTTP DELETE requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_delete_latency_sec</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-head-latency-sec">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_head_latency_sec">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_head_latency_sec</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_head_latency_sec" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total time in seconds spent in HTTP HEAD requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_head_latency_sec</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-options-latency-sec">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_options_latency_sec">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_options_latency_sec</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_options_latency_sec" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total time in seconds spent in HTTP OPTIONS requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_options_latency_sec</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-trace-latency-sec">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_trace_latency_sec">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_trace_latency_sec</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_trace_latency_sec" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total time in seconds spent in HTTP TRACE requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_trace_latency_sec</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-connect-latency-sec">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_connect_latency_sec">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_connect_latency_sec</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_connect_latency_sec" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total time in seconds spent in HTTP CONNECT requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_connect_latency_sec</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-patch-latency-sec">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_patch_latency_sec">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_patch_latency_sec</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_patch_latency_sec" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total time in seconds spent in HTTP PATCH requests</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_patch_latency_sec</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-get-retries">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_get_retries">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_get_retries</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_get_retries" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP GET retries</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_get_retries</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-post-retries">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_post_retries">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_post_retries</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_post_retries" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP POST retries</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_post_retries</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-put-retries">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_put_retries">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_put_retries</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_put_retries" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP PUT retries</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_put_retries</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-delete-retries">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_delete_retries">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_delete_retries</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_delete_retries" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP DELETE retries</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_delete_retries</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-head-retries">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_head_retries">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_head_retries</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_head_retries" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP HEAD retries</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_head_retries</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-options-retries">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_options_retries">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_options_retries</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_options_retries" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP OPTIONS retries</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_options_retries</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-trace-retries">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_trace_retries">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_trace_retries</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_trace_retries" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP TRACE retries</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_trace_retries</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-connect-retries">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_connect_retries">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_connect_retries</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_connect_retries" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP CONNECT retries</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_connect_retries</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-s3-total-patch-retries">
-<dt class="sig sig-object std" id="metrics_option-scylla_s3_total_patch_retries">
-<span class="sig-name descname"><span class="pre">scylla_s3_total_patch_retries</span></span><a class="headerlink" href="#metrics_option-scylla_s3_total_patch_retries" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Total number of HTTP PATCH retries</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">s3</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">total_patch_retries</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">refused_request_ratio</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
@@ -3545,331 +3005,166 @@
 </section>
 <section id="manager">
 <h2>Manager<a class="headerlink" href="#manager" title="Link to this heading">¶</a></h2>
-<dl class="std metrics_option" id="metricsprop-scylla-hints-for-views-manager-size-of-hints-in-progress">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_for_views_manager_size_of_hints_in_progress">
-<span class="sig-name descname"><span class="pre">scylla_hints_for_views_manager_size_of_hints_in_progress</span></span><a class="headerlink" href="#metrics_option-scylla_hints_for_views_manager_size_of_hints_in_progress" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-group-name-size-of-hints-in-progress">
+<dt class="sig sig-object std" id="metrics_option-scylla_group_name_size_of_hints_in_progress">
+<span class="sig-name descname"><span class="pre">scylla_group_name_size_of_hints_in_progress</span></span><a class="headerlink" href="#metrics_option-scylla_group_name_size_of_hints_in_progress" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Size of hinted mutations that are scheduled to be written.</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_for_views_manager</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">group_name</span></code></p></li>
 <li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">size_of_hints_in_progress</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-hints-manager-size-of-hints-in-progress">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_manager_size_of_hints_in_progress">
-<span class="sig-name descname"><span class="pre">scylla_hints_manager_size_of_hints_in_progress</span></span><a class="headerlink" href="#metrics_option-scylla_hints_manager_size_of_hints_in_progress" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Size of hinted mutations that are scheduled to be written.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_manager</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">size_of_hints_in_progress</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-hints-for-views-manager-written">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_for_views_manager_written">
-<span class="sig-name descname"><span class="pre">scylla_hints_for_views_manager_written</span></span><a class="headerlink" href="#metrics_option-scylla_hints_for_views_manager_written" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-group-name-written">
+<dt class="sig sig-object std" id="metrics_option-scylla_group_name_written">
+<span class="sig-name descname"><span class="pre">scylla_group_name_written</span></span><a class="headerlink" href="#metrics_option-scylla_group_name_written" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Number of successfully written hints.</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_for_views_manager</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">group_name</span></code></p></li>
 <li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">written</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-hints-manager-written">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_manager_written">
-<span class="sig-name descname"><span class="pre">scylla_hints_manager_written</span></span><a class="headerlink" href="#metrics_option-scylla_hints_manager_written" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Number of successfully written hints.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_manager</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">written</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-hints-for-views-manager-errors">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_for_views_manager_errors">
-<span class="sig-name descname"><span class="pre">scylla_hints_for_views_manager_errors</span></span><a class="headerlink" href="#metrics_option-scylla_hints_for_views_manager_errors" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-group-name-errors">
+<dt class="sig sig-object std" id="metrics_option-scylla_group_name_errors">
+<span class="sig-name descname"><span class="pre">scylla_group_name_errors</span></span><a class="headerlink" href="#metrics_option-scylla_group_name_errors" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Number of errors during hints writes.</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_for_views_manager</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">group_name</span></code></p></li>
 <li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">errors</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-hints-manager-errors">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_manager_errors">
-<span class="sig-name descname"><span class="pre">scylla_hints_manager_errors</span></span><a class="headerlink" href="#metrics_option-scylla_hints_manager_errors" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Number of errors during hints writes.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_manager</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">errors</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-hints-for-views-manager-dropped">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_for_views_manager_dropped">
-<span class="sig-name descname"><span class="pre">scylla_hints_for_views_manager_dropped</span></span><a class="headerlink" href="#metrics_option-scylla_hints_for_views_manager_dropped" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-group-name-dropped">
+<dt class="sig sig-object std" id="metrics_option-scylla_group_name_dropped">
+<span class="sig-name descname"><span class="pre">scylla_group_name_dropped</span></span><a class="headerlink" href="#metrics_option-scylla_group_name_dropped" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Number of dropped hints.</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_for_views_manager</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">group_name</span></code></p></li>
 <li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">dropped</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-hints-manager-dropped">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_manager_dropped">
-<span class="sig-name descname"><span class="pre">scylla_hints_manager_dropped</span></span><a class="headerlink" href="#metrics_option-scylla_hints_manager_dropped" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Number of dropped hints.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_manager</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">dropped</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-hints-for-views-manager-sent-total">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_for_views_manager_sent_total">
-<span class="sig-name descname"><span class="pre">scylla_hints_for_views_manager_sent_total</span></span><a class="headerlink" href="#metrics_option-scylla_hints_for_views_manager_sent_total" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-group-name-sent-total">
+<dt class="sig sig-object std" id="metrics_option-scylla_group_name_sent_total">
+<span class="sig-name descname"><span class="pre">scylla_group_name_sent_total</span></span><a class="headerlink" href="#metrics_option-scylla_group_name_sent_total" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Number of sent hints.</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_for_views_manager</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">group_name</span></code></p></li>
 <li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">sent_total</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-hints-manager-sent-total">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_manager_sent_total">
-<span class="sig-name descname"><span class="pre">scylla_hints_manager_sent_total</span></span><a class="headerlink" href="#metrics_option-scylla_hints_manager_sent_total" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Number of sent hints.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_manager</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">sent_total</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-hints-for-views-manager-sent-bytes-total">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_for_views_manager_sent_bytes_total">
-<span class="sig-name descname"><span class="pre">scylla_hints_for_views_manager_sent_bytes_total</span></span><a class="headerlink" href="#metrics_option-scylla_hints_for_views_manager_sent_bytes_total" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-group-name-sent-bytes-total">
+<dt class="sig sig-object std" id="metrics_option-scylla_group_name_sent_bytes_total">
+<span class="sig-name descname"><span class="pre">scylla_group_name_sent_bytes_total</span></span><a class="headerlink" href="#metrics_option-scylla_group_name_sent_bytes_total" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>The total size of the sent hints (in bytes)</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_for_views_manager</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">group_name</span></code></p></li>
 <li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">sent_bytes_total</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-hints-manager-sent-bytes-total">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_manager_sent_bytes_total">
-<span class="sig-name descname"><span class="pre">scylla_hints_manager_sent_bytes_total</span></span><a class="headerlink" href="#metrics_option-scylla_hints_manager_sent_bytes_total" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>The total size of the sent hints (in bytes)</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_manager</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">sent_bytes_total</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-hints-for-views-manager-discarded">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_for_views_manager_discarded">
-<span class="sig-name descname"><span class="pre">scylla_hints_for_views_manager_discarded</span></span><a class="headerlink" href="#metrics_option-scylla_hints_for_views_manager_discarded" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-group-name-discarded">
+<dt class="sig sig-object std" id="metrics_option-scylla_group_name_discarded">
+<span class="sig-name descname"><span class="pre">scylla_group_name_discarded</span></span><a class="headerlink" href="#metrics_option-scylla_group_name_discarded" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Number of hints that were discarded during sending (too old, schema changed, etc.).</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_for_views_manager</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">group_name</span></code></p></li>
 <li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">discarded</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-hints-manager-discarded">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_manager_discarded">
-<span class="sig-name descname"><span class="pre">scylla_hints_manager_discarded</span></span><a class="headerlink" href="#metrics_option-scylla_hints_manager_discarded" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Number of hints that were discarded during sending (too old, schema changed, etc.).</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_manager</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">discarded</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-hints-for-views-manager-send-errors">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_for_views_manager_send_errors">
-<span class="sig-name descname"><span class="pre">scylla_hints_for_views_manager_send_errors</span></span><a class="headerlink" href="#metrics_option-scylla_hints_for_views_manager_send_errors" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-group-name-send-errors">
+<dt class="sig sig-object std" id="metrics_option-scylla_group_name_send_errors">
+<span class="sig-name descname"><span class="pre">scylla_group_name_send_errors</span></span><a class="headerlink" href="#metrics_option-scylla_group_name_send_errors" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Number of unexpected errors during sending, sending will be retried later</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_for_views_manager</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">group_name</span></code></p></li>
 <li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">send_errors</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-hints-manager-send-errors">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_manager_send_errors">
-<span class="sig-name descname"><span class="pre">scylla_hints_manager_send_errors</span></span><a class="headerlink" href="#metrics_option-scylla_hints_manager_send_errors" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Number of unexpected errors during sending, sending will be retried later</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_manager</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">send_errors</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-hints-for-views-manager-corrupted-files">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_for_views_manager_corrupted_files">
-<span class="sig-name descname"><span class="pre">scylla_hints_for_views_manager_corrupted_files</span></span><a class="headerlink" href="#metrics_option-scylla_hints_for_views_manager_corrupted_files" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-group-name-corrupted-files">
+<dt class="sig sig-object std" id="metrics_option-scylla_group_name_corrupted_files">
+<span class="sig-name descname"><span class="pre">scylla_group_name_corrupted_files</span></span><a class="headerlink" href="#metrics_option-scylla_group_name_corrupted_files" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Number of hints files that were discarded during sending because the file was corrupted.</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_for_views_manager</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">group_name</span></code></p></li>
 <li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">corrupted_files</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-hints-manager-corrupted-files">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_manager_corrupted_files">
-<span class="sig-name descname"><span class="pre">scylla_hints_manager_corrupted_files</span></span><a class="headerlink" href="#metrics_option-scylla_hints_manager_corrupted_files" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Number of hints files that were discarded during sending because the file was corrupted.</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_manager</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">corrupted_files</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-hints-for-views-manager-pending-drains">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_for_views_manager_pending_drains">
-<span class="sig-name descname"><span class="pre">scylla_hints_for_views_manager_pending_drains</span></span><a class="headerlink" href="#metrics_option-scylla_hints_for_views_manager_pending_drains" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-group-name-pending-drains">
+<dt class="sig sig-object std" id="metrics_option-scylla_group_name_pending_drains">
+<span class="sig-name descname"><span class="pre">scylla_group_name_pending_drains</span></span><a class="headerlink" href="#metrics_option-scylla_group_name_pending_drains" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Number of tasks waiting in the queue for draining hints</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_for_views_manager</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">group_name</span></code></p></li>
 <li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">pending_drains</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-hints-manager-pending-drains">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_manager_pending_drains">
-<span class="sig-name descname"><span class="pre">scylla_hints_manager_pending_drains</span></span><a class="headerlink" href="#metrics_option-scylla_hints_manager_pending_drains" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Number of tasks waiting in the queue for draining hints</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_manager</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">pending_drains</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-hints-for-views-manager-pending-sends">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_for_views_manager_pending_sends">
-<span class="sig-name descname"><span class="pre">scylla_hints_for_views_manager_pending_sends</span></span><a class="headerlink" href="#metrics_option-scylla_hints_for_views_manager_pending_sends" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-group-name-pending-sends">
+<dt class="sig sig-object std" id="metrics_option-scylla_group_name_pending_sends">
+<span class="sig-name descname"><span class="pre">scylla_group_name_pending_sends</span></span><a class="headerlink" href="#metrics_option-scylla_group_name_pending_sends" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Number of tasks waiting in the queue for sending a hint</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_for_views_manager</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">pending_sends</span></code></p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="std metrics_option" id="metricsprop-scylla-hints-manager-pending-sends">
-<dt class="sig sig-object std" id="metrics_option-scylla_hints_manager_pending_sends">
-<span class="sig-name descname"><span class="pre">scylla_hints_manager_pending_sends</span></span><a class="headerlink" href="#metrics_option-scylla_hints_manager_pending_sends" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Number of tasks waiting in the queue for sending a hint</p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
-<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">hints_manager</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">group_name</span></code></p></li>
 <li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">pending_sends</span></code></p></li>
 </ul>
 </div></blockquote>
@@ -9926,6 +9221,396 @@
 </div></blockquote>
 </dd></dl>
 
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-exclusive-row-acquisitions">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_exclusive_row_acquisitions">
+<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_exclusive_row_acquisitions</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_exclusive_row_acquisitions" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Row lock acquisitions for exclusive_row lock</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_exclusive_row_acquisitions</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-shared-row-acquisitions">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_shared_row_acquisitions">
+<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_shared_row_acquisitions</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_shared_row_acquisitions" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Row lock acquisitions for shared_row lock</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_shared_row_acquisitions</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-exclusive-partition-acquisitions">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_exclusive_partition_acquisitions">
+<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_exclusive_partition_acquisitions</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_exclusive_partition_acquisitions" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Row lock acquisitions for exclusive_partition lock</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_exclusive_partition_acquisitions</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-shared-partition-acquisitions">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_shared_partition_acquisitions">
+<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_shared_partition_acquisitions</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_shared_partition_acquisitions" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Row lock acquisitions for shared_partition lock</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">total_operations</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_shared_partition_acquisitions</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-exclusive-row-operations-currently-waiting-for-lock">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_exclusive_row_operations_currently_waiting_for_lock">
+<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_exclusive_row_operations_currently_waiting_for_lock</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_exclusive_row_operations_currently_waiting_for_lock" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Operations currently waiting for exclusive_row lock</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">queue_length</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_exclusive_row_operations_currently_waiting_for_lock</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-shared-row-operations-currently-waiting-for-lock">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_shared_row_operations_currently_waiting_for_lock">
+<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_shared_row_operations_currently_waiting_for_lock</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_shared_row_operations_currently_waiting_for_lock" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Operations currently waiting for shared_row lock</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">queue_length</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_shared_row_operations_currently_waiting_for_lock</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-exclusive-partition-operations-currently-waiting-for-lock">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_exclusive_partition_operations_currently_waiting_for_lock">
+<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_exclusive_partition_operations_currently_waiting_for_lock</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_exclusive_partition_operations_currently_waiting_for_lock" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Operations currently waiting for exclusive_partition lock</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">queue_length</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_exclusive_partition_operations_currently_waiting_for_lock</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-shared-partition-operations-currently-waiting-for-lock">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_shared_partition_operations_currently_waiting_for_lock">
+<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_shared_partition_operations_currently_waiting_for_lock</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_shared_partition_operations_currently_waiting_for_lock" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Operations currently waiting for shared_partition lock</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">queue_length</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_shared_partition_operations_currently_waiting_for_lock</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-exclusive-row-waiting-time">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_exclusive_row_waiting_time">
+<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_exclusive_row_waiting_time</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_exclusive_row_waiting_time" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Histogram representing time that operations spent on waiting for exclusive_row lock</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_exclusive_row_waiting_time</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-shared-row-waiting-time">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_shared_row_waiting_time">
+<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_shared_row_waiting_time</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_shared_row_waiting_time" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Histogram representing time that operations spent on waiting for shared_row lock</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_shared_row_waiting_time</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-exclusive-partition-waiting-time">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_exclusive_partition_waiting_time">
+<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_exclusive_partition_waiting_time</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_exclusive_partition_waiting_time" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Histogram representing time that operations spent on waiting for exclusive_partition lock</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_exclusive_partition_waiting_time</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-row-lock-shared-partition-waiting-time">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_row_lock_shared_partition_waiting_time">
+<span class="sig-name descname"><span class="pre">scylla_column_family_row_lock_shared_partition_waiting_time</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_row_lock_shared_partition_waiting_time" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Histogram representing time that operations spent on waiting for shared_partition lock</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">row_lock_shared_partition_waiting_time</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-tablet-count">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_tablet_count">
+<span class="sig-name descname"><span class="pre">scylla_column_family_tablet_count</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_tablet_count" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Tablet count</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">tablet_count</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-read-latency-summary">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_read_latency_summary">
+<span class="sig-name descname"><span class="pre">scylla_column_family_read_latency_summary</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_read_latency_summary" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Read latency summary</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">summary</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">read_latency_summary</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-write-latency-summary">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_write_latency_summary">
+<span class="sig-name descname"><span class="pre">scylla_column_family_write_latency_summary</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_write_latency_summary" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Write latency summary</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">summary</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">write_latency_summary</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-cas-prepare-latency-summary">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cas_prepare_latency_summary">
+<span class="sig-name descname"><span class="pre">scylla_column_family_cas_prepare_latency_summary</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cas_prepare_latency_summary" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>CAS prepare round latency summary</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">summary</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cas_prepare_latency_summary</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-cas-propose-latency-summary">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cas_propose_latency_summary">
+<span class="sig-name descname"><span class="pre">scylla_column_family_cas_propose_latency_summary</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cas_propose_latency_summary" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>CAS accept round latency summary</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">summary</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cas_propose_latency_summary</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-cas-commit-latency-summary">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cas_commit_latency_summary">
+<span class="sig-name descname"><span class="pre">scylla_column_family_cas_commit_latency_summary</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cas_commit_latency_summary" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>CAS learn round latency summary</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">summary</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cas_commit_latency_summary</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-read-latency">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_read_latency">
+<span class="sig-name descname"><span class="pre">scylla_column_family_read_latency</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_read_latency" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Read latency histogram</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">read_latency</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-sstables-per-read">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_sstables_per_read">
+<span class="sig-name descname"><span class="pre">scylla_column_family_sstables_per_read</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_sstables_per_read" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Number of sstables accessed to serve a single-partition read.</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">sstables_per_read</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-write-latency">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_write_latency">
+<span class="sig-name descname"><span class="pre">scylla_column_family_write_latency</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_write_latency" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Write latency histogram</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">write_latency</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-cas-prepare-latency">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cas_prepare_latency">
+<span class="sig-name descname"><span class="pre">scylla_column_family_cas_prepare_latency</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cas_prepare_latency" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>CAS prepare round latency histogram</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cas_prepare_latency</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-cas-propose-latency">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cas_propose_latency">
+<span class="sig-name descname"><span class="pre">scylla_column_family_cas_propose_latency</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cas_propose_latency" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>CAS accept round latency histogram</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cas_propose_latency</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-cas-commit-latency">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cas_commit_latency">
+<span class="sig-name descname"><span class="pre">scylla_column_family_cas_commit_latency</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cas_commit_latency" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>CAS learn round latency histogram</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">histogram</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cas_commit_latency</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-column-family-cache-hit-rate">
+<dt class="sig sig-object std" id="metrics_option-scylla_column_family_cache_hit_rate">
+<span class="sig-name descname"><span class="pre">scylla_column_family_cache_hit_rate</span></span><a class="headerlink" href="#metrics_option-scylla_column_family_cache_hit_rate" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Cache hit rate</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">column_family</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">cache_hit_rate</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="std metrics_option" id="metricsprop-scylla-tablets-count">
+<dt class="sig sig-object std" id="metrics_option-scylla_tablets_count">
+<span class="sig-name descname"><span class="pre">scylla_tablets_count</span></span><a class="headerlink" href="#metrics_option-scylla_tablets_count" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Tablet count</p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
+<li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">tablets</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">count</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
 </section>
 <section id="tablet-allocator">
 <h2>Tablet allocator<a class="headerlink" href="#tablet-allocator" title="Link to this heading">¶</a></h2>
@@ -11095,6 +10780,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../cql/json.html">JSON Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cql/mv.html">Materialized Views</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cql/describe-schema.html">DESCRIBE SCHEMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cql/cluster-config.html">Configuring a Cluster with CQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cql/service-levels.html">Service Levels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cql/cql-extensions.html">ScyllaDB CQL Extensions</a></li>
 </ul>
@@ -11260,7 +10946,6 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="api/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/><label for="toctree-checkbox-32"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/authorization-cache.html">Authorization Cache</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/cache-service.html">Cache Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/collectd.html">Collectd</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/column-family.html">Column Family</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/commit-log.html">Commit Log</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/compaction-manager.html">Compaction Manager</a></li>
@@ -11341,7 +11026,7 @@
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 11 Sep 2026.
+                        Last updated on 12 Sep 2026.
                     
                 </div>
             
