@@ -14,7 +14,7 @@
 - [ScyllaDB Architecture](https://docs.scylladb.com/manual/master/architecture/index.md): * [Data Distribution with Tablets](https://docs.scylladb.com/manual/master/architecture/tablets.md) ...
 - [CQL Reference](https://docs.scylladb.com/manual/master/cql/index.md): `cqlsh` is a command line shell for interacting with ScyllaDB through CQL.
 - [Troubleshooting ScyllaDB](https://docs.scylladb.com/manual/master/troubleshooting/index.md): ScyllaDB’s troubleshooting section contains articles which are targeted to pinpoint and answer probl...
-- [Reference](https://docs.scylladb.com/manual/master/reference/index.md): * ScyllaDB images for AWS, Azure, and GCP.
+- [Reference](https://docs.scylladb.com/manual/master/reference/index.md): * ScyllaDB images for AWS, Azure, GCP, and OCI.
 - [ScyllaDB for Developers](https://docs.scylladb.com/manual/master/using-scylla/index.md): <div class="cell my-panel">
 - [ScyllaDB for Administrators](https://docs.scylladb.com/manual/master/operating-scylla/index.md): <div class="cell my-panel">
 - [Features](https://docs.scylladb.com/manual/master/features/index.md): This document highlights ScyllaDB’s key data modeling features.
@@ -265,6 +265,7 @@
 - [Nodetool Throws NullPointerException](https://docs.scylladb.com/manual/master/troubleshooting/nodetool-nullpointerexception.md): A NullPointerException is thrown when you run `nodetool`. For example:
 - [Nodetool](https://docs.scylladb.com/manual/master/operating-scylla/nodetool.md): The `nodetool` utility provides a simple command-line interface to the following exposed operations ...
 - [NTP Configuration for ScyllaDB](https://docs.scylladb.com/manual/master/kb/ntp.md): **Topic: System administration**
+- [OCI Images](https://docs.scylladb.com/manual/master/reference/oci-images.md): This page lists ScyllaDB image OCIDs for Oracle Cloud Infrastructure (OCI).
 - [Reset Authenticator Password](https://docs.scylladb.com/manual/master/troubleshooting/password-reset.md): This procedure describes what to do when a user loses their password and can not reset it with a sup...
 - [Pattern Search in ScyllaDB](https://docs.scylladb.com/manual/master/features/pattern-search.md): Pattern Search finds the rows whose text column matches a `LIKE`
 - [Seastar Perftune](https://docs.scylladb.com/manual/master/operating-scylla/admin-tools/perftune.md): ScyllaDB’s Seastar Perftune helps you run ScyllaDB with its maximum performance.
