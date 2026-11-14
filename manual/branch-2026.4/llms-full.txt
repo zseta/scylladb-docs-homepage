@@ -50,67 +50,6 @@ In addition, you can read our [blog](https://www.scylladb.com/blog/) and attend 
 
 # index.md
 
-# Getting Started
-
-
-            <div class="cell my-panel">
-                <div class="panel">
-                    <h5 class="panel_\_title">ScyllaDB Requirements</h5>
-            * [ScyllaDB System Requirements Guide](https://docs.scylladb.com/manual/branch-2026.4/getting-started/system-requirements.md)
-* [OS Support by Platform and Version](https://docs.scylladb.com/stable/versioning/os-support-per-version.html)
-
-</div></div>
-            <div class="cell my-panel">
-                <div class="panel">
-                    <h5 class="panel_\_title">Install and Configure ScyllaDB</h5>
-            * [Install ScyllaDB](https://docs.scylladb.com/manual/branch-2026.4/getting-started/install-scylla/index.md)
-* [Configure ScyllaDB](https://docs.scylladb.com/manual/branch-2026.4/getting-started/system-configuration.md)
-* [Run ScyllaDB in a Shared Environment](https://docs.scylladb.com/manual/branch-2026.4/getting-started/scylla-in-a-shared-environment.md)
-* [Create a ScyllaDB Cluster - Single Data Center (DC)](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/cluster-management/create-cluster.md)
-* [Create a ScyllaDB Cluster - Multi Data Center (DC)](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/cluster-management/create-cluster-multidc.md)
-
-</div></div>
-            <div class="cell my-panel">
-                <div class="panel">
-                    <h5 class="panel_\_title">Develop Applications for ScyllaDB</h5>
-            * [ScyllaDB Drivers](https://docs.scylladb.com/stable/drivers/index.html)
-* [Get Started Lesson on ScyllaDB University](https://university.scylladb.com/courses/scylla-essentials-overview/lessons/quick-wins-install-and-run-scylla/)
-* [CQL Reference](https://docs.scylladb.com/manual/branch-2026.4/cql/index.md)
-* [cqlsh - the CQL shell](https://docs.scylladb.com/manual/branch-2026.4/cql/cqlsh.md)
-
-</div></div>
-            <div class="cell my-panel">
-                <div class="panel">
-                    <h5 class="panel_\_title">Use ScyllaDB with Third-party Solutions</h5>
-            * [Migrate to ScyllaDB](https://docs.scylladb.com/manual/branch-2026.4/using-scylla/migrate-scylla.md) - How to migrate your current database to ScyllaDB
-* [Integrate with ScyllaDB](https://docs.scylladb.com/manual/branch-2026.4/using-scylla/integrations/index.md) - Integration solutions with ScyllaDB
-
-</div></div>
-            <div class="cell my-panel">
-                <div class="panel">
-                    <h5 class="panel_\_title">Tutorials</h5>
-            
-The tutorials will show you how to use ScyllaDB as a data source for an application.
-
-* [Build an IoT App with sensor simulator and a REST API](https://iot.scylladb.com/stable/) - ScyllaDB Tutorial
-* [Implement CRUD operations with a TODO App](https://github.com/scylladb/scylla-cloud-getting-started/) - ScyllaDB Cloud Tutorial
-* [Build a machine learning (ML) feature store with ScyllaDB](https://feature-store.scylladb.com/stable/) - ScyllaDB Cloud Tutorial
-
-</div></div>
-
-
-# index.md
-
-# Upgrade ScyllaDB
-
-* [Upgrade Guides](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/index.md)
-  * [ScyllaDB 2026.x to ScyllaDB 2026.4](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x-to-2026.4/index.md)
-  * [ScyllaDB 2026.x Patch Upgrades](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md)
-  * [ScyllaDB Image](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/ami-upgrade.md)
-
-
-# index.md
-
 # Knowledge Base
 
 
@@ -173,6 +112,57 @@ The tutorials will show you how to use ScyllaDB as a data source for an applicat
 
 # index.md
 
+# Getting Started
+
+
+            <div class="cell my-panel">
+                <div class="panel">
+                    <h5 class="panel_\_title">ScyllaDB Requirements</h5>
+            * [ScyllaDB System Requirements Guide](https://docs.scylladb.com/manual/branch-2026.4/getting-started/system-requirements.md)
+* [OS Support by Platform and Version](https://docs.scylladb.com/stable/versioning/os-support-per-version.html)
+
+</div></div>
+            <div class="cell my-panel">
+                <div class="panel">
+                    <h5 class="panel_\_title">Install and Configure ScyllaDB</h5>
+            * [Install ScyllaDB](https://docs.scylladb.com/manual/branch-2026.4/getting-started/install-scylla/index.md)
+* [Configure ScyllaDB](https://docs.scylladb.com/manual/branch-2026.4/getting-started/system-configuration.md)
+* [Run ScyllaDB in a Shared Environment](https://docs.scylladb.com/manual/branch-2026.4/getting-started/scylla-in-a-shared-environment.md)
+* [Create a ScyllaDB Cluster - Single Data Center (DC)](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/cluster-management/create-cluster.md)
+* [Create a ScyllaDB Cluster - Multi Data Center (DC)](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/cluster-management/create-cluster-multidc.md)
+
+</div></div>
+            <div class="cell my-panel">
+                <div class="panel">
+                    <h5 class="panel_\_title">Develop Applications for ScyllaDB</h5>
+            * [ScyllaDB Drivers](https://docs.scylladb.com/stable/drivers/index.html)
+* [Get Started Lesson on ScyllaDB University](https://university.scylladb.com/courses/scylla-essentials-overview/lessons/quick-wins-install-and-run-scylla/)
+* [CQL Reference](https://docs.scylladb.com/manual/branch-2026.4/cql/index.md)
+* [cqlsh - the CQL shell](https://docs.scylladb.com/manual/branch-2026.4/cql/cqlsh.md)
+
+</div></div>
+            <div class="cell my-panel">
+                <div class="panel">
+                    <h5 class="panel_\_title">Use ScyllaDB with Third-party Solutions</h5>
+            * [Migrate to ScyllaDB](https://docs.scylladb.com/manual/branch-2026.4/using-scylla/migrate-scylla.md) - How to migrate your current database to ScyllaDB
+* [Integrate with ScyllaDB](https://docs.scylladb.com/manual/branch-2026.4/using-scylla/integrations/index.md) - Integration solutions with ScyllaDB
+
+</div></div>
+            <div class="cell my-panel">
+                <div class="panel">
+                    <h5 class="panel_\_title">Tutorials</h5>
+            
+The tutorials will show you how to use ScyllaDB as a data source for an application.
+
+* [Build an IoT App with sensor simulator and a REST API](https://iot.scylladb.com/stable/) - ScyllaDB Tutorial
+* [Implement CRUD operations with a TODO App](https://github.com/scylladb/scylla-cloud-getting-started/) - ScyllaDB Cloud Tutorial
+* [Build a machine learning (ML) feature store with ScyllaDB](https://feature-store.scylladb.com/stable/) - ScyllaDB Cloud Tutorial
+
+</div></div>
+
+
+# index.md
+
 # ScyllaDB Architecture
 
 * [Data Distribution with Tablets](https://docs.scylladb.com/manual/branch-2026.4/architecture/tablets.md) - Tablets in ScyllaDB
@@ -190,80 +180,12 @@ Learn more about these topics in the [ScyllaDB University: Architecture lesson](
 
 # index.md
 
-# CQL Reference
+# Upgrade ScyllaDB
 
-## cqlsh - The CQL Shell
-
-`cqlsh` is a command line shell for interacting with ScyllaDB through CQL.
-
-* [CQLSh: the CQL shell](https://docs.scylladb.com/manual/branch-2026.4/cql/cqlsh.md)
-
-## CQL - Apache Cassandra Query Language
-
-The Apache Cassandra Query Language (CQL) is the primary language for communicating with the ScyllaDB database.
-It allows you to create keyspaces and tables, insert and query tables, and more.
-
-> * [Reserved CQL Keywords and Types (Appendices)](https://docs.scylladb.com/manual/branch-2026.4/cql/appendices.md)
-> * [Compaction](https://docs.scylladb.com/manual/branch-2026.4/cql/compaction.md)
-> * [Consistency Levels](https://docs.scylladb.com/manual/branch-2026.4/cql/consistency.md)
-> * [Consistency Levels Calculator](https://docs.scylladb.com/manual/branch-2026.4/cql/consistency-calculator.md)
-> * [Data Definition](https://docs.scylladb.com/manual/branch-2026.4/cql/ddl.md)
-> * [Data Manipulation](https://docs.scylladb.com/manual/branch-2026.4/cql/dml.md)
-> * [Data Types](https://docs.scylladb.com/manual/branch-2026.4/cql/types.md)
-> * [Definitions](https://docs.scylladb.com/manual/branch-2026.4/cql/definitions.md)
-> * [Global Secondary Indexes](https://docs.scylladb.com/manual/branch-2026.4/cql/secondary-indexes.md)
-> * [CQL Guardrails](https://docs.scylladb.com/manual/branch-2026.4/cql/guardrails.md)
-> * [Expiring Data with Time to Live (TTL)](https://docs.scylladb.com/manual/branch-2026.4/cql/time-to-live.md)
-> * [Functions](https://docs.scylladb.com/manual/branch-2026.4/cql/functions.md)
-> * [JSON Support](https://docs.scylladb.com/manual/branch-2026.4/cql/json.md)
-> * [Materialized Views](https://docs.scylladb.com/manual/branch-2026.4/cql/mv.md)
-> * [Configuring a Cluster with CQL](https://docs.scylladb.com/manual/branch-2026.4/cql/cluster-config.md)
-
-## ScyllaDB CQL Extensions - CQL Extensions Provided by ScyllaDB
-
-ScyllaDB provides additional features that extend the Apache CQL.
-
-* [ScyllaDB CQL Extensions](https://docs.scylladb.com/manual/branch-2026.4/cql/cql-extensions.md)
-
-
-# index.md
-
-# Troubleshooting ScyllaDB
-
-ScyllaDB’s troubleshooting section contains articles which are targeted to pinpoint and answer problems with ScyllaDB. For broader issues and workarounds, consult the [Knowledge base](https://docs.scylladb.com/manual/branch-2026.4/kb/index.md).
-Keep your versions up-to-date. The two latest versions are supported. Also, always install the latest patches for your version.
-
-
-            <div class="cell my-panel">
-                <div class="panel">
-                    <h5 class="panel_\_title">Troubleshooting Topics</h5>
-            * [Errors and ScyllaDB Customer Support](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/support/index.md)
-* [ScyllaDB Startup](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/startup/index.md)
-* [ScyllaDB Cluster and Node](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/cluster/index.md)
-* [Data Modeling](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/modeling/index.md)
-* [Data Storage and SSTables](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/storage/index.md)
-* [CQL errors](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/CQL/index.md)
-* [ScyllaDB Monitoring and ScyllaDB Manager](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/monitor/index.md)
-* [Installation and Removal](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/install-remove/index.md)
-
-</div></div>
-
-Also check out the [Monitoring lesson](https://university.scylladb.com/courses/scylla-operations/lessons/scylla-monitoring/) on ScyllaDB University, which covers how to troubleshoot different issues when running a ScyllaDB cluster.
-
-
-# index.md
-
-# Reference
-
-* ScyllaDB images for AWS, Azure, and GCP.
-  * [AWS Images](https://docs.scylladb.com/manual/branch-2026.4/reference/aws-images.md)
-  * [Azure Images](https://docs.scylladb.com/manual/branch-2026.4/reference/azure-images.md)
-  * [GCP Images](https://docs.scylladb.com/manual/branch-2026.4/reference/gcp-images.md)
-* [Configuration Parameters](https://docs.scylladb.com/manual/branch-2026.4/reference/configuration-parameters.md) - ScyllaDB properties configurable in the `scylla.yaml` configuration file.
-* [Glossary](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md) - ScyllaDB-related terms and definitions.
-* [Limits](https://docs.scylladb.com/manual/branch-2026.4/reference/limits.md)
-* [API Reference](https://docs.scylladb.com/manual/branch-2026.4/reference/api/index.md)
-* [Metrics](https://docs.scylladb.com/manual/branch-2026.4/reference/metrics.md)
+* [Upgrade Guides](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/index.md)
+  * [ScyllaDB 2026.x to ScyllaDB 2026.4](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x-to-2026.4/index.md)
+  * [ScyllaDB 2026.x Patch Upgrades](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md)
+  * [ScyllaDB Image](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/ami-upgrade.md)
 
 
 # index.md
@@ -343,6 +265,44 @@ Also check out the [Monitoring lesson](https://university.scylladb.com/courses/s
 
 # index.md
 
+# CQL Reference
+
+## cqlsh - The CQL Shell
+
+`cqlsh` is a command line shell for interacting with ScyllaDB through CQL.
+
+* [CQLSh: the CQL shell](https://docs.scylladb.com/manual/branch-2026.4/cql/cqlsh.md)
+
+## CQL - Apache Cassandra Query Language
+
+The Apache Cassandra Query Language (CQL) is the primary language for communicating with the ScyllaDB database.
+It allows you to create keyspaces and tables, insert and query tables, and more.
+
+> * [Reserved CQL Keywords and Types (Appendices)](https://docs.scylladb.com/manual/branch-2026.4/cql/appendices.md)
+> * [Compaction](https://docs.scylladb.com/manual/branch-2026.4/cql/compaction.md)
+> * [Consistency Levels](https://docs.scylladb.com/manual/branch-2026.4/cql/consistency.md)
+> * [Consistency Levels Calculator](https://docs.scylladb.com/manual/branch-2026.4/cql/consistency-calculator.md)
+> * [Data Definition](https://docs.scylladb.com/manual/branch-2026.4/cql/ddl.md)
+> * [Data Manipulation](https://docs.scylladb.com/manual/branch-2026.4/cql/dml.md)
+> * [Data Types](https://docs.scylladb.com/manual/branch-2026.4/cql/types.md)
+> * [Definitions](https://docs.scylladb.com/manual/branch-2026.4/cql/definitions.md)
+> * [Global Secondary Indexes](https://docs.scylladb.com/manual/branch-2026.4/cql/secondary-indexes.md)
+> * [CQL Guardrails](https://docs.scylladb.com/manual/branch-2026.4/cql/guardrails.md)
+> * [Expiring Data with Time to Live (TTL)](https://docs.scylladb.com/manual/branch-2026.4/cql/time-to-live.md)
+> * [Functions](https://docs.scylladb.com/manual/branch-2026.4/cql/functions.md)
+> * [JSON Support](https://docs.scylladb.com/manual/branch-2026.4/cql/json.md)
+> * [Materialized Views](https://docs.scylladb.com/manual/branch-2026.4/cql/mv.md)
+> * [Configuring a Cluster with CQL](https://docs.scylladb.com/manual/branch-2026.4/cql/cluster-config.md)
+
+## ScyllaDB CQL Extensions - CQL Extensions Provided by ScyllaDB
+
+ScyllaDB provides additional features that extend the Apache CQL.
+
+* [ScyllaDB CQL Extensions](https://docs.scylladb.com/manual/branch-2026.4/cql/cql-extensions.md)
+
+
+# index.md
+
 # Features
 
 This document highlights ScyllaDB’s key data modeling features.
@@ -383,6 +343,46 @@ This document highlights ScyllaDB’s key data modeling features.
 
 # index.md
 
+# Reference
+
+* ScyllaDB images for AWS, Azure, and GCP.
+  * [AWS Images](https://docs.scylladb.com/manual/branch-2026.4/reference/aws-images.md)
+  * [Azure Images](https://docs.scylladb.com/manual/branch-2026.4/reference/azure-images.md)
+  * [GCP Images](https://docs.scylladb.com/manual/branch-2026.4/reference/gcp-images.md)
+* [Configuration Parameters](https://docs.scylladb.com/manual/branch-2026.4/reference/configuration-parameters.md) - ScyllaDB properties configurable in the `scylla.yaml` configuration file.
+* [Glossary](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md) - ScyllaDB-related terms and definitions.
+* [Limits](https://docs.scylladb.com/manual/branch-2026.4/reference/limits.md)
+* [API Reference](https://docs.scylladb.com/manual/branch-2026.4/reference/api/index.md)
+* [Metrics](https://docs.scylladb.com/manual/branch-2026.4/reference/metrics.md)
+
+
+# index.md
+
+# Troubleshooting ScyllaDB
+
+ScyllaDB’s troubleshooting section contains articles which are targeted to pinpoint and answer problems with ScyllaDB. For broader issues and workarounds, consult the [Knowledge base](https://docs.scylladb.com/manual/branch-2026.4/kb/index.md).
+Keep your versions up-to-date. The two latest versions are supported. Also, always install the latest patches for your version.
+
+
+            <div class="cell my-panel">
+                <div class="panel">
+                    <h5 class="panel_\_title">Troubleshooting Topics</h5>
+            * [Errors and ScyllaDB Customer Support](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/support/index.md)
+* [ScyllaDB Startup](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/startup/index.md)
+* [ScyllaDB Cluster and Node](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/cluster/index.md)
+* [Data Modeling](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/modeling/index.md)
+* [Data Storage and SSTables](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/storage/index.md)
+* [CQL errors](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/CQL/index.md)
+* [ScyllaDB Monitoring and ScyllaDB Manager](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/monitor/index.md)
+* [Installation and Removal](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/install-remove/index.md)
+
+</div></div>
+
+Also check out the [Monitoring lesson](https://university.scylladb.com/courses/scylla-operations/lessons/scylla-monitoring/) on ScyllaDB University, which covers how to troubleshoot different issues when running a ScyllaDB cluster.
+
+
+# index.md
+
 # Install ScyllaDB 2026.4
 
 Keep your versions up-to-date. The two latest versions are supported. Also, always install the latest patches for your version.
@@ -413,70 +413,6 @@ Keep your versions up-to-date. The two latest versions are supported. Also, alwa
             * [Run ScyllaDB in Docker](https://docs.scylladb.com/manual/branch-2026.4/getting-started/install-scylla/run-in-docker.md)
 
 </div></div>
-
-
-# index.md
-
-# Upgrade ScyllaDB
-
-* [ScyllaDB 2026.x to ScyllaDB 2026.4](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x-to-2026.4/index.md)
-* [ScyllaDB 2026.x Patch Upgrades](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md)
-  * [Upgrade Procedure](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#upgrade-procedure)
-  * [Upgrade Steps](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#upgrade-steps)
-    * [Back up the data](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#back-up-the-data)
-    * [Back up the configuration file](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#back-up-the-configuration-file)
-    * [Gracefully stop the node](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#gracefully-stop-the-node)
-    * [Download and install the new release](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#download-and-install-the-new-release)
-    * [Start the node](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#start-the-node)
-    * [Validate](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#validate)
-  * [Rollback Procedure](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#rollback-procedure)
-  * [Rollback Steps](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#rollback-steps)
-    * [Gracefully shutdown ScyllaDB](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#gracefully-shutdown-scylladb)
-    * [Downgrade to the previous release](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#downgrade-to-the-previous-release)
-    * [Restore the configuration file](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#restore-the-configuration-file)
-    * [Start the node](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#id1)
-    * [Validate](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#id2)
-* [ScyllaDB Image](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/ami-upgrade.md)
-
-
-# index.md
-
-# Upgrade - ScyllaDB 2026.x to ScyllaDB 2026.4
-
-* [Upgrade from ScyllaDB 2026.x to ScyllaDB 2026.4](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x-to-2026.4/upgrade-guide-from-2026.x-to-2026.4.md)
-* [Metrics Update Between 2026.x and 2026.4](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x-to-2026.4/metric-update-2026.x-to-2026.4.md)
-
-
-# index.md
-
-# ScyllaDB Anti-Entropy
-
-ScyllaDB replicates data according to [eventual consistency](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Eventual-Consistency).  This means that, in ScyllaDB, when considering the [CAP Theorem](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-CAP-Theorem), availability and partition tolerance are considered a higher priority over consistency. Although ScyllaDB’s tunable consistency allows users to make a tradeoff between availability and consistency,  ScyllaDB’s [consistency level](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Consistency-Level-CL) is tunable per query.
-
-However, over time, there can be a number of reasons for data inconsistencies, including:
-
-1. a down node;
-2. a network partition;
-3. dropped mutations;
-4. process crashes (before a flush);
-5. a replica that cannot write due to being out of resources;
-6. file corruption.
-
-To mitigate [entropy](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Entropy), or data inconsistency, ScyllaDB uses a few different processes.  The goal of ScyllaDB [anti-entropy](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Anti-entropy) - based on that of Apache Cassandra  -  is to compare data on all replicas, synchronize data between all replicas,  and, finally,  ensure each replica has the most recent data.
-
-Anti-entropy measures include *write-time* changes such as [hinted handoff](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Hinted-Handoff), *read-time* changes such as [read repair](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Read-Repair), and finally, periodic maintenance via [repair](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Repair).
-
-* [ScyllaDB Hinted Handoff](https://docs.scylladb.com/manual/branch-2026.4/architecture/anti-entropy/hinted-handoff.md) - High-Level view of ScyllaDB Hinted Handoff
-* [ScyllaDB Read Repair](https://docs.scylladb.com/manual/branch-2026.4/architecture/anti-entropy/read-repair.md) - High-Level view of ScyllaDB Read Repair
-* [ScyllaDB Repair](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/maintenance/repair.md) - Description of ScyllaDB Repair
-
-Also learn more in the [Cluster Management, Repair and ScyllaDB Manager lesson](https://university.scylladb.com/courses/scylla-operations/lessons/cluster-management-repair-and-scylla-manager/topic/cluster-management-repair-and-scylla-manager/) on ScyllaDB University.
-
-Copyright
-
-© 2016, The Apache Software Foundation.
-
-Apache®, Apache Cassandra®, Cassandra®, the Apache feather logo and the Apache Cassandra® Eye logo are either registered trademarks or trademarks of the Apache Software Foundation in the United States and/or other countries. No endorsement by The Apache Software Foundation is implied by the use of these marks.
 
 
 # index.md
@@ -643,51 +579,28 @@ Apache®, Apache Cassandra®, Cassandra®, the Apache feather logo and the Apach
 
 # index.md
 
-# ScyllaDB SSTable - 2.x
+# ScyllaDB Anti-Entropy
 
-[Sorted Strings Table (SSTable)](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-SSTable) is the persistent file format used by ScyllaDB and Apache Cassandra. SSTable is saved as a persistent, ordered, immutable set of files on disk.
-Immutable means SSTables are never modified; they are created by a MemTable flush and are deleted by a compaction.
-The location of ScyllaDB SSTables is specified in scylla.yaml `data_file_directories` parameter (default location: `/var/lib/scylla/data`).
+ScyllaDB replicates data according to [eventual consistency](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Eventual-Consistency).  This means that, in ScyllaDB, when considering the [CAP Theorem](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-CAP-Theorem), availability and partition tolerance are considered a higher priority over consistency. Although ScyllaDB’s tunable consistency allows users to make a tradeoff between availability and consistency,  ScyllaDB’s [consistency level](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Consistency-Level-CL) is tunable per query.
 
-SSTable 3.x is more efficient and requires less disk space than the SSTable 2.x.
+However, over time, there can be a number of reasons for data inconsistencies, including:
 
-For more information on each of the SSTable formats, see below:
+1. a down node;
+2. a network partition;
+3. dropped mutations;
+4. process crashes (before a flush);
+5. a replica that cannot write due to being out of resources;
+6. file corruption.
 
-* [SSTable 2.x](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable2/index.md)
-* [SSTable 3.x](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable3/index.md)
+To mitigate [entropy](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Entropy), or data inconsistency, ScyllaDB uses a few different processes.  The goal of ScyllaDB [anti-entropy](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Anti-entropy) - based on that of Apache Cassandra  -  is to compare data on all replicas, synchronize data between all replicas,  and, finally,  ensure each replica has the most recent data.
 
-## SSTable Version Support
+Anti-entropy measures include *write-time* changes such as [hinted handoff](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Hinted-Handoff), *read-time* changes such as [read repair](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Read-Repair), and finally, periodic maintenance via [repair](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-Repair).
 
-| SSTable Version   | ScyllaDB Version   |
-|-------------------|--------------------|
-| 3.x (‘mt’)        | 2026.2 and above   |
-| 3.x (‘ms’)        | 2025.4 and above   |
-| 3.x (`me`)        | 2022.2 and above   |
-| 3.x (`md`)        | 2021.1             |
-* The supported formats are `me` and `mt`.
-* The `md` format is used only when upgrading from an existing cluster using
-  `md`. The `sstable_format` parameter is ignored if it is set to `md`.
-* The `ms` format has been superseded by `mt`, and is used only when upgrading
-  from an existing cluster using `ms`. If the `sstable_format` parameter is
-  set to `ms`, `mt` files will be written.
-* Note: The `sstable_format` parameter specifies the SSTable format used for
-  **writes**. The legacy SSTable formats (`ka`, `la`, `mc`) remain
-  supported for reads, which is essential for restoring clusters from existing
-  backups.
+* [ScyllaDB Hinted Handoff](https://docs.scylladb.com/manual/branch-2026.4/architecture/anti-entropy/hinted-handoff.md) - High-Level view of ScyllaDB Hinted Handoff
+* [ScyllaDB Read Repair](https://docs.scylladb.com/manual/branch-2026.4/architecture/anti-entropy/read-repair.md) - High-Level view of ScyllaDB Read Repair
+* [ScyllaDB Repair](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/maintenance/repair.md) - Description of ScyllaDB Repair
 
-## The ms Format: Trie-Based SSTable Index
-
-The `ms` format introduces a *trie-based* SSTable index.
-
-For a detailed description of the trie index format, see [SSTable ms Index](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable3/sstable-ms-index.md).
-
-For more information about ScyllaDB 2.x SSTable formats, see below:
-
-* [SSTable Compression](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable2/sstable-compression.md) - Deep dive into ScyllaDB/Apache Cassandra SSTable Compression
-* [SSTable Data File](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable2/sstable-data-file.md) - Deep dive into ScyllaDB/Apache Cassandra SSTable format
-* [SSTable format in ScyllaDB](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable2/sstable-format.md) - ScyllaDB SSTables are compatible to those in Apache Cassandra 2.1.8, but why there are more of them?
-* [SSTable Interpretation](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable2/sstable-interpretation.md) - Deep dive into ScyllaDB/Apache Cassandra SSTable Interpretation in ScyllaDB
-* [SSTable Summary File](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable2/sstable-summary-file.md) - Deep dive into ScyllaDB/Apache Cassandra SSTable Summary file format
+Also learn more in the [Cluster Management, Repair and ScyllaDB Manager lesson](https://university.scylladb.com/courses/scylla-operations/lessons/cluster-management-repair-and-scylla-manager/topic/cluster-management-repair-and-scylla-manager/) on ScyllaDB University.
 
 Copyright
 
@@ -750,144 +663,89 @@ For more information on ScyllaDB 3.x SSTable formats, see below:
 
 # index.md
 
-# Cluster and Node
+# ScyllaDB SSTable - 2.x
 
-* [Handling Node Failures](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/handling-node-failures.md)
-* [Failure to Add, Remove, or Replace a Node](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/failed-add-remove-replace.md)
-* [Failed Decommission Problem](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/failed-decommission.md)
-* [Cluster Timeouts](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/timeouts.md)
-* [Node Joined With No Data](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/node-joined-without-any-data.md)
-* [Nodetool Throws NullPointerException](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/nodetool-nullpointerexception.md)
-* [Failed Schema Sync](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/failed-schema-sync.md)
+[Sorted Strings Table (SSTable)](https://docs.scylladb.com/manual/branch-2026.4/reference/glossary.md#term-SSTable) is the persistent file format used by ScyllaDB and Apache Cassandra. SSTable is saved as a persistent, ordered, immutable set of files on disk.
+Immutable means SSTables are never modified; they are created by a MemTable flush and are deleted by a compaction.
+The location of ScyllaDB SSTables is specified in scylla.yaml `data_file_directories` parameter (default location: `/var/lib/scylla/data`).
 
+SSTable 3.x is more efficient and requires less disk space than the SSTable 2.x.
 
-# index.md
+For more information on each of the SSTable formats, see below:
 
-# Errors and Support
+* [SSTable 2.x](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable2/index.md)
+* [SSTable 3.x](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable3/index.md)
 
-* [How to Report a ScyllaDB Problem](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/report-scylla-problem.md)
-* [Error Messages](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/error-messages/index.md)
-* [How to Change Log Level in Runtime](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/log-level.md)
-* [What to Do in the Event of a Core Dump](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/report-scylla-problem.md#report-scylla-problem-core-dump)
-* [What to Do if You’re Having a Performance Issue](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/report-scylla-problem.md#report-performance-problem)
+## SSTable Version Support
 
-Also check out the [Onboarding lesson](https://university.scylladb.com/courses/scylla-operations/lessons/onboarding/topic/onboarding/) on ScyllaDB University
+| SSTable Version   | ScyllaDB Version   |
+|-------------------|--------------------|
+| 3.x (‘mt’)        | 2026.2 and above   |
+| 3.x (‘ms’)        | 2025.4 and above   |
+| 3.x (`me`)        | 2022.2 and above   |
+| 3.x (`md`)        | 2021.1             |
+* The supported formats are `me` and `mt`.
+* The `md` format is used only when upgrading from an existing cluster using
+  `md`. The `sstable_format` parameter is ignored if it is set to `md`.
+* The `ms` format has been superseded by `mt`, and is used only when upgrading
+  from an existing cluster using `ms`. If the `sstable_format` parameter is
+  set to `ms`, `mt` files will be written.
+* Note: The `sstable_format` parameter specifies the SSTable format used for
+  **writes**. The legacy SSTable formats (`ka`, `la`, `mc`) remain
+  supported for reads, which is essential for restoring clusters from existing
+  backups.
 
+## The ms Format: Trie-Based SSTable Index
 
-# index.md
+The `ms` format introduces a *trie-based* SSTable index.
 
-# Data Modeling
+For a detailed description of the trie index format, see [SSTable ms Index](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable3/sstable-ms-index.md).
 
-* [ScyllaDB Large Partitions Table](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/large-partition-table.md)
-* [ScyllaDB Large Rows and Cells Tables](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/large-rows-large-cells-tables.md)
-* [Large Partitions Hunting](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/debugging-large-partition.md)
-* [Failure to Update the Schema](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/failed-update-schema.md)
+For more information about ScyllaDB 2.x SSTable formats, see below:
 
-[Data Modeling course](https://university.scylladb.com/courses/data-modeling/) on ScyllaDB University
+* [SSTable Compression](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable2/sstable-compression.md) - Deep dive into ScyllaDB/Apache Cassandra SSTable Compression
+* [SSTable Data File](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable2/sstable-data-file.md) - Deep dive into ScyllaDB/Apache Cassandra SSTable format
+* [SSTable format in ScyllaDB](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable2/sstable-format.md) - ScyllaDB SSTables are compatible to those in Apache Cassandra 2.1.8, but why there are more of them?
+* [SSTable Interpretation](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable2/sstable-interpretation.md) - Deep dive into ScyllaDB/Apache Cassandra SSTable Interpretation in ScyllaDB
+* [SSTable Summary File](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/sstable2/sstable-summary-file.md) - Deep dive into ScyllaDB/Apache Cassandra SSTable Summary file format
 
+Copyright
 
-# index.md
+© 2016, The Apache Software Foundation.
 
-# Installation and Removal
-
-* [Removing ScyllaDB with the “–autoremove” option on Ubuntu breaks system packages](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/autoremove-ubuntu.md)
-
-
-# index.md
-
-# ScyllaDB Startup
-
-* [ScyllaDB Fails to Start Due to Wrong Ownership Problems](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/change-ownership.md)
-* [ScyllaDB will not Start](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/scylla-wont-start.md)
-
-
-# index.md
-
-# ScyllaDB Monitor and Manager
-
-
-            <div class="cell my-panel">
-                <div class="panel">
-                    <h5 class="panel_\_title">ScyllaDB Monitor and Manager Issues</h5>
-            </div></div>
-* [Troubleshoot ScyllaDB Monitoring Stack](https://monitoring.docs.scylladb.com/stable/).
-* [Troubleshooting guide for ScyllaDB Manager and ScyllaDB Monitoring integration](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/manager-monitoring-integration.md)
-* [ScyllaDB Manager is reporting REST API status of healthy nodes as down](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/reverse-dns-sshd.md)
-
-
-            <div class="cell my-panel">
-                <div class="panel">
-                    <h5 class="panel_\_title">Related lessons on ScyllaDB University</h5>
-            </div></div>
-
-[ScyllaDB Monitoring lesson](https://university.scylladb.com/courses/scylla-operations/lessons/scylla-monitoring/) on ScyllaDB University
-
-[ScyllaDB Manager, Repair and Tombstones lesson](https://university.scylladb.com/courses/scylla-operations/lessons/scylla-manager-repair-and-tombstones/) on ScyllaDB University
+Apache®, Apache Cassandra®, Cassandra®, the Apache feather logo and the Apache Cassandra® Eye logo are either registered trademarks or trademarks of the Apache Software Foundation in the United States and/or other countries. No endorsement by The Apache Software Foundation is implied by the use of these marks.
 
 
 # index.md
 
-# Error Messages
+# Upgrade ScyllaDB
 
-
-            <div class="cell my-panel">
-                <div class="panel">
-                    <h5 class="panel_\_title">Error Messages</h5>
-            * [“File system on /var/lib/scylla is not qualified for seastar AIO” on startup](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/error-messages/kb-fs-not-qualified-aio.md)
-* [“Address already in use” messages](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/error-messages/address-already-in-use.md)
-* [Schema Mismatch](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/error-messages/schema-mismatch.md)
-* [Invalid SSL Protocol](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/error-messages/invalid-ssl-prot-error.md)
-* [Critical disk utilization](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/error-messages/critical-disk-utilization.md)
-
-</div></div>
-
-
-# index.md
-
-# CQL
-
-* [Time Range Queries Do Not Return Some or All of the Data](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/time-zone.md)
-* [COPY FROM fails - field larger than the field limit](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/copy-from-failed.md)
-* [CQL active connection table](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/clients-table.md)
-
-
-# index.md
-
-# Data Storage and SSTables
-
-* [Space Utilization Keeps Going Up During Normal Operation](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/space-up.md)
-* [Dropped (or truncated) Table (or keyspace) and Disk Space is not Reclaimed](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/drop-table-space-up.md)
-* [SSTable Corruption Problem](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/sstable-corruption.md)
-* [There Are A Lot Of Single SSTable Compactions That Don’t Compact Anything](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/pointless-compactions.md)
-* [Compaction Takes Lots of Memory and CPU](https://monitoring.docs.scylladb.com/stable/use-monitoring/advisor/heavyCompaction.html)
-
-More information on [SSTables](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/index.md).
+* [ScyllaDB 2026.x to ScyllaDB 2026.4](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x-to-2026.4/index.md)
+* [ScyllaDB 2026.x Patch Upgrades](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md)
+  * [Upgrade Procedure](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#upgrade-procedure)
+  * [Upgrade Steps](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#upgrade-steps)
+    * [Back up the data](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#back-up-the-data)
+    * [Back up the configuration file](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#back-up-the-configuration-file)
+    * [Gracefully stop the node](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#gracefully-stop-the-node)
+    * [Download and install the new release](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#download-and-install-the-new-release)
+    * [Start the node](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#start-the-node)
+    * [Validate](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#validate)
+  * [Rollback Procedure](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#rollback-procedure)
+  * [Rollback Steps](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#rollback-steps)
+    * [Gracefully shutdown ScyllaDB](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#gracefully-shutdown-scylladb)
+    * [Downgrade to the previous release](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#downgrade-to-the-previous-release)
+    * [Restore the configuration file](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#restore-the-configuration-file)
+    * [Start the node](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#id1)
+    * [Validate](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x.y-to-2026.x.z.md#id2)
+* [ScyllaDB Image](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/ami-upgrade.md)
 
 
 # index.md
 
-# API Reference
+# Upgrade - ScyllaDB 2026.x to ScyllaDB 2026.4
 
-* [Authorization Cache](https://docs.scylladb.com/manual/branch-2026.4/reference/api/authorization-cache.md)
-* [Cache Service](https://docs.scylladb.com/manual/branch-2026.4/reference/api/cache-service.md)
-* [Column Family](https://docs.scylladb.com/manual/branch-2026.4/reference/api/column-family.md)
-* [Commit Log](https://docs.scylladb.com/manual/branch-2026.4/reference/api/commit-log.md)
-* [Compaction Manager](https://docs.scylladb.com/manual/branch-2026.4/reference/api/compaction-manager.md)
-* [Endpoint Snitch Info](https://docs.scylladb.com/manual/branch-2026.4/reference/api/endpoint-snitch-info.md)
-* [Error Injection](https://docs.scylladb.com/manual/branch-2026.4/reference/api/error-injection.md)
-* [Failure Detector](https://docs.scylladb.com/manual/branch-2026.4/reference/api/failure-detector.md)
-* [Gossiper](https://docs.scylladb.com/manual/branch-2026.4/reference/api/gossiper.md)
-* [Hinted Handoff](https://docs.scylladb.com/manual/branch-2026.4/reference/api/hinted-handoff.md)
-* [LSA](https://docs.scylladb.com/manual/branch-2026.4/reference/api/lsa.md)
-* [Messaging Service](https://docs.scylladb.com/manual/branch-2026.4/reference/api/messaging-service.md)
-* [Raft](https://docs.scylladb.com/manual/branch-2026.4/reference/api/raft.md)
-* [Storage Proxy](https://docs.scylladb.com/manual/branch-2026.4/reference/api/storage-proxy.md)
-* [Storage Service](https://docs.scylladb.com/manual/branch-2026.4/reference/api/storage-service.md)
-* [Stream Manager](https://docs.scylladb.com/manual/branch-2026.4/reference/api/stream-manager.md)
-* [System](https://docs.scylladb.com/manual/branch-2026.4/reference/api/system.md)
-* [Task Manager Test](https://docs.scylladb.com/manual/branch-2026.4/reference/api/task-manager-test.md)
-* [Task Manager](https://docs.scylladb.com/manual/branch-2026.4/reference/api/task-manager.md)
-* [Tasks](https://docs.scylladb.com/manual/branch-2026.4/reference/api/tasks.md)
+* [Upgrade from ScyllaDB 2026.x to ScyllaDB 2026.4](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x-to-2026.4/upgrade-guide-from-2026.x-to-2026.4.md)
+* [Metrics Update Between 2026.x and 2026.4](https://docs.scylladb.com/manual/branch-2026.4/upgrade/upgrade-guides/upgrade-guide-from-2026.x-to-2026.4/metric-update-2026.x-to-2026.4.md)
 
 
 # index.md
@@ -973,6 +831,39 @@ Procedures to create, out-scale, down-scale, and backup ScyllaDB clusters
 
 # index.md
 
+# Admin Tools
+
+
+            <div class="cell my-panel">
+                <div class="panel">
+                    <h5 class="panel_\_title">Admin Tools</h5>
+            * [Nodetool Reference](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool.md) - ScyllaDB commands for managing ScyllaDB node or cluster using the command-line nodetool utility.
+* [CQLSh - the CQL shell](https://docs.scylladb.com/manual/branch-2026.4/cql/cqlsh.md).
+* [Admin REST API - ScyllaDB Node Admin API](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/rest.md).
+* [Tracing](https://docs.scylladb.com/manual/branch-2026.4/using-scylla/tracing.md) - a ScyllaDB tool for debugging and analyzing internal flows in the server.
+* [SSTableloader](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/sstableloader.md) - Bulk load the sstables found in the directory to a ScyllaDB cluster
+* [ScyllaDB SStable](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/scylla-sstable.md) - Validates and dumps the content of SStables, generates a histogram, dumps the content of the SStable index.
+* [ScyllaDB Types](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/scylla-types.md) - Examines raw values obtained from SStables, logs, coredumps, etc.
+* [cassandra-stress](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/cassandra-stress.md) A tool for benchmarking and load testing a ScyllaDB and Cassandra clusters.
+* scylla local-file-key-generator - Generate a local file (system) key for [encryption at rest](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/security/encryption-at-rest.md), with the provided length, Key algorithm, Algorithm block mode and Algorithm padding method.
+* [scyllatop](https://www.scylladb.com/2016/03/22/scyllatop/) - A terminal base top-like tool for scylladb Prometheus metrics.
+* [scylla_dev_mode_setup](https://docs.scylladb.com/manual/branch-2026.4/getting-started/installation-common/dev-mod.md) - run ScyllaDB in Developer Mode.
+* [perftune](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/perftune.md) - performance configuration.
+* [Reading mutation fragments](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/select-from-mutation-fragments.md) - dump the underlying mutation data from tables.
+* [Maintenance socket](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/maintenance-socket.md) - a Unix domain socket for full-permission CQL connection.
+* [Maintenance mode](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/maintenance-mode.md) - a mode for performing maintenance tasks on an offline ScyllaDB node.
+* [Task manager](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/task-manager.md) - a tool for tracking long-running background operations.
+* [Compression Advisor](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/compression-advisor.md) - analyzes a table’s compression configuration and recommends LZ4/ZSTD settings that reduce on-disk size.
+
+Run each tool with `-h`, `--help` for full options description.
+
+</div></div>
+
+The [Admin Procedures and Monitoring lesson](https://university.scylladb.com/courses/scylla-operations/lessons/admin-procedures-and-basic-monitoring/topic/admin-procedures-and-monitoring/) on ScyllaDB University provides more training and examples material on this subject.
+
+
+# index.md
+
 # Security
 
 
@@ -1021,35 +912,56 @@ Also check out the [Security Features lesson](https://university.scylladb.com/co
 
 # index.md
 
-# Admin Tools
+# Nodetool cluster
+
+**cluster** - Nodetool supercommand for running cluster operations.
+
+## Supported cluster suboperations
+
+* [repair](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/cluster/repair.md)  `<keyspace>` `<table>` - Repair one or more tablet tables.
+* [cleanup](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/cluster/cleanup.md)  - Clean up all non tablet (vnode-based) keyspaces in a cluster
 
 
-            <div class="cell my-panel">
-                <div class="panel">
-                    <h5 class="panel_\_title">Admin Tools</h5>
-            * [Nodetool Reference](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool.md) - ScyllaDB commands for managing ScyllaDB node or cluster using the command-line nodetool utility.
-* [CQLSh - the CQL shell](https://docs.scylladb.com/manual/branch-2026.4/cql/cqlsh.md).
-* [Admin REST API - ScyllaDB Node Admin API](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/rest.md).
-* [Tracing](https://docs.scylladb.com/manual/branch-2026.4/using-scylla/tracing.md) - a ScyllaDB tool for debugging and analyzing internal flows in the server.
-* [SSTableloader](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/sstableloader.md) - Bulk load the sstables found in the directory to a ScyllaDB cluster
-* [ScyllaDB SStable](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/scylla-sstable.md) - Validates and dumps the content of SStables, generates a histogram, dumps the content of the SStable index.
-* [ScyllaDB Types](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/scylla-types.md) - Examines raw values obtained from SStables, logs, coredumps, etc.
-* [cassandra-stress](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/cassandra-stress.md) A tool for benchmarking and load testing a ScyllaDB and Cassandra clusters.
-* scylla local-file-key-generator - Generate a local file (system) key for [encryption at rest](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/security/encryption-at-rest.md), with the provided length, Key algorithm, Algorithm block mode and Algorithm padding method.
-* [scyllatop](https://www.scylladb.com/2016/03/22/scyllatop/) - A terminal base top-like tool for scylladb Prometheus metrics.
-* [scylla_dev_mode_setup](https://docs.scylladb.com/manual/branch-2026.4/getting-started/installation-common/dev-mod.md) - run ScyllaDB in Developer Mode.
-* [perftune](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/perftune.md) - performance configuration.
-* [Reading mutation fragments](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/select-from-mutation-fragments.md) - dump the underlying mutation data from tables.
-* [Maintenance socket](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/maintenance-socket.md) - a Unix domain socket for full-permission CQL connection.
-* [Maintenance mode](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/maintenance-mode.md) - a mode for performing maintenance tasks on an offline ScyllaDB node.
-* [Task manager](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/task-manager.md) - a tool for tracking long-running background operations.
-* [Compression Advisor](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/admin-tools/compression-advisor.md) - analyzes a table’s compression configuration and recommends LZ4/ZSTD settings that reduce on-disk size.
+# index.md
 
-Run each tool with `-h`, `--help` for full options description.
+# Nodetool tasks
 
-</div></div>
+**tasks** - Nodetool supercommand for managing task manager tasks.
 
-The [Admin Procedures and Monitoring lesson](https://university.scylladb.com/courses/scylla-operations/lessons/admin-procedures-and-basic-monitoring/topic/admin-procedures-and-monitoring/) on ScyllaDB University provides more training and examples material on this subject.
+Task manager is an API-based tool for tracking long-running background operations, such as repair or compaction,
+which makes them observable and controllable. Task manager operates per node.
+
+## Task Status Retention
+
+* When a task completes, its status is temporarily stored on the executing node
+* Status information is retained for up to [`task_ttl_in_seconds`](https://docs.scylladb.com/manual/branch-2026.4/reference/configuration-parameters.md#confval-task_ttl_in_seconds) seconds
+
+## Supported tasks suboperations
+
+* [abort](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/abort.md) - Aborts the task.
+* [drain](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/drain.md) - Unregisters all finished local tasks.
+* [user-ttl](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/user-ttl.md) - Gets or sets user_task_ttl value.
+* [list](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/list.md) - Lists tasks in the module.
+* [modules](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/modules.md) - Lists supported modules.
+* [status](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/status.md) - Gets status of the task.
+* [tree](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/tree.md) - Gets statuses of the task and all its descendants.
+* [ttl](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/ttl.md) - Gets or sets task_ttl value.
+* [wait](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/wait.md) - Waits for the task and gets its status.
+
+
+# index.md
+
+# Backup and Restore Procedures
+
+Procedures to backup and restore your ScyllaDB data safely
+
+* [Backup your Data](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/backup-restore/backup.md)
+* [Restore from Backup](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/backup-restore/restore.md)
+* [Delete your Backup](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/backup-restore/delete-snapshot.md)
+* Also covered in the [Cluster Backup Using ScyllaDB Manager lesson](https://university.scylladb.com/courses/scylla-operations/lessons/scylla-manager-repair-and-tombstones/topic/cluster-backup-using-scylla-manager/) on ScyllaDB University.
+
+#### NOTE
+For cluster-wide backup and restore, see the [ScyllaDB Manager](https://manager.docs.scylladb.com/stable/restore/) documentation.
 
 
 # index.md
@@ -1093,21 +1005,6 @@ Procedures to change ScyllaDB Configuration settings.
 * [Advanced Internode (RPC) Compression](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/config-change/advanced-internode-compression.md)
 * [Shared-dictionary compression for SSTables](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/config-change/sstable-dictionary-compression.md)
 * [Migrate a Keyspace from Vnodes to Tablets](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/config-change/migrate-vnodes-to-tablets.md)
-
-
-# index.md
-
-# Backup and Restore Procedures
-
-Procedures to backup and restore your ScyllaDB data safely
-
-* [Backup your Data](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/backup-restore/backup.md)
-* [Restore from Backup](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/backup-restore/restore.md)
-* [Delete your Backup](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/backup-restore/delete-snapshot.md)
-* Also covered in the [Cluster Backup Using ScyllaDB Manager lesson](https://university.scylladb.com/courses/scylla-operations/lessons/scylla-manager-repair-and-tombstones/topic/cluster-backup-using-scylla-manager/) on ScyllaDB University.
-
-#### NOTE
-For cluster-wide backup and restore, see the [ScyllaDB Manager](https://manager.docs.scylladb.com/stable/restore/) documentation.
 
 
 # index.md
@@ -1176,45 +1073,6 @@ Procedures for handling failures and practical examples of different scenarios.
 
 # index.md
 
-# Nodetool cluster
-
-**cluster** - Nodetool supercommand for running cluster operations.
-
-## Supported cluster suboperations
-
-* [repair](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/cluster/repair.md)  `<keyspace>` `<table>` - Repair one or more tablet tables.
-* [cleanup](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/cluster/cleanup.md)  - Clean up all non tablet (vnode-based) keyspaces in a cluster
-
-
-# index.md
-
-# Nodetool tasks
-
-**tasks** - Nodetool supercommand for managing task manager tasks.
-
-Task manager is an API-based tool for tracking long-running background operations, such as repair or compaction,
-which makes them observable and controllable. Task manager operates per node.
-
-## Task Status Retention
-
-* When a task completes, its status is temporarily stored on the executing node
-* Status information is retained for up to [`task_ttl_in_seconds`](https://docs.scylladb.com/manual/branch-2026.4/reference/configuration-parameters.md#confval-task_ttl_in_seconds) seconds
-
-## Supported tasks suboperations
-
-* [abort](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/abort.md) - Aborts the task.
-* [drain](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/drain.md) - Unregisters all finished local tasks.
-* [user-ttl](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/user-ttl.md) - Gets or sets user_task_ttl value.
-* [list](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/list.md) - Lists tasks in the module.
-* [modules](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/modules.md) - Lists supported modules.
-* [status](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/status.md) - Gets status of the task.
-* [tree](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/tree.md) - Gets statuses of the task and all its descendants.
-* [ttl](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/ttl.md) - Gets or sets task_ttl value.
-* [wait](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/wait.md) - Waits for the task and gets its status.
-
-
-# index.md
-
 # Change Data Capture (CDC)
 
  is a feature that allows you to not only query the current state of a database’s table, but also query the history of all changes made to the table.
@@ -1244,6 +1102,148 @@ which makes them observable and controllable. Task manager operates per node.
 * [CDC Source Connector Quickstart](https://docs.scylladb.com/manual/branch-2026.4/using-scylla/integrations/scylla-cdc-source-connector-quickstart.md)
 
 </div></div>
+
+
+# index.md
+
+# API Reference
+
+* [Authorization Cache](https://docs.scylladb.com/manual/branch-2026.4/reference/api/authorization-cache.md)
+* [Cache Service](https://docs.scylladb.com/manual/branch-2026.4/reference/api/cache-service.md)
+* [Column Family](https://docs.scylladb.com/manual/branch-2026.4/reference/api/column-family.md)
+* [Commit Log](https://docs.scylladb.com/manual/branch-2026.4/reference/api/commit-log.md)
+* [Compaction Manager](https://docs.scylladb.com/manual/branch-2026.4/reference/api/compaction-manager.md)
+* [Endpoint Snitch Info](https://docs.scylladb.com/manual/branch-2026.4/reference/api/endpoint-snitch-info.md)
+* [Error Injection](https://docs.scylladb.com/manual/branch-2026.4/reference/api/error-injection.md)
+* [Failure Detector](https://docs.scylladb.com/manual/branch-2026.4/reference/api/failure-detector.md)
+* [Gossiper](https://docs.scylladb.com/manual/branch-2026.4/reference/api/gossiper.md)
+* [Hinted Handoff](https://docs.scylladb.com/manual/branch-2026.4/reference/api/hinted-handoff.md)
+* [LSA](https://docs.scylladb.com/manual/branch-2026.4/reference/api/lsa.md)
+* [Messaging Service](https://docs.scylladb.com/manual/branch-2026.4/reference/api/messaging-service.md)
+* [Raft](https://docs.scylladb.com/manual/branch-2026.4/reference/api/raft.md)
+* [Storage Proxy](https://docs.scylladb.com/manual/branch-2026.4/reference/api/storage-proxy.md)
+* [Storage Service](https://docs.scylladb.com/manual/branch-2026.4/reference/api/storage-service.md)
+* [Stream Manager](https://docs.scylladb.com/manual/branch-2026.4/reference/api/stream-manager.md)
+* [System](https://docs.scylladb.com/manual/branch-2026.4/reference/api/system.md)
+* [Task Manager Test](https://docs.scylladb.com/manual/branch-2026.4/reference/api/task-manager-test.md)
+* [Task Manager](https://docs.scylladb.com/manual/branch-2026.4/reference/api/task-manager.md)
+* [Tasks](https://docs.scylladb.com/manual/branch-2026.4/reference/api/tasks.md)
+
+
+# index.md
+
+# Errors and Support
+
+* [How to Report a ScyllaDB Problem](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/report-scylla-problem.md)
+* [Error Messages](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/error-messages/index.md)
+* [How to Change Log Level in Runtime](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/log-level.md)
+* [What to Do in the Event of a Core Dump](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/report-scylla-problem.md#report-scylla-problem-core-dump)
+* [What to Do if You’re Having a Performance Issue](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/report-scylla-problem.md#report-performance-problem)
+
+Also check out the [Onboarding lesson](https://university.scylladb.com/courses/scylla-operations/lessons/onboarding/topic/onboarding/) on ScyllaDB University
+
+
+# index.md
+
+# Data Storage and SSTables
+
+* [Space Utilization Keeps Going Up During Normal Operation](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/space-up.md)
+* [Dropped (or truncated) Table (or keyspace) and Disk Space is not Reclaimed](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/drop-table-space-up.md)
+* [SSTable Corruption Problem](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/sstable-corruption.md)
+* [There Are A Lot Of Single SSTable Compactions That Don’t Compact Anything](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/pointless-compactions.md)
+* [Compaction Takes Lots of Memory and CPU](https://monitoring.docs.scylladb.com/stable/use-monitoring/advisor/heavyCompaction.html)
+
+More information on [SSTables](https://docs.scylladb.com/manual/branch-2026.4/architecture/sstable/index.md).
+
+
+# index.md
+
+# Installation and Removal
+
+* [Removing ScyllaDB with the “–autoremove” option on Ubuntu breaks system packages](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/autoremove-ubuntu.md)
+
+
+# index.md
+
+# ScyllaDB Startup
+
+* [ScyllaDB Fails to Start Due to Wrong Ownership Problems](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/change-ownership.md)
+* [ScyllaDB will not Start](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/scylla-wont-start.md)
+
+
+# index.md
+
+# Error Messages
+
+
+            <div class="cell my-panel">
+                <div class="panel">
+                    <h5 class="panel_\_title">Error Messages</h5>
+            * [“File system on /var/lib/scylla is not qualified for seastar AIO” on startup](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/error-messages/kb-fs-not-qualified-aio.md)
+* [“Address already in use” messages](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/error-messages/address-already-in-use.md)
+* [Schema Mismatch](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/error-messages/schema-mismatch.md)
+* [Invalid SSL Protocol](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/error-messages/invalid-ssl-prot-error.md)
+* [Critical disk utilization](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/error-messages/critical-disk-utilization.md)
+
+</div></div>
+
+
+# index.md
+
+# Data Modeling
+
+* [ScyllaDB Large Partitions Table](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/large-partition-table.md)
+* [ScyllaDB Large Rows and Cells Tables](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/large-rows-large-cells-tables.md)
+* [Large Partitions Hunting](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/debugging-large-partition.md)
+* [Failure to Update the Schema](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/failed-update-schema.md)
+
+[Data Modeling course](https://university.scylladb.com/courses/data-modeling/) on ScyllaDB University
+
+
+# index.md
+
+# CQL
+
+* [Time Range Queries Do Not Return Some or All of the Data](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/time-zone.md)
+* [COPY FROM fails - field larger than the field limit](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/copy-from-failed.md)
+* [CQL active connection table](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/clients-table.md)
+
+
+# index.md
+
+# Cluster and Node
+
+* [Handling Node Failures](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/handling-node-failures.md)
+* [Failure to Add, Remove, or Replace a Node](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/failed-add-remove-replace.md)
+* [Failed Decommission Problem](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/failed-decommission.md)
+* [Cluster Timeouts](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/timeouts.md)
+* [Node Joined With No Data](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/node-joined-without-any-data.md)
+* [Nodetool Throws NullPointerException](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/nodetool-nullpointerexception.md)
+* [Failed Schema Sync](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/failed-schema-sync.md)
+
+
+# index.md
+
+# ScyllaDB Monitor and Manager
+
+
+            <div class="cell my-panel">
+                <div class="panel">
+                    <h5 class="panel_\_title">ScyllaDB Monitor and Manager Issues</h5>
+            </div></div>
+* [Troubleshoot ScyllaDB Monitoring Stack](https://monitoring.docs.scylladb.com/stable/).
+* [Troubleshooting guide for ScyllaDB Manager and ScyllaDB Monitoring integration](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/manager-monitoring-integration.md)
+* [ScyllaDB Manager is reporting REST API status of healthy nodes as down](https://docs.scylladb.com/manual/branch-2026.4/troubleshooting/reverse-dns-sshd.md)
+
+
+            <div class="cell my-panel">
+                <div class="panel">
+                    <h5 class="panel_\_title">Related lessons on ScyllaDB University</h5>
+            </div></div>
+
+[ScyllaDB Monitoring lesson](https://university.scylladb.com/courses/scylla-operations/lessons/scylla-monitoring/) on ScyllaDB University
+
+[ScyllaDB Manager, Repair and Tombstones lesson](https://university.scylladb.com/courses/scylla-operations/lessons/scylla-manager-repair-and-tombstones/) on ScyllaDB University
 
 
 # abort.md
@@ -33907,68 +33907,6 @@ See also [ScyllaDB Manager](https://manager.docs.scylladb.com/).
 
 # repair.md
 
-# ScyllaDB Repair
-
-During the regular operation, a ScyllaDB cluster continues to function and remains ‘always-on’ even in the face of failures such as:
-
-* A down node
-* A network partition
-* Complete datacenter failure
-* Dropped mutations due to timeouts
-* Process crashes (before a flush)
-* A replica that cannot write due to a lack of resources
-
-As long as the cluster can satisfy the required consistency level (usually quorum), availability and consistency will be maintained. However, in order to automatically mitigate data inconsistency (entropy), ScyllaDB uses three processes:
-
-* [Hinted Handoff](https://docs.scylladb.com/manual/branch-2026.4/architecture/anti-entropy/hinted-handoff.md)
-* [Read Repair](https://docs.scylladb.com/manual/branch-2026.4/architecture/anti-entropy/read-repair.md)
-* [Repair Based Node Operations](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/cluster-management/repair-based-node-operation.md)
-* Repair - described in the following sections
-
-## Repair Overview
-
-Data stored on nodes may become inconsistent with other replicas over time. For this reason, repairs are a necessary part of database maintenance.
-
-ScyllaDB repair is a process that runs in the background and synchronizes the data between nodes so that all the replicas hold the same data.
-Running repairs is necessary to ensure that data on a given node is consistent with the other nodes in the cluster.
-You can manually run the `nodetool repair` and `nodetool cluster repair` commands or schedule repair with [ScyllaDB Manager](https://manager.docs.scylladb.com/stable/repair),
-which can run repairs for you.
-
-To synchronize all data in clusters that have both tablets- and vnodes-based keyspaces, run [nodetool repair -pr](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/repair.md) on **all**
-of the nodes in the cluster, and [nodetool cluster repair](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/cluster/repair.md) on  **any** of the nodes in the cluster.
-
-#### NOTE
-Run the [nodetool repair](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/repair.md) and [nodetool cluster repair](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/cluster/repair.md) command regularly. If you delete data frequently, it should be more often than the value of `gc_grace_seconds` (by default: 10 days), for example, every week. Use the **nodetool repair -pr** on each node in the cluster, sequentially.
-
-In most cases, the proportion of data that is out of sync is very small.  In a few cases, for example, if a node was down for a day, the difference might be more significant.
-
-<a id="row-level-repair"></a>
-
-## Row-level Repair
-
-ScyllaDB uses row-level repair.
-
-Row-level repair improves ScyllaDB in two ways:
-
-* Minimizes data transfer. With row-level repair, ScyllaDB calculates the checksum for each row and uses set reconciliation algorithms to find the mismatches between nodes. As a result, only the mismatched rows are exchanged, which eliminates unnecessary data transmission over the network.
-* Minimize disk reads by :
-  * reading the data only once.
-  * keeping the data in a temporary buffer.
-  * using the cached data to calculate the checksum and send it to the replicas.
-
-See also the [ScyllaDB Manager documentation](https://manager.docs.scylladb.com/).
-
-## Incremental Repair
-
-Built on top of [Row-level Repair](#row-level-repair) and [Tablets](https://docs.scylladb.com/manual/branch-2026.4/architecture/tablets.md), Incremental Repair enables frequent and quick repairs. For more details, see [Incremental Repair](https://docs.scylladb.com/manual/branch-2026.4/features/incremental-repair.md).
-
-## Automatic Repair
-
-Built on top of [Incremental Repair](https://docs.scylladb.com/manual/branch-2026.4/features/incremental-repair.md), [Automatic Repair](https://docs.scylladb.com/manual/branch-2026.4/features/automatic-repair.md) offers repair scheduling and execution directly in ScyllaDB, without external processes.
-
-
-# repair.md
-
 # Nodetool cluster repair
 
 **cluster repair** - A process that runs in the background and synchronizes the data between nodes. It only repairs keyspaces with tablets enabled (default).
@@ -34041,6 +33979,68 @@ ScyllaDB nodetool cluster repair command supports the following options:
   ```
 
 See also [ScyllaDB Manager](https://manager.docs.scylladb.com/).
+
+
+# repair.md
+
+# ScyllaDB Repair
+
+During the regular operation, a ScyllaDB cluster continues to function and remains ‘always-on’ even in the face of failures such as:
+
+* A down node
+* A network partition
+* Complete datacenter failure
+* Dropped mutations due to timeouts
+* Process crashes (before a flush)
+* A replica that cannot write due to a lack of resources
+
+As long as the cluster can satisfy the required consistency level (usually quorum), availability and consistency will be maintained. However, in order to automatically mitigate data inconsistency (entropy), ScyllaDB uses three processes:
+
+* [Hinted Handoff](https://docs.scylladb.com/manual/branch-2026.4/architecture/anti-entropy/hinted-handoff.md)
+* [Read Repair](https://docs.scylladb.com/manual/branch-2026.4/architecture/anti-entropy/read-repair.md)
+* [Repair Based Node Operations](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/procedures/cluster-management/repair-based-node-operation.md)
+* Repair - described in the following sections
+
+## Repair Overview
+
+Data stored on nodes may become inconsistent with other replicas over time. For this reason, repairs are a necessary part of database maintenance.
+
+ScyllaDB repair is a process that runs in the background and synchronizes the data between nodes so that all the replicas hold the same data.
+Running repairs is necessary to ensure that data on a given node is consistent with the other nodes in the cluster.
+You can manually run the `nodetool repair` and `nodetool cluster repair` commands or schedule repair with [ScyllaDB Manager](https://manager.docs.scylladb.com/stable/repair),
+which can run repairs for you.
+
+To synchronize all data in clusters that have both tablets- and vnodes-based keyspaces, run [nodetool repair -pr](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/repair.md) on **all**
+of the nodes in the cluster, and [nodetool cluster repair](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/cluster/repair.md) on  **any** of the nodes in the cluster.
+
+#### NOTE
+Run the [nodetool repair](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/repair.md) and [nodetool cluster repair](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/cluster/repair.md) command regularly. If you delete data frequently, it should be more often than the value of `gc_grace_seconds` (by default: 10 days), for example, every week. Use the **nodetool repair -pr** on each node in the cluster, sequentially.
+
+In most cases, the proportion of data that is out of sync is very small.  In a few cases, for example, if a node was down for a day, the difference might be more significant.
+
+<a id="row-level-repair"></a>
+
+## Row-level Repair
+
+ScyllaDB uses row-level repair.
+
+Row-level repair improves ScyllaDB in two ways:
+
+* Minimizes data transfer. With row-level repair, ScyllaDB calculates the checksum for each row and uses set reconciliation algorithms to find the mismatches between nodes. As a result, only the mismatched rows are exchanged, which eliminates unnecessary data transmission over the network.
+* Minimize disk reads by :
+  * reading the data only once.
+  * keeping the data in a temporary buffer.
+  * using the cached data to calculate the checksum and send it to the replicas.
+
+See also the [ScyllaDB Manager documentation](https://manager.docs.scylladb.com/).
+
+## Incremental Repair
+
+Built on top of [Row-level Repair](#row-level-repair) and [Tablets](https://docs.scylladb.com/manual/branch-2026.4/architecture/tablets.md), Incremental Repair enables frequent and quick repairs. For more details, see [Incremental Repair](https://docs.scylladb.com/manual/branch-2026.4/features/incremental-repair.md).
+
+## Automatic Repair
+
+Built on top of [Incremental Repair](https://docs.scylladb.com/manual/branch-2026.4/features/incremental-repair.md), [Automatic Repair](https://docs.scylladb.com/manual/branch-2026.4/features/automatic-repair.md) offers repair scheduling and execution directly in ScyllaDB, without external processes.
 
 
 # replace-dead-node-or-more.md
@@ -43026,29 +43026,6 @@ is necessary:
 
 # sstable-format.md
 
-# SSTable format in ScyllaDB
-
-ScyllaDB supports the same SSTable format as Apache Cassandra 2.1.8, which means
-you can simply place SSTables from a Cassandra data directory into a
-ScyllaDB data directory—and it will just work
-
-Looking more carefully, you will see that ScyllaDB maintains more,
-smaller, SSTables than Cassandra does. On ScyllaDB, each core manages its
-own subset of SSTables. This internal sharding allows each core (shard)
-to work more efficiently, avoiding the complexity and delays of multiple
-cores competing for the same data
-
-[ScyllaDB Architecture](https://docs.scylladb.com/manual/branch-2026.4/architecture/index.md)
-
-Copyright
-
-© 2016, The Apache Software Foundation.
-
-Apache®, Apache Cassandra®, Cassandra®, the Apache feather logo and the Apache Cassandra® Eye logo are either registered trademarks or trademarks of the Apache Software Foundation in the United States and/or other countries. No endorsement by The Apache Software Foundation is implied by the use of these marks.
-
-
-# sstable-format.md
-
 # SSTable 3.0 Format in ScyllaDB
 
 ScyllaDB supports the same SSTable format as Apache Cassandra 3.0.
@@ -43079,6 +43056,29 @@ parameter in `scylla.yaml`:
 
 Existing SSTables are not rewritten automatically when upgrading to 2026.2.
 They are upgraded to the `ms` format on the next compaction.
+
+[ScyllaDB Architecture](https://docs.scylladb.com/manual/branch-2026.4/architecture/index.md)
+
+Copyright
+
+© 2016, The Apache Software Foundation.
+
+Apache®, Apache Cassandra®, Cassandra®, the Apache feather logo and the Apache Cassandra® Eye logo are either registered trademarks or trademarks of the Apache Software Foundation in the United States and/or other countries. No endorsement by The Apache Software Foundation is implied by the use of these marks.
+
+
+# sstable-format.md
+
+# SSTable format in ScyllaDB
+
+ScyllaDB supports the same SSTable format as Apache Cassandra 2.1.8, which means
+you can simply place SSTables from a Cassandra data directory into a
+ScyllaDB data directory—and it will just work
+
+Looking more carefully, you will see that ScyllaDB maintains more,
+smaller, SSTables than Cassandra does. On ScyllaDB, each core manages its
+own subset of SSTables. This internal sharding allows each core (shard)
+to work more efficiently, avoiding the complexity and delays of multiple
+cores competing for the same data
 
 [ScyllaDB Architecture](https://docs.scylladb.com/manual/branch-2026.4/architecture/index.md)
 
@@ -45812,11 +45812,6 @@ Resharding in keyspaces with tablets enabled has the following limitations:
 
 # task-manager.md
 
-# Task Manager
-
-
-# task-manager.md
-
 # Task manager tasks
 
 Task manager tracks long-running background operations. Task manager is divided into modules. Each module is responsible
@@ -45922,6 +45917,11 @@ return the id of the associated task. You can query the operation’s status wit
 See [Nodetool tasks](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/nodetool-commands/tasks/index.md).
 
 To learn how to interact with REST API see [REST API](https://docs.scylladb.com/manual/branch-2026.4/operating-scylla/rest.md).
+
+
+# task-manager.md
+
+# Task Manager
 
 
 # tasks.md
