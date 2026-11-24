@@ -4933,6 +4933,10 @@ so that it can be recreated before the data is restored.
 
 ### Cluster-wide backup
 
+#### NOTE
+Cluster-wide backup is a **Preview** feature: it is available for evaluation,
+but is not generally available and is not recommended for production workloads.
+
 The whole cluster can be snapshotted and backed up from one node, with
 [nodetool cluster snapshot](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/snapshot.md) and [nodetool cluster backup](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/backup.md).
 The cluster snapshot is taken on all nodes and recorded in the `system_distributed` keyspace, and the backup then has each node upload its own SSTables
@@ -13040,7 +13044,7 @@ through CQL and are automatically applied by all nodes in the cluster. See
 > Granularity of the index of rows within a partition. For huge rows, decrease this setting to improve seek time. If you use key cache, be careful not to make this setting too large because key cache will be overwhelmed. If you’re unsure of the size of the rows, it’s best to use the default setting.
 
 > * **Type:** `uint32_t`
-> * **Default value:** `64`
+> * **Default value:** `1`
 > * Liveness: `False`
 
 <a id="confprop-column-index-auto-scale-threshold-in-kb"></a>
@@ -14462,7 +14466,7 @@ through CQL and are automatically applied by all nodes in the cluster. See
 > Default sstable file format
 
 > * **Type:** `sstring`
-> * **Default value:** `"me"`
+> * **Default value:** `"mt"`
 > * Liveness: `True`
 
 <a id="confprop-sstable-compression-user-table-options"></a>
@@ -22157,7 +22161,7 @@ to encrypt tables or system information, add the KMIP server information to the
           password: <password> (optional)
           max_command_retries: <int> (optional; default 3)
           key_cache_expiry: <key cache expiry period>
-          key_cache_refresh: <key cache refresh/prune period>
+          key_cache_refresh: <key cache refresh period>
    #   <name>:
    ```
 
@@ -22177,8 +22181,8 @@ to encrypt tables or system information, add the KMIP server information to the
    * `username` - The KMIP server user name.
    * `password` - The KMIP server password.
    * `max_command_retries` - The number of attempts to connect to the KMIP server before trying the next host in the list.
-   * `key_cache_expiry` - Key cache expiry period, after which keys will be re-requested from server. Default is 30s.
-   * `key_cache_refresh` - Key cache refresh period - the frequency at which cache is checked for expired entries. Default is 100s.
+   * `key_cache_expiry` - Key cache expiry period - a cached key is removed if it has not been read, or has not been successfully reloaded, within this period. It is then re-requested from the key provider on next use. Default is 100s.
+   * `key_cache_refresh` - Key cache refresh period - a cached key is reloaded in the background between one and two refresh periods after it was loaded; should be less than half of `key_cache_expiry`. Default is 30s.
 
    Example:
    ```yaml
@@ -22247,7 +22251,7 @@ Before configuring AWS KMS integration, ensure you have:
           truststore: <truststore for SSL connection> (optional)
           priority_string: <KMS TLS priority string> (optional)
           key_cache_expiry: <key cache expiry period>
-          key_cache_refresh: <key cache refresh/prune period>
+          key_cache_refresh: <key cache refresh period>
    #   <name>:
    ```
 
@@ -22269,8 +22273,8 @@ Before configuring AWS KMS integration, ensure you have:
    * `keyfile` - The name of the key for the certificate. It is generated together with the certificate.
    * `truststore` - The location and key for the truststore to present to the KMS server.
    * `priority_string` - The KMS TLS priority string.
-   * `key_cache_expiry` - Key cache expiry period, after which keys will be re-requested from server. Default is 600s.
-   * `key_cache_refresh` - Key cache refresh period - the frequency at which cache is checked for expired entries. Default is 1200s.
+   * `key_cache_expiry` - Key cache expiry period - a cached key is removed if it has not been read, or has not been successfully reloaded, within this period. It is then re-requested from the key provider on next use. Default is 1200s.
+   * `key_cache_refresh` - Key cache refresh period - a cached key is reloaded in the background between one and two refresh periods after it was loaded; should be less than half of `key_cache_expiry`. Default is 300s.
 
    Examples:
 
@@ -22387,7 +22391,7 @@ Before configuring GCP KMS integration, ensure you have:
           truststore: <truststore for SSL connection> (optional)
           priority_string: <KMS TLS priority string> (optional)
           key_cache_expiry: <key cache expiry period>
-          key_cache_refresh: <key cache refresh/prune period>
+          key_cache_refresh: <key cache refresh period>
    #   <name>:
    ```
 
@@ -22403,8 +22407,8 @@ Before configuring GCP KMS integration, ensure you have:
    * `keyfile` - The name of the key for the certificate. It is generated together with the certificate.
    * `truststore` - The location and key for the truststore to present to the KMS server.
    * `priority_string` - The KMS TLS priority string.
-   * `key_cache_expiry` - Key cache expiry period, after which keys will be re-requested from server. Default is 600s.
-   * `key_cache_refresh` - Key cache refresh period - the frequency at which cache is checked for expired entries. Default is 1200s.
+   * `key_cache_expiry` - Key cache expiry period - a cached key is removed if it has not been read, or has not been successfully reloaded, within this period. It is then re-requested from the key provider on next use. Default is 1200s.
+   * `key_cache_refresh` - Key cache refresh period - a cached key is reloaded in the background between one and two refresh periods after it was loaded; should be less than half of `key_cache_expiry`. Default is 300s.
 
    Examples:
 
@@ -22513,7 +22517,7 @@ but this is offered only for testing purposes.
          truststore: <PEM file with CA certificates for TLS> (optional)
          priority_string: <TLS priority string> (optional)
          key_cache_expiry: <key cache expiry period> (optional)
-         key_cache_refresh: <key cache refresh/prune period> (optional)
+         key_cache_refresh: <key cache refresh period> (optional)
    #   <name>:
    ```
 
@@ -22526,8 +22530,8 @@ but this is offered only for testing purposes.
    * `master_key` - The <vaultname>/<keyname> of your key. This parameter is required.
    * `truststore` - Path to a PEM file with CA certificates to validate the server’s TLS certificate.
    * `priority_string` - The TLS priority string for TLS handshakes.
-   * `key_cache_expiry` - Key cache expiry period, after which keys will be re-requested from Azure Key Vault. Default is 600s.
-   * `key_cache_refresh` - Key cache refresh period - the frequency at which the cache is checked for expired entries. Default is 1200s.
+   * `key_cache_expiry` - Key cache expiry period - a cached key is removed if it has not been read, or has not been successfully reloaded, within this period. It is then re-requested from the key provider on next use. Default is 1200s.
+   * `key_cache_refresh` - Key cache refresh period - a cached key is reloaded in the background between one and two refresh periods after it was loaded; should be less than half of `key_cache_expiry`. Default is 300s.
 
    Example:
 
@@ -23729,9 +23733,11 @@ KMIP Key Provider
    encryption operations when refreshing its key cache. However, ScyllaDB
    will still be able to use this key to decrypt old data.
 3. Clear the old key from the key cache:
-   * You can choose to wait for the KMIP host’s `key_cache_expiry`
-     interval (default is 30 seconds), after which ScyllaDB will
-     automatically clear the key cache, or
+   * You can wait for the key cache to pick up the new key. Cached keys
+     are reloaded in the background between one and two
+     `key_cache_refresh` periods after they were loaded, so the new key
+     is picked up within about four times `key_cache_refresh` (2 minutes
+     with the default of 30s), or
    * You can clear the key cache of each node manually by draining the node
      with [nodetool drain](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/drain.md)
      and then restarting the scylla-server service:
@@ -23790,15 +23796,15 @@ decrypting old data.
 
 When a key is rotated, previously written out system artifacts and
 SSTables are not affected, meaning that they remain encrypted with the old
-key version. Additionally, for a few minutes after the rotation, ScyllaDB
-may be generating new system artifacts and SSTables with the old key
-version, due to cached data encryption keys created before the rotation
-(keys are cached for 10 minutes by default, depending on the
-`key_cache_expiry` option). Eventually, the cached data encryption keys
-will be evicted and the old SSTables will be re-encrypted with the new key
-version when they are naturally compacted. If you prefer not to wait for
-this process to complete on its own, you can run the following steps on
-each node:
+key version. Additionally, after the rotation, ScyllaDB may be generating
+new system artifacts and SSTables with the old key version, due to cached
+data encryption keys created before the rotation (cached keys are
+refreshed periodically, see `key_cache_refresh`). The cached data
+encryption keys are replaced on their next background reload (within
+about four times `key_cache_refresh`) and the old SSTables will be
+re-encrypted with the new key version when they are naturally compacted.
+If you prefer not to wait for this process to complete on its own, you can
+run the following steps on each node:
 
 1. Drain the node with [nodetool drain](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/drain.md).
 2. Restart the scylla-server service to discard any cached data encryption
@@ -23850,15 +23856,15 @@ when decrypting old data.
 
 When a key is rotated, previously written out system artifacts and
 SSTables are not affected, meaning that they remain encrypted with the old
-key version. Additionally, for a few minutes after the rotation, ScyllaDB
-may be generating new system artifacts and SSTables with the old key
-version, due to cached data encryption keys created before the rotation
-(keys are cached for 10 minutes by default, depending on the
-`key_cache_expiry` option). Eventually, the cached data encryption keys
-will be evicted and the old SSTables will be re-encrypted with the new key
-version when they are naturally compacted. If you prefer not to wait for
-this process to complete on its own, you can run the following steps on
-each node:
+key version. Additionally, after the rotation, ScyllaDB may be generating
+new system artifacts and SSTables with the old key version, due to cached
+data encryption keys created before the rotation (cached keys are
+refreshed periodically, see `key_cache_refresh`). The cached data
+encryption keys are replaced on their next background reload (within
+about four times `key_cache_refresh`) and the old SSTables will be
+re-encrypted with the new key version when they are naturally compacted.
+If you prefer not to wait for this process to complete on its own, you can
+run the following steps on each node:
 
 1. Drain the node with [nodetool drain](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/drain.md).
 2. Restart the scylla-server service to discard any cached data encryption
@@ -23912,15 +23918,15 @@ used for encryption.
 
 When a key is rotated, previously written out system artifacts and
 SSTables are not affected, meaning that they remain encrypted with the old
-key version. Additionally, for a few minutes after the rotation, ScyllaDB
-may be generating new system artifacts and SSTables with the old key
-version, due to cached data encryption keys created before the rotation
-(keys are cached for 10 minutes by default, depending on the
-`key_cache_expiry` option). Eventually, the cached data encryption keys
-will be evicted and the old SSTables will be re-encrypted with the new key
-version when they are naturally compacted. If you prefer not to wait for
-this process to complete on its own, you can run the following steps on
-each node:
+key version. Additionally, after the rotation, ScyllaDB may be generating
+new system artifacts and SSTables with the old key version, due to cached
+data encryption keys created before the rotation (cached keys are
+refreshed periodically, see `key_cache_refresh`). The cached data
+encryption keys are replaced on their next background reload (within
+about four times `key_cache_refresh`) and the old SSTables will be
+re-encrypted with the new key version when they are naturally compacted.
+If you prefer not to wait for this process to complete on its own, you can
+run the following steps on each node:
 
 1. Drain the node with [nodetool drain](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/drain.md).
 2. Restart the scylla-server service to discard any cached data encryption
@@ -24554,7 +24560,7 @@ explicitly and does generate a CDC event.
 ## Querying with BM25
 
 FTS queries use the `BM25()` function to score rows against a search term.
-`BM25()` takes two arguments: a column name and a query string.
+`BM25()` takes two arguments: a column name and a search term.
 
 A full-text search query must use `BM25()` in **both** of these clauses, on
 the **same** column and with the **same** search term:
@@ -24621,6 +24627,51 @@ The rank is the position in the index’s result, not in the result set. If the 
 that is no longer in the base table, that row’s rank is missing from the result and the ranks after
 it are not renumbered.
 
+<a id="fulltext-search-term"></a>
+
+### Search term syntax
+
+The search term is a query, not plain text. Some characters, such as `'`,
+`"`, `:`, `~`, `*`, `^`, `+`, `-` and parentheses, have a special
+meaning. Ordinary text, especially user input, may then be rejected or match
+unexpected rows.
+
+Words separated by whitespace are combined with `OR`: a row that contains any
+of them matches. The operators `AND`, `OR` and `NOT` combine words, and
+parentheses group them:
+
+```default
+SELECT * FROM ks.t
+    WHERE BM25(v, '(jupiter OR saturn) AND planet NOT rings') > 0
+    ORDER BY BM25(v, '(jupiter OR saturn) AND planet NOT rings')
+    LIMIT 10;
+```
+
+The operators are recognized only in upper case. A lowercase `and`, `or` or
+`not` is not an operator.
+
+A `-` before a word excludes it, like `NOT`. A `+` before a word makes
+that word required, but the other words stay optional, so it is not the same as
+`AND`: `planet +jupiter` matches every row that contains *jupiter*, while
+`planet AND jupiter` matches only the rows that contain both words.
+
+To search for text that contains special characters, wrap it in double quotes.
+Inside the double quotes they have no special meaning, and the text is searched
+as a phrase: the words must appear next to each other, in the same order. Write
+`\"` for a double quote and `\\` for a backslash.
+Inside a CQL string literal, a single quote is written as `''`:
+
+```default
+SELECT * FROM ks.t
+    WHERE BM25(v, '"don''t panic"') > 0
+    ORDER BY BM25(v, '"don''t panic"')
+    LIMIT 10;
+```
+
+A phrase of several words needs token positions, which the index stores by
+default. On an index created with `'positions': 'false'`, such a phrase is
+rejected.
+
 <a id="fulltext-highlighting"></a>
 
 ### Highlighting
@@ -24661,7 +24712,7 @@ combined filtering is planned for a future release.
 
 ### Using bind markers
 
-The query term can be supplied with a bind marker in prepared statements:
+The search term can be supplied with a bind marker in prepared statements:
 
 ```default
 SELECT * FROM ks.t
@@ -28814,21 +28865,23 @@ For example:
 nodetool listsnapshots
 
 Snapshot Details:
-Snapshot name Keyspace name Column family name True size Size on disk
-5487138454987 nba           player_name        0 bytes   308.66 MiB
-2157384283120 nba           player_team        0 bytes   107.21 MiB
-4824891793663 nba           player_stats       0 bytes   41.69 MiB
+Snapshot name Keyspace name Column family name True size Size on disk Creation time        Expiration time
+5487138454987 nba           player_name        0 bytes   308.66 MiB   2023-10-25T12:18:09Z 2023-10-26T12:18:09Z
+2157384283120 nba           player_team        0 bytes   107.21 MiB   2023-10-25T12:18:09Z
+4824891793663 nba           player_stats       0 bytes   41.69 MiB    2023-10-25T12:18:09Z
 
 Total TrueDiskSpaceUsed: 0 bytes
 ```
 
-| Parameter          | Description                                                                                                                       |
-|--------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| Snapshot name      | Name of the snapshot                                                                                                              |
-| Keyspace name      | Keyspace name                                                                                                                     |
-| Column family name | Column Family (table) name                                                                                                        |
-| True size          | Total size of the snapshot files that are not shared with the table’s current SSTables, i.e. disk space used only by the snapshot |
-| Size on disk       | Total size of the snapshot on disk                                                                                                |
+| Parameter          | Description                                                                                                                            |
+|--------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Snapshot name      | Name of the snapshot                                                                                                                   |
+| Keyspace name      | Keyspace name                                                                                                                          |
+| Column family name | Column Family (table) name                                                                                                             |
+| True size          | Total size of the snapshot files that are not shared with the table’s current SSTables, i.e. disk space used only by the snapshot      |
+| Size on disk       | Total size of the snapshot on disk                                                                                                     |
+| Creation time      | The time, in UTC, at which the snapshot was taken. Empty if it was taken by a<br/>version that did not record it                       |
+| Expiration time    | The time, in UTC, at which the snapshot is automatically deleted. Empty if the<br/>snapshot was taken with no TTL, so it never expires |
 
 For example:
 
@@ -39807,8 +39860,12 @@ For more information, see the [Full-Text Search documentation](https://docs.scyl
 
 The `BM25()` function enables full-text search queries over text columns that
 have a [full-text index](https://docs.scylladb.com/manual/master/cql/secondary-indexes.md#create-fulltext-index-statement) created with
-`USING 'fulltext_index'`. `BM25()` takes a column name and a query string
+`USING 'fulltext_index'`. `BM25()` takes a column name and a search term
 and scores rows using the BM25 ranking algorithm.
+
+The search term is a query, not plain text, so some characters have a special
+meaning. Inside double quotes they lose that meaning, and the text is searched
+as a phrase. See [Search term syntax](https://docs.scylladb.com/manual/master/features/fulltext-search.md#fulltext-search-term).
 
 A full-text search query must contain **both** of the following clauses,
 referencing the **same** column and the **same** search term:
@@ -39855,7 +39912,7 @@ SELECT * FROM articles
     LIMIT 10;
 ```
 
-Use bind markers for the query term:
+Use bind markers for the search term:
 
 ```cql
 SELECT * FROM articles
