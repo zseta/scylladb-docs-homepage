@@ -4619,17 +4619,17 @@
 </div></blockquote>
 </dd></dl>
 
-<dl class="std metrics_option" id="metricsprop-scylla-logstor-sm-segment-free-failures">
-<dt class="sig sig-object std" id="metrics_option-scylla_logstor_sm_segment_free_failures">
-<span class="sig-name descname"><span class="pre">scylla_logstor_sm_segment_free_failures</span></span><a class="headerlink" href="#metrics_option-scylla_logstor_sm_segment_free_failures" title="Link to this definition">¶</a></dt>
+<dl class="std metrics_option" id="metricsprop-scylla-logstor-sm-kept-segments">
+<dt class="sig sig-object std" id="metrics_option-scylla_logstor_sm_kept_segments">
+<span class="sig-name descname"><span class="pre">scylla_logstor_sm_kept_segments</span></span><a class="headerlink" href="#metrics_option-scylla_logstor_sm_kept_segments" title="Link to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Counts number of logstor segment references that failed to free the segment.</p>
+<div><p>Number of segments that are not freed until the node restarts, because the index can still point into them.</p>
 </div></blockquote>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">counter</span></code></p></li>
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">gauge</span></code></p></li>
 <li><p><strong>Component:</strong> <code class="docutils literal notranslate"><span class="pre">logstor_sm</span></code></p></li>
-<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">segment_free_failures</span></code></p></li>
+<li><p><strong>Key:</strong> <code class="docutils literal notranslate"><span class="pre">kept_segments</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd></dl>
