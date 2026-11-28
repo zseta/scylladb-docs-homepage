@@ -416,6 +416,10 @@ of the nodes in the cluster, and <a class="reference internal" href="../../nodet
 <p class="admonition-title">Note</p>
 <p>Run the <a class="reference internal" href="../../nodetool-commands/repair.html"><span class="doc">nodetool repair</span></a> and <a class="reference internal" href="../../nodetool-commands/cluster/repair.html"><span class="doc">nodetool cluster repair</span></a> command regularly. If you delete data frequently, it should be more often than the value of <code class="docutils literal notranslate"><span class="pre">gc_grace_seconds</span></code> (by default: 10 days), for example, every week. Use the <strong>nodetool repair -pr</strong> on each node in the cluster, sequentially.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Repair doesn’t apply to <a class="reference internal" href="../../../cql/ddl.html#consistency-option"><span class="std std-ref">strongly consistent keyspaces</span></a>: Raft replicates their writes. A repair of their tables is refused.</p>
+</div>
 <p>In most cases, the proportion of data that is out of sync is very small.  In a few cases, for example, if a node was down for a day, the difference might be more significant.</p>
 </section>
 <section id="row-level-repair">
@@ -983,6 +987,7 @@ of the nodes in the cluster, and <a class="reference internal" href="../../nodet
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/api/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label for="toctree-checkbox-31"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/authorization-cache.html">Authorization Cache</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/cache-service.html">Cache Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/api/client-routes.html">Client Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/column-family.html">Column Family</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/commit-log.html">Commit Log</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/compaction-manager.html">Compaction Manager</a></li>
@@ -1063,7 +1068,7 @@ of the nodes in the cluster, and <a class="reference internal" href="../../nodet
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 03 Feb 2026.
+                        Last updated on 26 Nov 2026.
                     
                 </div>
             

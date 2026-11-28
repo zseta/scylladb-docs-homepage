@@ -712,6 +712,10 @@ are going to the same partition.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">consistency</span></code> option cannot be changed after the keyspace is created. To change
 it, recreate the keyspace. <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">KEYSPACE</span></code> accepts the current value and rejects any
 other.</p>
+<p><a class="reference internal" href="../operating-scylla/procedures/maintenance/repair.html"><span class="doc">Repair</span></a> doesn’t apply to strongly
+consistent keyspaces: Raft replicates their writes. A repair of their tables is refused,
+<a class="reference internal" href="../features/automatic-repair.html"><span class="doc">automatic repair</span></a> skips them, and neither the keyspace
+nor its tables accept the automatic repair options.</p>
 </section>
 <section id="keyspace-preferred-rack-option-experimental">
 <span id="preferred-rack-option"></span><h3>Keyspace <code class="docutils literal notranslate"><span class="pre">preferred_rack</span></code> option <span class="label label--caution">Experimental</span><a class="headerlink" href="#keyspace-preferred-rack-option-experimental" title="Link to this heading">¶</a></h3>
@@ -2358,6 +2362,7 @@ that can be truncated currently and so the <code class="docutils literal notrans
 <li class="toctree-l2 has-children"><a class="reference internal" href="../reference/api/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label for="toctree-checkbox-31"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/authorization-cache.html">Authorization Cache</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/cache-service.html">Cache Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/api/client-routes.html">Client Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/column-family.html">Column Family</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/commit-log.html">Commit Log</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/compaction-manager.html">Compaction Manager</a></li>
@@ -2438,7 +2443,7 @@ that can be truncated currently and so the <code class="docutils literal notrans
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 05 Nov 2026.
+                        Last updated on 26 Nov 2026.
                     
                 </div>
             

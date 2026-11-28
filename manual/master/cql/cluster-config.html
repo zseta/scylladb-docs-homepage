@@ -577,6 +577,14 @@ the default, for example after a node stayed down for a long time. Must be betwe
 and <code class="docutils literal notranslate"><span class="pre">315360000</span></code> (ten years). Default: <code class="docutils literal notranslate"><span class="pre">300</span></code>, in effect once every node runs a version
 that knows the option.</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_type_nesting</span></code></p></td>
+<td><p>integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CLUSTER</span></code></p></td>
+<td><p>Maximum nesting depth of a type in a client statement. Collections, tuples, vectors and
+user types each add a level. Accepts <code class="docutils literal notranslate"><span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">32</span></code>.
+Raise the limit only for an existing schema with deeper types, and only to the depth of
+those types. A type nested much deeper can crash a node.</p></td>
+</tr>
 </tbody>
 </table>
 <section id="options-also-set-in-scylla-yaml">
@@ -1164,6 +1172,7 @@ a stored value, each node uses its <code class="docutils literal notranslate"><s
 <li class="toctree-l2 has-children"><a class="reference internal" href="../reference/api/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label for="toctree-checkbox-31"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/authorization-cache.html">Authorization Cache</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/cache-service.html">Cache Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/api/client-routes.html">Client Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/column-family.html">Column Family</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/commit-log.html">Commit Log</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/compaction-manager.html">Compaction Manager</a></li>
@@ -1244,7 +1253,7 @@ a stored value, each node uses its <code class="docutils literal notranslate"><s
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 13 Nov 2026.
+                        Last updated on 26 Oct 2026.
                     
                 </div>
             

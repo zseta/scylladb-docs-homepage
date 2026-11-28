@@ -32,13 +32,8 @@ nodetool [(-h <host> | --host <host>)] [(-p <port> | --port <port>)]
 
 `[<keyspaces...>]` List of keyspaces. By default, all keyspaces.
 
-The ‘cluster snapshot’ version of this command will issue the snapshot on all nodes in the cluster, whereas
-the non-cluster version only operates on the destination node. The ‘cluster snapshot’ version supports only the
-`--table` and `-t`/`--tag` options and the list of keyspaces:
-
-```shell
-nodetool cluster snapshot [--table <table>] [(-t <tag> | --tag <tag>)] [<keyspaces...>]
-```
+This command takes the snapshot on the destination node only. To take a snapshot on all nodes in the cluster, see
+[nodetool cluster snapshot](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/cluster/snapshot.md).
 
 ## Examples
 
@@ -102,6 +97,7 @@ manifest.json
 ### Additional Resources
 
 * [Backup your data](https://docs.scylladb.com/manual/master/operating-scylla/procedures/backup-restore/backup.md)
+* [nodetool cluster snapshot](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/cluster/snapshot.md)
 * [ScyllaDB Snapshots](https://docs.scylladb.com/manual/master/kb/snapshots.md)
 
 Copyright

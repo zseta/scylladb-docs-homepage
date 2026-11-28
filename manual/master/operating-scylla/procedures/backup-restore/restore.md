@@ -14,7 +14,7 @@ For cluster-wide backup and restore, see the [ScyllaDB Manager](https://manager.
 
 ScyllaDB supports several restore methods. Choose the one that matches where your backup files are and whether the cluster topology changed since the backup was taken:
 
-* [Restore a cluster backup](#restore-cluster-backup) - restore a backup made with [nodetool cluster backup](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/backup.md) into a tablet-based table. Each replica downloads the SSTables of its own tablets straight from object storage, with no streaming between nodes. Runs on a running cluster.
+* [Restore a cluster backup](#restore-cluster-backup) - restore a backup made with [nodetool cluster backup](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/cluster/backup.md) into a tablet-based table. Each replica downloads the SSTables of its own tablets straight from object storage, with no streaming between nodes. SSTables that the backup stored as a single copy are re-replicated to all replicas, but a full repair is still required after the restore. Runs on a running cluster.
 * [Restore from object storage](#restore-object-storage) - restore SSTables backed up to S3-compatible object storage with [nodetool backup](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/backup.md). Runs on a running cluster and works regardless of cluster topology changes since the backup.
 * [Restore with load and stream](#restore-load-and-stream) - upload backed-up SSTable files to a running cluster; the data is streamed to the nodes owning it. Works regardless of cluster topology changes since the backup.
 * [Restore to an identical cluster](#restore-procedure) - copy snapshot files back in place and restart the nodes. Requires a cluster with the same number of nodes and the same token distribution as at the time of the backup, and each node must be restored from the backup of the **same node**. Suitable for vnode-based keyspaces only.
@@ -56,10 +56,10 @@ If you are restoring [encrypted backup files](https://docs.scylladb.com/manual/m
 
 ## Restore a cluster backup
 
-Use this method to restore a backup made with [nodetool cluster backup](https://docs.scylladb.com/manual/master/operating-scylla/procedures/backup-restore/backup.md#backup-native-backup) into a tablet-based table.
+Use this method to restore a backup made with [nodetool cluster backup](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/cluster/backup.md) into a tablet-based table.
 The restore runs as a topology operation: the replicas of each tablet download the SSTables that belong to the tablet
-directly from object storage and attach them, so no data is streamed between nodes. Repaired data that the backup
-stored as a single copy is restored to every replica it was taken from.
+directly from object storage and attach them, so no data is streamed between nodes. SSTables of repaired data, which the backup
+stored as a single copy, are re-replicated to all replicas. A full repair is still required after the restore.
 
 The object storage endpoint must be configured on the nodes, as described in [Configuring Object Storage](https://docs.scylladb.com/manual/master/operating-scylla/admin.md#object-storage-configuration).
 
@@ -91,6 +91,8 @@ the paths of the table’s backup manifests relative to that prefix.
    The call returns the ID of the restore task.
 3. Monitor the restore with the [nodetool tasks](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/tasks/index.md) commands, for example
    `nodetool tasks wait <task ID>` to wait for it to finish, or `nodetool tasks status <task ID>` to see its progress.
+4. After the restore completes, run a full repair of the restored table with [nodetool cluster repair](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/cluster/repair.md)
+   on any single node, for example `nodetool cluster repair mykeyspace team_roster`.
 
 #### NOTE
 A replica that is down cannot restore its tablets, so the restore fails rather than wait for it.

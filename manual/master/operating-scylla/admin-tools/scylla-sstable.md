@@ -337,6 +337,11 @@ The promoted index contains a sampled index of the clustering rows in the partit
 Positions (both that of partition and that of rows) are valid for uncompressed
 data.
 
+For compressed SStables of the `mu` format, the index stores physical
+positions instead. A physical position identifies a compressed chunk in the data
+component and an offset in the decompressed chunk. See
+[SSTable mu Format](https://docs.scylladb.com/manual/master/architecture/sstable/sstable3/sstable-mu-format.md).
+
 The content is dumped in JSON, using the following schema:
 
 ```none
@@ -349,9 +354,18 @@ $INDEX_ENTRY := {
         "raw": String, // hexadecimal representation of the raw binary
         "value": String
     },
-    "pos": Uint64
+    "pos": Uint64 | $PHYSICAL_POSITION
+}
+
+$PHYSICAL_POSITION := {
+    "chunk_position": Uint64, // offset of the chunk in the data component
+    "extent_hint": Uint64, // upper bound of the chunk's extent (its size on disk), in bytes
+    "offset_within_chunk": Uint64 // offset in the decompressed chunk
 }
 ```
+
+`pos` is a `$PHYSICAL_POSITION` for compressed SStables of the `mu`
+format, and a `Uint64` otherwise.
 
 ### dump-compression-info
 
@@ -374,9 +388,16 @@ $SSTABLE := {
     },
     "chunk_len": Uint,
     "data_len": Uint64,
-    "offsets": [Uint64, ...]
+    "offsets": [Uint64, ...], // not for mu
+    "sampling_denominator": Uint, // only for mu
+    "sampled_offsets": [Uint64, ...] // only for mu
 }
 ```
+
+A compressed SStable of the `mu` format doesn’t store the offset of every
+chunk. It stores a random sample of the chunk offsets, `sampled_offsets`. The
+writer keeps each chunk with a probability of `1 / sampling_denominator`,
+except the chunks near the end of the data.
 
 <a id="scylla-sstable-dump-summary"></a>
 
@@ -542,6 +563,7 @@ $SSTABLE := {
     "sstable_identifier": String, // UUID
     "large_data_records": [$LARGE_DATA_RECORD, ...]
     "scrub_time": int64
+    "incompatible_features": [Uint64, ...]
 }
 
 $SHARDING_METADATA := {

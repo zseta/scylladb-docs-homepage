@@ -68,3 +68,8 @@ A keyspace or table that stores its own `auto_repair_enabled = true` keeps autom
 option to `NULL` at both the keyspace and table scopes to make it follow the cluster value again.
 
 Automatic repair relies on [Incremental Repair](https://docs.scylladb.com/manual/master/features/incremental-repair.md) and as such it only works with [tablet](https://docs.scylladb.com/manual/master/architecture/tablets.md) tables.
+
+Tables of [strongly consistent keyspaces](https://docs.scylladb.com/manual/master/cql/ddl.md#consistency-option) are never repaired automatically:
+repair doesn’t apply to them, because Raft replicates their writes. Such a keyspace and its tables
+don’t accept `auto_repair_enabled` and `auto_repair_threshold_in_seconds`, and the values set for
+the whole cluster don’t apply to them.

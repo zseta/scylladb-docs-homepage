@@ -3368,6 +3368,16 @@ through CQL and are automatically applied by all nodes in the cluster. See
 > * **Default value:** `int32_t(cluster_config_registry::auto_repair_threshold_default_seconds)`
 > * Liveness: `True`
 
+<a id="confprop-force-vnodes-for-migrating-tables"></a>
+
+### force_vnodes_for_migrating_tables
+
+> Load the tables of keyspaces under vnodes-to-tablets migration with vnodes on this node,     ignoring the node’s upgrade recorded in system.topology. For recovering a node that cannot     start because upgrading its tables to tablets fails. Once up, the node marks itself for     downgrade to vnodes in system.topology; unset this option then.
+
+> * **Type:** `bool`
+> * **Default value:** `false`
+> * Liveness: `False`
+
 <a id="confprop-view-flow-control-delay-limit-in-ms"></a>
 
 ### view_flow_control_delay_limit_in_ms

@@ -408,10 +408,12 @@
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2026.3/_static/api/api-doc/messaging_service.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2026.3/_static/api/api-doc/messaging_service.json", window.location.href).href,
         dom_id: "swagger-ui-messaging_service",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-messaging_service .footer').forEach(function(element) {

@@ -15,16 +15,22 @@ For more information on each of the SSTable formats, see below:
 
 | SSTable Version   | ScyllaDB Version   |
 |-------------------|--------------------|
+| 3.x (‘mu’)        | 2026.4 and above   |
 | 3.x (‘mt’)        | 2026.2 and above   |
 | 3.x (‘ms’)        | 2025.4 and above   |
 | 3.x (`me`)        | 2022.2 and above   |
 | 3.x (`md`)        | 2021.1             |
-* The supported formats are `me` and `mt`.
+* The supported formats are `me`, `mt` and `mu`.
 * The `md` format is used only when upgrading from an existing cluster using
   `md`. The `sstable_format` parameter is ignored if it is set to `md`.
 * The `ms` format has been superseded by `mt`, and is used only when upgrading
   from an existing cluster using `ms`. If the `sstable_format` parameter is
   set to `ms`, `mt` files will be written.
+* The `mt` format is not superseded by `mu`. If the `sstable_format`
+  parameter is set to `mt`, `mt` files will be written.
+* If the `sstable_format` parameter is set to `mu`, but the cluster does not
+  support `mu` yet (for example, during a rolling upgrade), `mt` files will
+  be written if the cluster supports `mt`, and `me` files otherwise.
 * Note: The `sstable_format` parameter specifies the SSTable format used for
   **writes**. The legacy SSTable formats (`ka`, `la`, `mc`) remain
   supported for reads, which is essential for restoring clusters from existing
@@ -45,4 +51,5 @@ For more information on ScyllaDB 3.x SSTable formats, see below:
 * [SSTable 3.0 Summary](https://docs.scylladb.com/manual/master/architecture/sstable/sstable3/sstables-3-summary.md)
 * [SSTable 3.0 Index (me/md format)](https://docs.scylladb.com/manual/master/architecture/sstable/sstable3/sstables-3-index.md)
 * [SSTable ms Index (Trie-Based)](https://docs.scylladb.com/manual/master/architecture/sstable/sstable3/sstable-ms-index.md)
+* [SSTable mu Format (Physical Index Positions)](https://docs.scylladb.com/manual/master/architecture/sstable/sstable3/sstable-mu-format.md)
 * [SSTable 3.0 Format in ScyllaDB](https://docs.scylladb.com/manual/master/architecture/sstable/sstable3/sstable-format.md)

@@ -31,6 +31,9 @@ of the nodes in the cluster, and [nodetool cluster repair](https://docs.scylladb
 #### NOTE
 Run the [nodetool repair](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/repair.md) and [nodetool cluster repair](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/cluster/repair.md) command regularly. If you delete data frequently, it should be more often than the value of `gc_grace_seconds` (by default: 10 days), for example, every week. Use the **nodetool repair -pr** on each node in the cluster, sequentially.
 
+#### NOTE
+Repair doesn’t apply to [strongly consistent keyspaces](https://docs.scylladb.com/manual/master/cql/ddl.md#consistency-option): Raft replicates their writes. A repair of their tables is refused.
+
 In most cases, the proportion of data that is out of sync is very small.  In a few cases, for example, if a node was down for a day, the difference might be more significant.
 
 <a id="row-level-repair"></a>

@@ -398,10 +398,12 @@
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2026.4/_static/api/api-doc/endpoint_snitch_info.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2026.4/_static/api/api-doc/endpoint_snitch_info.json", window.location.href).href,
         dom_id: "swagger-ui-endpoint_snitch_info",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-endpoint_snitch_info .footer').forEach(function(element) {

@@ -688,6 +688,10 @@ their starting position in the data component and, optionally, a promoted index.
 The promoted index contains a sampled index of the clustering rows in the partition.
 Positions (both that of partition and that of rows) are valid for uncompressed
 data.</p>
+<p>For compressed SStables of the <code class="docutils literal notranslate"><span class="pre">mu</span></code> format, the index stores physical
+positions instead. A physical position identifies a compressed chunk in the data
+component and an offset in the decompressed chunk. See
+<a class="reference internal" href="../../architecture/sstable/sstable3/sstable-mu-format.html"><span class="doc">SSTable mu Format</span></a>.</p>
 <p>The content is dumped in JSON, using the following schema:</p>
 <div class="hide-copy-button highlight-none notranslate"><div class="highlight"><pre><span></span>$ROOT := { "$sstable_path": $SSTABLE, ... }
 
@@ -698,10 +702,18 @@ $INDEX_ENTRY := {
         "raw": String, // hexadecimal representation of the raw binary
         "value": String
     },
-    "pos": Uint64
+    "pos": Uint64 | $PHYSICAL_POSITION
+}
+
+$PHYSICAL_POSITION := {
+    "chunk_position": Uint64, // offset of the chunk in the data component
+    "extent_hint": Uint64, // upper bound of the chunk's extent (its size on disk), in bytes
+    "offset_within_chunk": Uint64 // offset in the decompressed chunk
 }
 </pre></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">pos</span></code> is a <code class="docutils literal notranslate"><span class="pre">$PHYSICAL_POSITION</span></code> for compressed SStables of the <code class="docutils literal notranslate"><span class="pre">mu</span></code>
+format, and a <code class="docutils literal notranslate"><span class="pre">Uint64</span></code> otherwise.</p>
 </section>
 <section id="dump-compression-info">
 <h3>dump-compression-info<a class="headerlink" href="#dump-compression-info" title="Link to this heading">¶</a></h3>
@@ -721,10 +733,16 @@ $SSTABLE := {
     },
     "chunk_len": Uint,
     "data_len": Uint64,
-    "offsets": [Uint64, ...]
+    "offsets": [Uint64, ...], // not for mu
+    "sampling_denominator": Uint, // only for mu
+    "sampled_offsets": [Uint64, ...] // only for mu
 }
 </pre></div>
 </div>
+<p>A compressed SStable of the <code class="docutils literal notranslate"><span class="pre">mu</span></code> format doesn’t store the offset of every
+chunk. It stores a random sample of the chunk offsets, <code class="docutils literal notranslate"><span class="pre">sampled_offsets</span></code>. The
+writer keeps each chunk with a probability of <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">sampling_denominator</span></code>,
+except the chunks near the end of the data.</p>
 </section>
 <section id="dump-summary">
 <span id="scylla-sstable-dump-summary"></span><h3>dump-summary<a class="headerlink" href="#dump-summary" title="Link to this heading">¶</a></h3>
@@ -879,6 +897,7 @@ $SSTABLE := {
     "sstable_identifier": String, // UUID
     "large_data_records": [$LARGE_DATA_RECORD, ...]
     "scrub_time": int64
+    "incompatible_features": [Uint64, ...]
 }
 
 $SHARDING_METADATA := {
@@ -1951,6 +1970,7 @@ the one the table of this node keeps its SSTables in:</p>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/api/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label for="toctree-checkbox-31"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/api/authorization-cache.html">Authorization Cache</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/api/cache-service.html">Cache Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/api/client-routes.html">Client Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/api/column-family.html">Column Family</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/api/commit-log.html">Commit Log</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/api/compaction-manager.html">Compaction Manager</a></li>
@@ -2031,7 +2051,7 @@ the one the table of this node keeps its SSTables in:</p>
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 21 Sep 2026.
+                        Last updated on 03 Nov 2026.
                     
                 </div>
             

@@ -409,6 +409,7 @@
 <p>ICS merges SSTables of approximately the same size, like the deprecated
 <a class="reference internal" href="#stcs1"><span class="std std-ref">Size-tiered Compaction Strategy</span></a>, but it replaces the increasingly larger SSTables in each tier by increasingly longer SSTable runs, modeled after LCS runs, but using a larger fragment size of 1 GB, by default.</p>
 <p>Compaction is triggered when there are two or more runs of roughly the same size. These runs are incrementally compacted with each other, producing a new SSTable run, while incrementally releasing space as soon as each SSTable in the input run is processed and compacted. This method eliminates the high temporary space amplification problem of STCS by limiting the overhead to twice the (constant) fragment size, per shard.</p>
+<p>Some runs of one tier may not overlap each other, for example the runs of two tablets that were merged into one. Compacting such runs together would only rewrite their data. ICS splices them instead: it treats their SSTables as a single run from then on, and nothing is read or written. Runs of the tier that overlap the spliced runs are not part of the splice. The splice is kept in memory only, so ICS splices the runs again after a restart.</p>
 <section id="incremental-compaction-strategy-benefits">
 <h3>Incremental Compaction Strategy benefits<a class="headerlink" href="#incremental-compaction-strategy-benefits" title="Link to this heading">¶</a></h3>
 <ul class="simple">
@@ -1124,6 +1125,7 @@ The deprecated Size-tiered strategy is not listed, as it is an alias of Incremen
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/api/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label for="toctree-checkbox-31"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/api/authorization-cache.html">Authorization Cache</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/api/cache-service.html">Cache Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/api/client-routes.html">Client Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/api/column-family.html">Column Family</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/api/commit-log.html">Commit Log</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/api/compaction-manager.html">Compaction Manager</a></li>
@@ -1204,7 +1206,7 @@ The deprecated Size-tiered strategy is not listed, as it is an alias of Incremen
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 09 Oct 2026.
+                        Last updated on 12 Nov 2026.
                     
                 </div>
             

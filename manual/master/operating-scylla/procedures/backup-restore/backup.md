@@ -68,7 +68,7 @@ For example:
 By default, nodetool names the snapshot after the current time, in milliseconds since the Unix epoch.
 To choose the name (a.k.a. tag), list the keyspaces to snapshot, or set a TTL after which the snapshot
 is deleted automatically, see [nodetool snapshot](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/snapshot.md).
-`nodetool cluster snapshot` takes the snapshot on all nodes of the cluster with one command.
+[nodetool cluster snapshot](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/cluster/snapshot.md) takes the snapshot on all nodes of the cluster with one command.
 
 #### NOTE
 Each snapshot directory also contains a `schema.cql` file with the `CREATE` statement of its table,
@@ -122,6 +122,8 @@ Native backup uploads the SSTables of the snapshot, not the schema. Back up the 
 `DESC SCHEMA WITH INTERNALS AND PASSWORDS`, as in the [Full Backup](#backup-full-backup-snapshots) procedure,
 so that it can be recreated before the data is restored.
 
+<a id="backup-cluster-wide-backup"></a>
+
 ### Cluster-wide backup
 
 #### NOTE
@@ -129,7 +131,7 @@ Cluster-wide backup is a **Preview** feature: it is available for evaluation,
 but is not generally available and is not recommended for production workloads.
 
 The whole cluster can be snapshotted and backed up from one node, with
-[nodetool cluster snapshot](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/snapshot.md) and [nodetool cluster backup](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/backup.md).
+[nodetool cluster snapshot](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/cluster/snapshot.md) and [nodetool cluster backup](https://docs.scylladb.com/manual/master/operating-scylla/nodetool-commands/cluster/backup.md).
 The cluster snapshot is taken on all nodes and recorded in the `system_distributed` keyspace, and the backup then has each node upload its own SSTables
 to the location given for its datacenter.
 

@@ -408,10 +408,12 @@
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2026.3/_static/api/api-doc/error_injection.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2026.3/_static/api/api-doc/error_injection.json", window.location.href).href,
         dom_id: "swagger-ui-error_injection",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-error_injection .footer').forEach(function(element) {

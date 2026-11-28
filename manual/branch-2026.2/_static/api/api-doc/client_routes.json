@@ -1,74 +1,181 @@
-    , "/v2/client-routes":{
-        "get": {
-            "description":"List all client route entries",
-            "operationId":"get_client_routes",
-            "tags":["client_routes"],
-            "produces":[
-                "application/json"
-            ],
-            "parameters":[],
-            "responses":{
-                "200":{
-                    "schema":{
-                        "type":"array",
-                        "items":{ "$ref":"#/definitions/client_routes_entry" }
-                    }
-                },
-                "default":{
-                    "description":"unexpected error",
-                    "schema":{"$ref":"#/definitions/ErrorModel"}
-                }
-            }
-        },
-        "post": {
-            "description":"Upsert one or more client route entries",
-            "operationId":"set_client_routes",
-            "tags":["client_routes"],
-            "parameters":[
-                {
-                    "name":"body",
-                    "in":"body",
-                    "required":true,
-                    "schema":{
-                        "type":"array",
-                        "items":{ "$ref":"#/definitions/client_routes_entry" }
-                    }
-                }
-            ],
-            "responses":{
-                "200":{ "description": "OK" },
-                "default":{
-                    "description":"unexpected error",
-                    "schema":{ "$ref":"#/definitions/ErrorModel" }
-                }
-            }
-        },
-        "delete": {
-            "description":"Delete one or more client route entries",
-            "operationId":"delete_client_routes",
-            "tags":["client_routes"],
-            "parameters":[
-                {
-                    "name":"body",
-                    "in":"body",
-                    "required":true,
-                    "schema":{
-                        "type":"array",
-                        "items":{ "$ref":"#/definitions/client_routes_key" }
-                    }
-                }
-            ],
-            "responses":{
-                "200":{
-                    "description": "OK"
-                },
-                "default":{
-                    "description":"unexpected error",
-                    "schema":{
-                        "$ref":"#/definitions/ErrorModel"
-                    }
-                }
-            }
-        }
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Scylla API",
+    "description": "The scylla API version 2.0",
+    "termsOfService": "http://www.scylladb.com/tos/",
+    "contact": {
+      "name": "Scylla Team",
+      "email": "info@scylladb.com",
+      "url": "http://scylladb.com"
+    },
+    "license": {
+      "name": "ScyllaDB-Source-Available-1.0",
+      "url": "https://github.com/scylladb/scylla/blob/master/LICENSE-ScyllaDB-Source-Available.md"
     }
-
+  },
+  "host": "127.0.0.1:10000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v2/client-routes": {
+      "get": {
+        "description": "List all client route entries",
+        "operationId": "get_client_routes",
+        "tags": [
+          "client_routes"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/client_routes_entry"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorModel"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Upsert one or more client route entries",
+        "operationId": "set_client_routes",
+        "tags": [
+          "client_routes"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/client_routes_entry"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete one or more client route entries",
+        "operationId": "delete_client_routes",
+        "tags": [
+          "client_routes"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/client_routes_key"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorModel"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "client_routes_entry": {
+      "id": "client_routes_entry",
+      "summary": "An entry storing client routes",
+      "properties": {
+        "connection_id": {
+          "type": "string"
+        },
+        "host_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "address": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        },
+        "tls_port": {
+          "type": "integer"
+        },
+        "alternator_port": {
+          "type": "integer"
+        },
+        "alternator_https_port": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "connection_id",
+        "host_id",
+        "address"
+      ]
+    },
+    "client_routes_key": {
+      "id": "client_routes_key",
+      "summary": "A key of client_routes_entry",
+      "properties": {
+        "connection_id": {
+          "type": "string"
+        },
+        "host_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ErrorModel": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

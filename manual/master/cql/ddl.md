@@ -315,6 +315,11 @@ The `consistency` option cannot be changed after the keyspace is created. To cha
 it, recreate the keyspace. `ALTER KEYSPACE` accepts the current value and rejects any
 other.
 
+[Repair](https://docs.scylladb.com/manual/master/operating-scylla/procedures/maintenance/repair.md) doesn’t apply to strongly
+consistent keyspaces: Raft replicates their writes. A repair of their tables is refused,
+[automatic repair](https://docs.scylladb.com/manual/master/features/automatic-repair.md) skips them, and neither the keyspace
+nor its tables accept the automatic repair options.
+
 <a id="preferred-rack-option"></a>
 
 ### Keyspace `preferred_rack` option Experimental

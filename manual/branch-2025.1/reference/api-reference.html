@@ -404,10 +404,12 @@
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/authorization_cache.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/authorization_cache.json", window.location.href).href,
         dom_id: "swagger-ui-authorization_cache",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-authorization_cache .footer').forEach(function(element) {
@@ -440,10 +442,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/cache_service.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/cache_service.json", window.location.href).href,
         dom_id: "swagger-ui-cache_service",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-cache_service .footer').forEach(function(element) {
@@ -476,10 +480,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/collectd.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/collectd.json", window.location.href).href,
         dom_id: "swagger-ui-collectd",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-collectd .footer').forEach(function(element) {
@@ -512,10 +518,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/column_family.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/column_family.json", window.location.href).href,
         dom_id: "swagger-ui-column_family",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-column_family .footer').forEach(function(element) {
@@ -548,10 +556,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/commitlog.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/commitlog.json", window.location.href).href,
         dom_id: "swagger-ui-commitlog",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-commitlog .footer').forEach(function(element) {
@@ -584,10 +594,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/compaction_manager.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/compaction_manager.json", window.location.href).href,
         dom_id: "swagger-ui-compaction_manager",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-compaction_manager .footer').forEach(function(element) {
@@ -620,10 +632,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/endpoint_snitch_info.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/endpoint_snitch_info.json", window.location.href).href,
         dom_id: "swagger-ui-endpoint_snitch_info",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-endpoint_snitch_info .footer').forEach(function(element) {
@@ -656,10 +670,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/error_injection.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/error_injection.json", window.location.href).href,
         dom_id: "swagger-ui-error_injection",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-error_injection .footer').forEach(function(element) {
@@ -692,10 +708,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/failure_detector.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/failure_detector.json", window.location.href).href,
         dom_id: "swagger-ui-failure_detector",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-failure_detector .footer').forEach(function(element) {
@@ -728,10 +746,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/gossiper.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/gossiper.json", window.location.href).href,
         dom_id: "swagger-ui-gossiper",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-gossiper .footer').forEach(function(element) {
@@ -764,10 +784,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/hinted_handoff.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/hinted_handoff.json", window.location.href).href,
         dom_id: "swagger-ui-hinted_handoff",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-hinted_handoff .footer').forEach(function(element) {
@@ -800,10 +822,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/lsa.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/lsa.json", window.location.href).href,
         dom_id: "swagger-ui-lsa",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-lsa .footer').forEach(function(element) {
@@ -836,10 +860,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/messaging_service.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/messaging_service.json", window.location.href).href,
         dom_id: "swagger-ui-messaging_service",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-messaging_service .footer').forEach(function(element) {
@@ -872,10 +898,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/raft.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/raft.json", window.location.href).href,
         dom_id: "swagger-ui-raft",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-raft .footer').forEach(function(element) {
@@ -908,10 +936,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/storage_proxy.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/storage_proxy.json", window.location.href).href,
         dom_id: "swagger-ui-storage_proxy",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-storage_proxy .footer').forEach(function(element) {
@@ -944,10 +974,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/storage_service.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/storage_service.json", window.location.href).href,
         dom_id: "swagger-ui-storage_service",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-storage_service .footer').forEach(function(element) {
@@ -980,10 +1012,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/stream_manager.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/stream_manager.json", window.location.href).href,
         dom_id: "swagger-ui-stream_manager",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-stream_manager .footer').forEach(function(element) {
@@ -1016,10 +1050,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/system.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/system.json", window.location.href).href,
         dom_id: "swagger-ui-system",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-system .footer').forEach(function(element) {
@@ -1052,10 +1088,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/task_manager_test.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/task_manager_test.json", window.location.href).href,
         dom_id: "swagger-ui-task_manager_test",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-task_manager_test .footer').forEach(function(element) {
@@ -1088,10 +1126,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/task_manager.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/task_manager.json", window.location.href).href,
         dom_id: "swagger-ui-task_manager",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-task_manager .footer').forEach(function(element) {
@@ -1124,10 +1164,12 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.1/_static/api/api-doc/tasks.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.1/_static/api/api-doc/tasks.json", window.location.href).href,
         dom_id: "swagger-ui-tasks",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-tasks .footer').forEach(function(element) {

@@ -1,74 +1,188 @@
-    , "/v2/client-routes":{
-        "get": {
-            "description":"List all client route entries",
-            "operationId":"get_client_routes",
-            "tags":["client_routes"],
-            "produces":[
-                "application/json"
-            ],
-            "parameters":[],
-            "responses":{
-                "200":{
-                    "schema":{
-                        "type":"array",
-                        "items":{ "$ref":"#/definitions/client_routes_entry" }
-                    }
-                },
-                "default":{
-                    "description":"unexpected error",
-                    "schema":{"$ref":"#/definitions/ErrorModel"}
-                }
-            }
-        },
-        "post": {
-            "description":"Upsert one or more client route entries",
-            "operationId":"set_client_routes",
-            "tags":["client_routes"],
-            "parameters":[
-                {
-                    "name":"body",
-                    "in":"body",
-                    "required":true,
-                    "schema":{
-                        "type":"array",
-                        "items":{ "$ref":"#/definitions/client_routes_entry" }
-                    }
-                }
-            ],
-            "responses":{
-                "200":{ "description": "OK" },
-                "default":{
-                    "description":"unexpected error",
-                    "schema":{ "$ref":"#/definitions/ErrorModel" }
-                }
-            }
-        },
-        "delete": {
-            "description":"Delete one or more client route entries",
-            "operationId":"delete_client_routes",
-            "tags":["client_routes"],
-            "parameters":[
-                {
-                    "name":"body",
-                    "in":"body",
-                    "required":true,
-                    "schema":{
-                        "type":"array",
-                        "items":{ "$ref":"#/definitions/client_routes_key" }
-                    }
-                }
-            ],
-            "responses":{
-                "200":{
-                    "description": "OK"
-                },
-                "default":{
-                    "description":"unexpected error",
-                    "schema":{
-                        "$ref":"#/definitions/ErrorModel"
-                    }
-                }
-            }
-        }
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Scylla API",
+    "description": "The scylla API version 2.0",
+    "termsOfService": "http://www.scylladb.com/tos/",
+    "contact": {
+      "name": "Scylla Team",
+      "email": "info@scylladb.com",
+      "url": "http://scylladb.com"
+    },
+    "license": {
+      "name": "ScyllaDB-Source-Available-1.0",
+      "url": "https://github.com/scylladb/scylla/blob/master/LICENSE-ScyllaDB-Source-Available.md"
     }
-
+  },
+  "host": "127.0.0.1:10000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v2/client-routes": {
+      "get": {
+        "description": "List all client route entries stored in the cluster. The Client Routes API is available after every node supports and enables the CLIENT_ROUTES cluster feature. Deployment infrastructure should use this API instead of writing directly to system.client_routes.",
+        "operationId": "get_client_routes",
+        "tags": [
+          "client_routes"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/client_routes_entry"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorModel"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create or replace one or more client route entries. Each entry must provide an address and at least one port between 1 and 65535. An entry with an existing (connection_id, host_id) key replaces its address and port values. Changes made through any node are stored cluster-wide and notify drivers subscribed to CLIENT_ROUTES_CHANGE.",
+        "operationId": "set_client_routes",
+        "tags": [
+          "client_routes"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/client_routes_entry"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete the client route entries identified by the supplied (connection_id, host_id) pairs. Changes made through any node are stored cluster-wide and notify drivers subscribed to CLIENT_ROUTES_CHANGE.",
+        "operationId": "delete_client_routes",
+        "tags": [
+          "client_routes"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/client_routes_key"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorModel"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "client_routes_entry": {
+      "id": "client_routes_entry",
+      "summary": "A client-reachable proxy endpoint for one node through one private connection",
+      "properties": {
+        "connection_id": {
+          "type": "string",
+          "description": "Private connection identifier assigned by deployment infrastructure"
+        },
+        "host_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Stable node UUID from cluster metadata"
+        },
+        "address": {
+          "type": "string",
+          "description": "Client-reachable proxy hostname or IP address"
+        },
+        "port": {
+          "type": "integer",
+          "description": "Proxy port for unencrypted CQL, from 1 to 65535"
+        },
+        "tls_port": {
+          "type": "integer",
+          "description": "Proxy port for TLS-encrypted CQL, from 1 to 65535"
+        },
+        "alternator_port": {
+          "type": "integer",
+          "description": "Proxy port for unencrypted Alternator, from 1 to 65535"
+        },
+        "alternator_https_port": {
+          "type": "integer",
+          "description": "Proxy port for HTTPS-encrypted Alternator, from 1 to 65535"
+        }
+      },
+      "required": [
+        "connection_id",
+        "host_id",
+        "address"
+      ]
+    },
+    "client_routes_key": {
+      "id": "client_routes_key",
+      "summary": "A key of client_routes_entry",
+      "properties": {
+        "connection_id": {
+          "type": "string"
+        },
+        "host_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "ErrorModel": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

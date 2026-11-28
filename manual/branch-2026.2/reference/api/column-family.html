@@ -408,10 +408,12 @@
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2026.2/_static/api/api-doc/column_family.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2026.2/_static/api/api-doc/column_family.json", window.location.href).href,
         dom_id: "swagger-ui-column_family",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-column_family .footer').forEach(function(element) {

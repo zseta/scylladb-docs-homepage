@@ -5078,6 +5078,20 @@ The change will take effect without a node restart, changing the value in the co
 </div></blockquote>
 </dd></dl>
 
+<dl class="std confval" id="confprop-force-vnodes-for-migrating-tables">
+<dt class="sig sig-object std" id="confval-force_vnodes_for_migrating_tables">
+<span class="sig-name descname"><span class="pre">force_vnodes_for_migrating_tables</span></span><a class="headerlink" href="#confval-force_vnodes_for_migrating_tables" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Load the tables of keyspaces under vnodes-to-tablets migration with vnodes on this node,     ignoring the node’s upgrade recorded in system.topology. For recovering a node that cannot     start because upgrading its tables to tablets fails. Once up, the node marks itself for     downgrade to vnodes in system.topology; unset this option then.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default value:</strong> <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><span data-tooltip data-tooltip-height="0" tabindex="1" title="The ability to update a configuration property without restarting the node. Properties that support live updates can be updated via the system.config virtual table or the REST API.
+The change will take effect without a node restart, changing the value in the config file, then sending SIGHUP to the scylla-process, triggering it to re-read its configuration." class="top">Liveness</span>: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
 <dl class="std confval" id="confprop-view-flow-control-delay-limit-in-ms">
 <dt class="sig sig-object std" id="confval-view_flow_control_delay_limit_in_ms">
 <span class="sig-name descname"><span class="pre">view_flow_control_delay_limit_in_ms</span></span><a class="headerlink" href="#confval-view_flow_control_delay_limit_in_ms" title="Link to this definition">¶</a></dt>
@@ -5977,6 +5991,7 @@ The change will take effect without a node restart, changing the value in the co
 <li class="toctree-l2 has-children"><a class="reference internal" href="api/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label for="toctree-checkbox-31"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/authorization-cache.html">Authorization Cache</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/cache-service.html">Cache Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/client-routes.html">Client Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/column-family.html">Column Family</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/commit-log.html">Commit Log</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/compaction-manager.html">Compaction Manager</a></li>

@@ -408,10 +408,12 @@
 window.addEventListener('load', function() {
     let swaggerUi = new SwaggerUi({
         
-        url: "/manual/branch-2025.3/_static/api/api-doc/task_manager_test.json",
+        // Swagger UI treats relative URLs as children of the current page, even for .html pages.
+        url: new URL("/manual/branch-2025.3/_static/api/api-doc/task_manager_test.json", window.location.href).href,
         dom_id: "swagger-ui-task_manager_test",
         docExpansion: "full",
         jsonEditor: false,
+        supportedSubmitMethods: [],
         onComplete: function() {
 
             document.querySelectorAll('#swagger-ui-task_manager_test .footer').forEach(function(element) {

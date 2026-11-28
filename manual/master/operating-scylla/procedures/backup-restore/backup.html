@@ -459,7 +459,7 @@ an older version of cqlsh may lead to data resurrection or data loss. To check t
 <p>By default, nodetool names the snapshot after the current time, in milliseconds since the Unix epoch.
 To choose the name (a.k.a. tag), list the keyspaces to snapshot, or set a TTL after which the snapshot
 is deleted automatically, see <a class="reference internal" href="../../nodetool-commands/snapshot.html"><span class="doc">nodetool snapshot</span></a>.
-<code class="docutils literal notranslate"><span class="pre">nodetool</span> <span class="pre">cluster</span> <span class="pre">snapshot</span></code> takes the snapshot on all nodes of the cluster with one command.</p>
+<a class="reference internal" href="../../nodetool-commands/cluster/snapshot.html"><span class="doc">nodetool cluster snapshot</span></a> takes the snapshot on all nodes of the cluster with one command.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -510,14 +510,14 @@ for how native backup compares with uploading through the ScyllaDB Manager agent
 <code class="docutils literal notranslate"><span class="pre">DESC</span> <span class="pre">SCHEMA</span> <span class="pre">WITH</span> <span class="pre">INTERNALS</span> <span class="pre">AND</span> <span class="pre">PASSWORDS</span></code>, as in the <a class="reference internal" href="#backup-full-backup-snapshots"><span class="std std-ref">Full Backup</span></a> procedure,
 so that it can be recreated before the data is restored.</p>
 <section id="cluster-wide-backup">
-<h3>Cluster-wide backup<a class="headerlink" href="#cluster-wide-backup" title="Link to this heading">¶</a></h3>
+<span id="backup-cluster-wide-backup"></span><h3>Cluster-wide backup<a class="headerlink" href="#cluster-wide-backup" title="Link to this heading">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Cluster-wide backup is a <strong>Preview</strong> feature: it is available for evaluation,
 but is not generally available and is not recommended for production workloads.</p>
 </div>
 <p>The whole cluster can be snapshotted and backed up from one node, with
-<a class="reference internal" href="../../nodetool-commands/snapshot.html"><span class="doc">nodetool cluster snapshot</span></a> and <a class="reference internal" href="../../nodetool-commands/backup.html"><span class="doc">nodetool cluster backup</span></a>.
+<a class="reference internal" href="../../nodetool-commands/cluster/snapshot.html"><span class="doc">nodetool cluster snapshot</span></a> and <a class="reference internal" href="../../nodetool-commands/cluster/backup.html"><span class="doc">nodetool cluster backup</span></a>.
 The cluster snapshot is taken on all nodes and recorded in the <code class="docutils literal notranslate"><span class="pre">system_distributed</span></code> keyspace, and the backup then has each node upload its own SSTables
 to the location given for its datacenter.</p>
 <p>Cluster backup is designed for tablet-based keyspaces, and stores a <strong>single copy</strong> of the repaired data. For each tablet, SSTables whose data is covered
@@ -1106,6 +1106,7 @@ nodetool<span class="w"> </span>backup<span class="w"> </span>--endpoint<span cl
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/api/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label for="toctree-checkbox-31"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/authorization-cache.html">Authorization Cache</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/cache-service.html">Cache Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/api/client-routes.html">Client Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/column-family.html">Column Family</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/commit-log.html">Commit Log</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/compaction-manager.html">Compaction Manager</a></li>

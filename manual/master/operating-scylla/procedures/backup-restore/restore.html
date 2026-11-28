@@ -406,7 +406,7 @@ Use <a class="reference internal" href="backup.html"><span class="doc">snapshots
 <h2>Choosing a restore method<a class="headerlink" href="#choosing-a-restore-method" title="Link to this heading">¶</a></h2>
 <p>ScyllaDB supports several restore methods. Choose the one that matches where your backup files are and whether the cluster topology changed since the backup was taken:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#restore-cluster-backup"><span class="std std-ref">Restore a cluster backup</span></a> - restore a backup made with <a class="reference internal" href="../../nodetool-commands/backup.html"><span class="doc">nodetool cluster backup</span></a> into a tablet-based table. Each replica downloads the SSTables of its own tablets straight from object storage, with no streaming between nodes. Runs on a running cluster.</p></li>
+<li><p><a class="reference internal" href="#restore-cluster-backup"><span class="std std-ref">Restore a cluster backup</span></a> - restore a backup made with <a class="reference internal" href="../../nodetool-commands/cluster/backup.html"><span class="doc">nodetool cluster backup</span></a> into a tablet-based table. Each replica downloads the SSTables of its own tablets straight from object storage, with no streaming between nodes. SSTables that the backup stored as a single copy are re-replicated to all replicas, but a full repair is still required after the restore. Runs on a running cluster.</p></li>
 <li><p><a class="reference internal" href="#restore-object-storage"><span class="std std-ref">Restore from object storage</span></a> - restore SSTables backed up to S3-compatible object storage with <a class="reference internal" href="../../nodetool-commands/backup.html"><span class="doc">nodetool backup</span></a>. Runs on a running cluster and works regardless of cluster topology changes since the backup.</p></li>
 <li><p><a class="reference internal" href="#restore-load-and-stream"><span class="std std-ref">Restore with load and stream</span></a> - upload backed-up SSTable files to a running cluster; the data is streamed to the nodes owning it. Works regardless of cluster topology changes since the backup.</p></li>
 <li><p><a class="reference internal" href="#restore-procedure"><span class="std std-ref">Restore to an identical cluster</span></a> - copy snapshot files back in place and restart the nodes. Requires a cluster with the same number of nodes and the same token distribution as at the time of the backup, and each node must be restored from the backup of the <strong>same node</strong>. Suitable for vnode-based keyspaces only.</p></li>
@@ -442,10 +442,10 @@ Use <a class="reference internal" href="backup.html"><span class="doc">snapshots
 </section>
 <section id="restore-a-cluster-backup">
 <span id="restore-cluster-backup"></span><h2>Restore a cluster backup<a class="headerlink" href="#restore-a-cluster-backup" title="Link to this heading">¶</a></h2>
-<p>Use this method to restore a backup made with <a class="reference internal" href="backup.html#backup-native-backup"><span class="std std-ref">nodetool cluster backup</span></a> into a tablet-based table.
+<p>Use this method to restore a backup made with <a class="reference internal" href="../../nodetool-commands/cluster/backup.html"><span class="doc">nodetool cluster backup</span></a> into a tablet-based table.
 The restore runs as a topology operation: the replicas of each tablet download the SSTables that belong to the tablet
-directly from object storage and attach them, so no data is streamed between nodes. Repaired data that the backup
-stored as a single copy is restored to every replica it was taken from.</p>
+directly from object storage and attach them, so no data is streamed between nodes. SSTables of repaired data, which the backup
+stored as a single copy, are re-replicated to all replicas. A full repair is still required after the restore.</p>
 <p>The object storage endpoint must be configured on the nodes, as described in <a class="reference internal" href="../../admin.html#object-storage-configuration"><span class="std std-ref">Configuring Object Storage</span></a>.</p>
 <p>The backup holds the SSTables and their manifests only. It does not include the schema, so the keyspace and table
 must exist before the restore starts: recreate them from the schema backup taken with <code class="docutils literal notranslate"><span class="pre">DESC</span> <span class="pre">SCHEMA</span> <span class="pre">WITH</span> <span class="pre">INTERNALS</span> <span class="pre">AND</span> <span class="pre">PASSWORDS</span></code>,
@@ -473,6 +473,8 @@ the paths of the table’s backup manifests relative to that prefix.</p>
 </li>
 <li><p>Monitor the restore with the <a class="reference internal" href="../../nodetool-commands/tasks/index.html"><span class="doc">nodetool tasks</span></a> commands, for example
 <code class="docutils literal notranslate"><span class="pre">nodetool</span> <span class="pre">tasks</span> <span class="pre">wait</span> <span class="pre">&lt;task</span> <span class="pre">ID&gt;</span></code> to wait for it to finish, or <code class="docutils literal notranslate"><span class="pre">nodetool</span> <span class="pre">tasks</span> <span class="pre">status</span> <span class="pre">&lt;task</span> <span class="pre">ID&gt;</span></code> to see its progress.</p></li>
+<li><p>After the restore completes, run a full repair of the restored table with <a class="reference internal" href="../../nodetool-commands/cluster/repair.html"><span class="doc">nodetool cluster repair</span></a>
+on any single node, for example <code class="docutils literal notranslate"><span class="pre">nodetool</span> <span class="pre">cluster</span> <span class="pre">repair</span> <span class="pre">mykeyspace</span> <span class="pre">team_roster</span></code>.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1212,6 +1214,7 @@ drwx------<span class="w"> </span><span class="m">2</span><span class="w"> </spa
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/api/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label for="toctree-checkbox-31"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/authorization-cache.html">Authorization Cache</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/cache-service.html">Cache Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/api/client-routes.html">Client Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/column-family.html">Column Family</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/commit-log.html">Commit Log</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/compaction-manager.html">Compaction Manager</a></li>
@@ -1292,7 +1295,7 @@ drwx------<span class="w"> </span><span class="m">2</span><span class="w"> </spa
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 23 Oct 2026.
+                        Last updated on 23 Nov 2026.
                     
                 </div>
             

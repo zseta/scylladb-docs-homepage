@@ -428,6 +428,10 @@ query <code class="docutils literal notranslate"><span class="pre">system.config
 A keyspace or table that stores its own <code class="docutils literal notranslate"><span class="pre">auto_repair_enabled</span> <span class="pre">=</span> <span class="pre">true</span></code> keeps automatic repair; set that
 option to <code class="docutils literal notranslate"><span class="pre">NULL</span></code> at both the keyspace and table scopes to make it follow the cluster value again.</p>
 <p>Automatic repair relies on <a class="reference internal" href="incremental-repair.html"><span class="doc">Incremental Repair</span></a> and as such it only works with <a class="reference internal" href="../architecture/tablets.html"><span class="doc">tablet</span></a> tables.</p>
+<p>Tables of <a class="reference internal" href="../cql/ddl.html#consistency-option"><span class="std std-ref">strongly consistent keyspaces</span></a> are never repaired automatically:
+repair doesn’t apply to them, because Raft replicates their writes. Such a keyspace and its tables
+don’t accept <code class="docutils literal notranslate"><span class="pre">auto_repair_enabled</span></code> and <code class="docutils literal notranslate"><span class="pre">auto_repair_threshold_in_seconds</span></code>, and the values set for
+the whole cluster don’t apply to them.</p>
 </section>
 </section>
 
@@ -968,6 +972,7 @@ option to <code class="docutils literal notranslate"><span class="pre">NULL</spa
 <li class="toctree-l2 has-children"><a class="reference internal" href="../reference/api/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label for="toctree-checkbox-31"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/authorization-cache.html">Authorization Cache</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/cache-service.html">Cache Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/api/client-routes.html">Client Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/column-family.html">Column Family</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/commit-log.html">Commit Log</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/api/compaction-manager.html">Compaction Manager</a></li>
@@ -1048,7 +1053,7 @@ option to <code class="docutils literal notranslate"><span class="pre">NULL</spa
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 13 Nov 2026.
+                        Last updated on 26 Nov 2026.
                     
                 </div>
             

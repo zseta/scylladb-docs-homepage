@@ -432,7 +432,7 @@ cross-shard operations within nodes, reducing performance.</p></li>
 tablet load balancer rebalances the data.</p>
 </div>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<span id="vnodes-migration-prerequisites"></span><h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
 <section id="cluster-state">
 <h3>Cluster state<a class="headerlink" href="#cluster-state" title="Link to this heading">¶</a></h3>
 <ul class="simple">
@@ -799,7 +799,7 @@ on <strong>any</strong> single node:</p>
 </ol>
 </section>
 <section id="rollback-procedure">
-<h2>Rollback Procedure<a class="headerlink" href="#rollback-procedure" title="Link to this heading">¶</a></h2>
+<span id="vnodes-migration-rollback"></span><h2>Rollback Procedure<a class="headerlink" href="#rollback-procedure" title="Link to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Rollback is only possible <strong>before finalization</strong>. Once the migration is
@@ -1032,6 +1032,54 @@ migration in one pass.</p></li>
 </li>
 </ol>
 </section>
+<section id="recovering-a-node-that-fails-to-start">
+<h2>Recovering a node that fails to start<a class="headerlink" href="#recovering-a-node-that-fails-to-start" title="Link to this heading">¶</a></h2>
+<p>Resharding is an offline operation and it temporarily needs additional disk space.
+If it cannot complete - most commonly because the node ran out of disk space - the
+node fails to start, and it fails again on every subsequent start.</p>
+<p>If you can free disk space or extend the volume, do that and restart the node: it
+completes the upgrade, and you do not need the procedure below. Use the procedure
+only to abort the migration on such a node. The node cannot be rolled back with the
+<a class="reference internal" href="#vnodes-migration-rollback"><span class="std std-ref">Rollback Procedure</span></a> above, because that procedure requires the node to
+be UP.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">force_vnodes_for_migrating_tables</span></code> option to recover a node that will
+not start, not as a way to control the migration. A node that has already
+completed its upgrade refuses to start with this option; roll it back with the
+<a class="reference internal" href="#vnodes-migration-rollback"><span class="std std-ref">Rollback Procedure</span></a> instead. Remove the option once the node is up:
+a node that starts with it marks itself for downgrade, so a leftover option undoes
+any later upgrade of the node.</p>
+</div>
+<ol class="arabic">
+<li><p>Add the following to the node’s <code class="docutils literal notranslate"><span class="pre">scylla.yaml</span></code> and start the node:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">force_vnodes_for_migrating_tables</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>The node starts with vnodes, reshards any data it had already upgraded back to
+vnodes, and logs the following warning:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>force_vnodes_for_migrating_tables is set, overriding the intended storage mode recorded in system.topology ('tablets')
+</pre></div>
+</div>
+</li>
+<li><p>Wait until the node is UP using <a class="reference internal" href="../../nodetool-commands/status.html"><span class="doc">nodetool status</span></a>.
+To monitor resharding progress, open a shell on the node and run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nodetool tasks list compaction --keyspace &lt;keyspace&gt;</span>
+</pre></div>
+</div>
+<p>Verify that the node’s status is <code class="docutils literal notranslate"><span class="pre">uses</span> <span class="pre">vnodes</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nodetool migrate-to-tablets status &lt;keyspace&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">force_vnodes_for_migrating_tables</span></code> from the node’s <code class="docutils literal notranslate"><span class="pre">scylla.yaml</span></code>.</p></li>
+<li><p>Continue with the <a class="reference internal" href="#vnodes-migration-rollback"><span class="std std-ref">Rollback Procedure</span></a> for the remaining upgraded nodes, then
+finalize the rollback.</p></li>
+<li><p>Fix what made the node fail, then start the migration again. If the node ran out of
+disk space, bring every node within the disk utilization limit given in the
+<a class="reference internal" href="#vnodes-migration-prerequisites"><span class="std std-ref">Prerequisites</span></a>.</p></li>
+</ol>
+</section>
 <section id="replacing-a-dead-node-during-migration">
 <h2>Replacing a Dead Node during Migration<a class="headerlink" href="#replacing-a-dead-node-during-migration" title="Link to this heading">¶</a></h2>
 <p>If a node fails during the migration, replace it using the standard procedure
@@ -1175,6 +1223,7 @@ storage mode of node it replaced.</p>
 <li><a class="reference internal" href="#procedure">Procedure</a></li>
 <li><a class="reference internal" href="#rollback-procedure">Rollback Procedure</a></li>
 <li><a class="reference internal" href="#migrating-multiple-keyspaces">Migrating multiple keyspaces</a></li>
+<li><a class="reference internal" href="#recovering-a-node-that-fails-to-start">Recovering a node that fails to start</a></li>
 <li><a class="reference internal" href="#replacing-a-dead-node-during-migration">Replacing a Dead Node during Migration</a></li>
 </ul>
 </li>
@@ -1590,6 +1639,7 @@ storage mode of node it replaced.</p>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/api/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label for="toctree-checkbox-31"><i class="icon-chevron-right"></i></label><div class="break"></div><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/authorization-cache.html">Authorization Cache</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/cache-service.html">Cache Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/api/client-routes.html">Client Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/column-family.html">Column Family</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/commit-log.html">Commit Log</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/api/compaction-manager.html">Compaction Manager</a></li>
@@ -1670,7 +1720,7 @@ storage mode of node it replaced.</p>
             
                 <div class="footer-bottom__last-updated">
                     
-                        Last updated on 15 Oct 2026.
+                        Last updated on 24 Sep 2026.
                     
                 </div>
             
